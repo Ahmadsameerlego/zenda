@@ -244,4 +244,86 @@ export const OrdersService = {
 
         return newOrder;
     },
+
+    /**
+     * Fetch a single order by ID with items and product/variant details.
+     */
+    async getOrderById(orderId: string, storeId: string): Promise<any> {
+        const { data, error } = await supabase
+            .from('orders')
+            .select(`
+                *,
+                order_items(
+                    *,
+                    variant:product_variants(
+                        id,
+                        size,
+                        color,
+                        sku,
+                        sale_price,
+                        product:products(
+                            id,
+                            name
+                        )
+                    )
+                )
+            `)
+            .eq('id', orderId)
+            .eq('store_id', storeId)
+            .single();
+
+        if (error) throw error;
+        if (!data) throw new Error('الطلب غير موجود');
+
+        // Map order items to include product info
+        const items = (data.order_items || []).map((item: any) => ({
+            id: item.id,
+            order_id: item.order_id,
+            variant_id: item.variant_id,
+            quantity: item.quantity,
+            unit_price: item.unit_price,
+            line_total: item.line_total,
+            product_name: item.variant?.product?.name || '',
+            variant_size: item.variant?.size || null,
+            variant_color: item.variant?.color || null,
+            variant_sku: item.variant?.sku || null,
+        }));
+
+        return {
+            ...data,
+            order_items: items,
+        };
+    },
+
+    /**
+     * Update order status.
+     */
+    async updateOrderStatus(orderId: string, status: string, storeId: string): Promise<void> {
+        const { error } = await supabase
+            .from('orders')
+            .update({ status })
+            .eq('id', orderId)
+            .eq('store_id', storeId);
+
+        if (error) throw error;
+    },
+
+    /**
+     * Fetch Rex cases linked to a specific order.
+     */
+    async getLinkedRexCases(orderId: string, storeId: string): Promise<any[]> {
+        const { data, error } = await supabase
+            .from('order_rex')
+            .select(`
+                *,
+                order:orders(customer_name, customer_phone, customer_address),
+                items:order_rex_items(*)
+            `)
+            .eq('order_id', orderId)
+            .eq('store_id', storeId)
+            .order('created_at', { ascending: false });
+
+        if (error) throw error;
+        return data || [];
+    },
 };

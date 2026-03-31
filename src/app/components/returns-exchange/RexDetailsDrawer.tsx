@@ -86,15 +86,15 @@ export function RexDetailsDrawer({ rexCase, open, onOpenChange, language, onSucc
                         <div className="grid grid-cols-1 gap-3 p-4 bg-muted/30 rounded-xl border border-border">
                             <div className="flex items-center gap-3">
                                 <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0">
-                                    <span className="font-semibold text-sm">{rexCase.customer_name.charAt(0).toUpperCase()}</span>
+                                    <span className="font-semibold text-sm">{(rexCase.order?.customer_name || '؟').charAt(0).toUpperCase()}</span>
                                 </div>
                                 <div>
-                                    <p className="font-medium text-sm text-foreground">{rexCase.customer_name}</p>
+                                    <p className="font-medium text-sm text-foreground">{rexCase.order?.customer_name || '—'}</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-2 text-sm text-muted-foreground mt-2">
                                 <Phone className="w-4 h-4 shrink-0" />
-                                <span dir="ltr">{rexCase.customer_phone}</span>
+                                <span dir="ltr">{rexCase.order?.customer_phone || '—'}</span>
                             </div>
                         </div>
                     </div>
@@ -113,7 +113,7 @@ export function RexDetailsDrawer({ rexCase, open, onOpenChange, language, onSucc
                             <div className="flex justify-between py-1 border-b border-border">
                                 <span className="text-muted-foreground">{t.amount}</span>
                                 <span className="font-medium">
-                                    {rexCase.type === 'return' ? formatCurrency(rexCase.refund_amount) : formatCurrency(rexCase.exchange_diff)}
+                                    {formatCurrency(rexCase.difference_amount)}
                                 </span>
                             </div>
                         </div>
@@ -126,7 +126,11 @@ export function RexDetailsDrawer({ rexCase, open, onOpenChange, language, onSucc
                         )}
                     </div>
 
-                    <RexItemsList items={rexCase.items} language={language} />
+                    <RexItemsList 
+                        items={rexCase.items} 
+                        language={language} 
+                        parentReason={rexCase.reason}
+                    />
 
                     <RexActionBar
                         rexCase={rexCase}

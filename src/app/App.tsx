@@ -4,6 +4,7 @@ import { SidebarArabic } from "./components/SidebarArabic";
 import { TopbarArabic } from "./components/TopbarArabic";
 import { DashboardArabic } from "./pages/DashboardArabic";
 import { OrdersArabic } from "./pages/OrdersArabic";
+import { OrderDetailsArabic } from "./pages/OrderDetailsArabic";
 import { ProductsArabic } from "./pages/ProductsArabic";
 import { CategoriesArabic } from "./pages/CategoriesArabic";
 import { BrandsArabic } from "./pages/BrandsArabic";
@@ -114,6 +115,7 @@ function DashboardLayout() {
             <Routes>
               <Route path="/" element={<DashboardArabic language={language} />} />
               <Route path="/orders" element={<OrdersArabic language={language} />} />
+              <Route path="/orders/:id" element={<OrderDetailsArabic language={language} />} />
               <Route path="/products" element={<ProductsArabic language={language} />} />
               <Route path="/customers" element={<CustomersArabic language={language} />} />
               <Route path="/customers/:id" element={<CustomerDetailsArabic language={language} />} />

@@ -51,8 +51,8 @@ export function ReturnsArabic({ language }: ReturnsArabicProps) {
       const matchesSearch =
         String(c.id).toLowerCase().includes(search) ||
         String(c.order_id).toLowerCase().includes(search) ||
-        (c.customer_name || '').toLowerCase().includes(search) ||
-        (c.customer_phone || '').includes(search);
+        (c.order?.customer_name || '').toLowerCase().includes(search) ||
+        (c.order?.customer_phone || '').includes(search);
 
       const matchesType = filters.type === 'all' || c.type === filters.type;
       const matchesStatus = filters.status === 'all' || c.status === filters.status;

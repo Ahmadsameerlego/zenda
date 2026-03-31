@@ -6,9 +6,14 @@ export const rexService = {
         const { data, error } = await supabase
             .from('order_rex')
             .select(`
-        *,
-        items:order_rex_items(*)
-      `)
+                *,
+                order:orders(customer_name, customer_phone, customer_address),
+                items:order_rex_items(
+                    *,
+                    old_variant:product_variants!old_variant_id(id, size, color, sku, product:products(name)),
+                    new_variant:product_variants!new_variant_id(id, size, color, sku, product:products(name))
+                )
+            `)
             .eq('store_id', storeId)
             .order('created_at', { ascending: false });
 
@@ -23,7 +28,7 @@ export const rexService = {
     async updateStatus(caseId: string, status: RexStatus): Promise<void> {
         const { error } = await supabase
             .from('order_rex')
-            .update({ status, updated_at: new Date().toISOString() })
+            .update({ status })
             .eq('id', caseId);
 
         if (error) throw error;
@@ -32,7 +37,7 @@ export const rexService = {
     async updateRefundStatus(caseId: string, refund_status: RexRefundStatus): Promise<void> {
         const { error } = await supabase
             .from('order_rex')
-            .update({ refund_status, updated_at: new Date().toISOString() })
+            .update({ refund_status })
             .eq('id', caseId);
 
         if (error) throw error;
@@ -46,8 +51,6 @@ export const rexService = {
             .from('order_rex')
             .insert([{
                 ...caseData,
-                status: 'new',
-                refund_status: 'pending',
             }])
             .select()
             .single();

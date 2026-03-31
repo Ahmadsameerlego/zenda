@@ -117,8 +117,8 @@ export function RexTable({ cases, loading, language, hasFilters, onRowClick }: R
                                 </TableCell>
                                 <TableCell>
                                     <div className="flex flex-col">
-                                        <span className="font-medium text-foreground">{c.customer_name}</span>
-                                        <span className="text-xs text-muted-foreground" dir="ltr">{c.customer_phone}</span>
+                                        <span className="font-medium text-foreground">{c.order?.customer_name || '—'}</span>
+                                        <span className="text-xs text-muted-foreground" dir="ltr">{c.order?.customer_phone || '—'}</span>
                                     </div>
                                 </TableCell>
                                 <TableCell className="text-muted-foreground truncate max-w-[150px]">
@@ -132,17 +132,14 @@ export function RexTable({ cases, loading, language, hasFilters, onRowClick }: R
                                 </TableCell>
                                 <TableCell className="font-medium">
                                     <div className="flex flex-col">
-                                        {c.type === 'return' && c.refund_amount > 0 && (
-                                            <span className="text-amber-600">{formatCurrency(c.refund_amount)}</span>
-                                        )}
-                                        {c.type === 'exchange' && c.exchange_diff !== 0 && (
-                                            <span className={c.exchange_diff > 0 ? "text-green-600" : "text-rose-600"}>
-                                                {c.exchange_diff > 0 ? '+' : ''}{formatCurrency(c.exchange_diff)}
+                                        {c.difference_amount !== 0 ? (
+                                            <span className={c.type === 'return' ? "text-amber-600" : (c.difference_amount > 0 ? "text-green-600" : "text-rose-600")}>
+                                                {c.type === 'exchange' && c.difference_amount > 0 ? '+' : ''}
+                                                {formatCurrency(c.difference_amount)}
                                             </span>
-                                        )}
-                                        {(c.type === 'exchange' && c.exchange_diff === 0) || (c.type === 'return' && !c.refund_amount) ? (
+                                        ) : (
                                             <span className="text-muted-foreground">—</span>
-                                        ) : null}
+                                        )}
                                     </div>
                                 </TableCell>
                                 <TableCell className="text-muted-foreground px-4">

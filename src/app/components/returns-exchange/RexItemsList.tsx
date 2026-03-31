@@ -4,6 +4,7 @@ import { Package } from 'lucide-react';
 interface RexItemsListProps {
     items?: RexItem[];
     language: 'ar' | 'en';
+    parentReason?: string | null;
 }
 
 const translations = {
@@ -21,7 +22,7 @@ const translations = {
     }
 };
 
-export function RexItemsList({ items, language }: RexItemsListProps) {
+export function RexItemsList({ items, language, parentReason }: RexItemsListProps) {
     const t = translations[language];
     const isRTL = language === 'ar';
 
@@ -50,18 +51,21 @@ export function RexItemsList({ items, language }: RexItemsListProps) {
                             <Package className="w-5 h-5 text-muted-foreground" />
                         </div>
                         <div className="flex-1 min-w-0">
-                            <p className="font-medium text-foreground text-sm truncate">{item.product_name}</p>
-                            {item.variant_name && (
-                                <p className="text-xs text-muted-foreground mt-0.5">{item.variant_name}</p>
+                            <p className="font-medium text-foreground text-sm truncate">
+                                {item.old_variant?.product?.name || 'منتج'}
+                            </p>
+                            {item.old_variant && (
+                                <p className="text-xs text-muted-foreground mt-0.5">
+                                    {[item.old_variant.size, item.old_variant.color].filter(Boolean).join(' - ') || item.old_variant.sku || ''}
+                                </p>
                             )}
-                            {item.reason && (
+                            {parentReason && (
                                 <p className="text-xs text-rose-600 mt-1 bg-rose-50 px-2 py-0.5 rounded-md w-fit">
-                                    {item.reason}
+                                    {parentReason}
                                 </p>
                             )}
                         </div>
                         <div className="text-right shrink-0">
-                            <p className="font-medium text-foreground text-sm">{formatCurrency(item.original_price)}</p>
                             <p className="text-xs text-muted-foreground mt-0.5">
                                 {t.quantity}: {item.quantity}
                             </p>

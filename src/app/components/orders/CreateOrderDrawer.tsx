@@ -341,13 +341,14 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
             <DialogContent
                 className="sm:max-w-5xl h-[90vh] sm:h-[85vh] p-0 flex flex-col gap-0 overflow-hidden"
                 aria-describedby="create-order-description"
+                dir="rtl"
             >
                 <div id="create-order-description" className="sr-only">
                     نموذج لإنشاء طلب جديد، يتضمن بيانات العميل، المنتجات، والتسعير.
                 </div>
                 <DialogHeader className="p-6 border-b shrink-0 text-right space-y-0">
                     <DialogTitle className="text-xl font-bold text-foreground flex items-center gap-2">
-                        <div className="bg-green-50 p-2 rounded-lg text-green-700">
+                        <div className="bg-green-50 dark:bg-green-950/40 p-2 rounded-lg text-green-700 dark:text-green-400">
                             <ShoppingCart className="w-5 h-5" />
                         </div>
                         إنشاء طلب جديد
@@ -362,7 +363,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                             {/* ═══════ Section A: Customer ═══════ */}
                             <section className="space-y-4">
                                 <div className="flex items-center gap-2 text-primary font-semibold border-b pb-2">
-                                    <div className="bg-green-50 p-2 rounded-lg text-green-700">
+                                    <div className="bg-green-50 dark:bg-green-950/40 p-2 rounded-lg text-green-700 dark:text-green-400">
                                         <User className="w-5 h-5" />
                                     </div>
                                     <h3 className="text-lg">بيانات العميل</h3>
@@ -371,7 +372,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     {/* Phone */}
                                     <div className="space-y-2">
-                                        <Label htmlFor="phone" className="text-gray-700">رقم الهاتف <span className="text-red-500">*</span></Label>
+                                        <Label htmlFor="phone" className="text-foreground">رقم الهاتف <span className="text-red-500">*</span></Label>
                                         <div className="relative">
                                             <Input
                                                 id="phone"
@@ -419,7 +420,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
 
                                     {/* Name */}
                                     <div className="space-y-2">
-                                        <Label htmlFor="customerName" className="text-gray-700">اسم العميل <span className="text-red-500">*</span></Label>
+                                        <Label htmlFor="customerName" className="text-foreground">اسم العميل <span className="text-red-500">*</span></Label>
                                         <Input
                                             id="customerName"
                                             {...register('customerName', {
@@ -440,7 +441,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
 
                                     {/* Address */}
                                     <div className="col-span-1 md:col-span-2 space-y-2">
-                                        <Label htmlFor="address" className="text-gray-700">العنوان <span className="text-red-500">*</span></Label>
+                                        <Label htmlFor="address" className="text-foreground">العنوان <span className="text-red-500">*</span></Label>
                                         <Textarea
                                             id="address"
                                             {...register('address', {
@@ -461,7 +462,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
 
                                     {/* Notes */}
                                     <div className="col-span-1 md:col-span-2 space-y-2">
-                                        <Label htmlFor="notes" className="text-gray-700">ملاحظات</Label>
+                                        <Label htmlFor="notes" className="text-foreground">ملاحظات</Label>
                                         <Textarea
                                             id="notes"
                                             {...register('notes')}
@@ -478,7 +479,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                             <section className="space-y-4">
                                 <div className="flex items-center justify-between border-b pb-2">
                                     <div className="flex items-center gap-2 text-primary font-semibold">
-                                        <div className="bg-green-50 p-2 rounded-lg text-green-700">
+                                        <div className="bg-green-50 dark:bg-green-950/40 p-2 rounded-lg text-green-700 dark:text-green-400">
                                             <Package className="w-5 h-5" />
                                         </div>
                                         <h3 className="text-lg">المنتجات <span className="text-red-500">*</span></h3>
@@ -669,7 +670,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                             {/* ═══════ Section C: Pricing ═══════ */}
                             <section className="space-y-4">
                                 <div className="flex items-center gap-2 text-primary font-semibold border-b pb-2">
-                                    <div className="bg-green-50 p-2 rounded-lg text-green-700">
+                                    <div className="bg-green-50 dark:bg-green-950/40 p-2 rounded-lg text-green-700 dark:text-green-400">
                                         <ShoppingCart className="w-5 h-5" />
                                     </div>
                                     <h3 className="text-lg">التسعير</h3>
@@ -677,7 +678,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div className="space-y-2">
-                                        <Label htmlFor="discount" className="text-gray-700">الخصم (ج.م)</Label>
+                                        <Label htmlFor="discount" className="text-foreground">الخصم (ج.م)</Label>
                                         <Input
                                             id="discount"
                                             type="number"
@@ -703,7 +704,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                                         )}
                                     </div>
                                     <div className="space-y-2">
-                                        <Label htmlFor="shipping" className="text-gray-700">الشحن (ج.م)</Label>
+                                        <Label htmlFor="shipping" className="text-foreground">الشحن (ج.م)</Label>
                                         <Input
                                             id="shipping"
                                             type="number"
@@ -729,7 +730,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                             {/* ═══════ Section D: Status (uses existing codebase statuses) ═══════ */}
                             <section className="space-y-4">
                                 <div className="space-y-2">
-                                    <Label className="text-gray-700">حالة الطلب</Label>
+                                    <Label className="text-foreground">حالة الطلب</Label>
                                     <Select value={selectedStatus} onValueChange={setSelectedStatus} dir="rtl">
                                         <SelectTrigger className="h-10 border-border w-full md:w-64">
                                             <SelectValue />
@@ -746,7 +747,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                     </ScrollArea>
 
                     {/* ─── Sticky Summary Panel ─── */}
-                    <div className="bg-muted border-t sm:border-t-0 sm:border-r w-full sm:w-80 shrink-0 flex flex-col">
+                    <div className="bg-muted border-t sm:border-t-0 sm:border-l border-border w-full sm:w-80 shrink-0 flex flex-col">
                         <div className="p-6 space-y-6 flex-1">
                             <h3 className="font-semibold text-lg text-foreground">ملخص الطلب</h3>
 
@@ -820,7 +821,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                             <DialogClose asChild>
                                 <Button
                                     variant="outline"
-                                    className="w-full h-11 text-base border-border text-gray-700 hover:bg-muted"
+                                    className="w-full h-11 text-base border-border text-foreground hover:bg-muted"
                                     disabled={isSubmitting}
                                 >
                                     إلغاء
