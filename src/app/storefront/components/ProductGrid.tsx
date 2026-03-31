@@ -37,16 +37,16 @@ export function ProductGrid({
         <div id={id} className="max-w-7xl mx-auto px-4 md:px-6">
             <div className="flex flex-col md:flex-row items-center justify-between mb-16 gap-6">
                 <div className="text-center md:text-right space-y-4">
-                    <span className="text-[10px] font-black tracking-[0.4em] text-gray-300 uppercase block">
+                    <span className="text-[10px] font-black tracking-[0.4em] text-muted-foreground uppercase block">
                         {isArabic ? "مختاراتنا لك" : "HANDPICKED FOR YOU"}
                     </span>
-                    <h2 className="text-4xl md:text-6xl font-black text-gray-900 tracking-tight">
+                    <h2 className="text-4xl md:text-6xl font-black text-foreground tracking-tight">
                         {title}
                     </h2>
                 </div>
 
                 <button
-                    className="group flex items-center gap-4 text-xs font-black uppercase tracking-[0.2em] hover:text-gray-500 transition-colors"
+                    className="group flex items-center gap-4 text-xs font-black uppercase tracking-[0.2em] hover:text-muted-foreground transition-colors"
                     onClick={() => navigate(`/store/${slug}/products`)}
                 >
                     {isArabic ? "عرض الكل" : "VIEW ALL"}

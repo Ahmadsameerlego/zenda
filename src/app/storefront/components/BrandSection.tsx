@@ -7,7 +7,7 @@ interface BrandSectionProps {
 
 export function BrandSection({ isArabic, primaryColor }: BrandSectionProps) {
     return (
-        <section className="py-24 md:py-32 bg-gray-50/30 overflow-hidden">
+        <section className="py-24 md:py-32 bg-muted/30 overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 md:px-6">
                 <div className={cn(
                     "flex flex-col lg:flex-row items-center gap-12 lg:gap-24",
@@ -16,15 +16,15 @@ export function BrandSection({ isArabic, primaryColor }: BrandSectionProps) {
                     {/* Text Content */}
                     <div className="flex-1 space-y-8 text-center lg:text-right">
                         <div className="space-y-4">
-                            <span className="text-[10px] font-black tracking-[0.3em] text-gray-400 uppercase">
+                            <span className="text-[10px] font-black tracking-[0.3em] text-muted-foreground uppercase">
                                 {isArabic ? "هويتنا وتاريخنا" : "OUR IDENTITY"}
                             </span>
-                            <h2 className="text-4xl md:text-6xl font-black text-gray-900 leading-[1.2] tracking-tight">
+                            <h2 className="text-4xl md:text-6xl font-black text-foreground leading-[1.2] tracking-tight">
                                 {isArabic ? "نصنع الفخامة لكل يوم" : "Crafting Luxury for Every Day"}
                             </h2>
                         </div>
 
-                        <p className="text-lg md:text-xl text-gray-500 leading-relaxed font-medium max-w-2xl mx-auto lg:mx-0">
+                        <p className="text-lg md:text-xl text-muted-foreground leading-relaxed font-medium max-w-2xl mx-auto lg:mx-0">
                             {isArabic
                                 ? "ولدت زندا من شغفنا بالجمال والأصالة. نحن نؤمن أن كل قطعة تقتنيها يجب أن تحكي قصة، وتعكس جانباً من شخصيتك المتفردة. نجمع بين الحرفة التقليدية والتصميم العصري لنقدم لك تجربة لا تُنسى."
                                 : "Zenda was born from a passion for beauty and authenticity. We believe every piece you own should tell a story and reflect a part of your unique personality. We combine traditional craftsmanship with modern design to offer you an unforgettable experience."}

@@ -319,7 +319,7 @@ export function ProductForm({ open, onOpenChange, product, onSubmit }: ProductFo
                     نموذج لإضافة أو تعديل منتج وتفاصيله
                 </div>
                 <DialogHeader className="p-6 border-b shrink-0 text-right space-y-0">
-                    <DialogTitle className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                    <DialogTitle className="text-xl font-bold text-foreground flex items-center gap-2">
                         <div className="bg-green-50 p-2 rounded-lg text-green-700">
                             <Package className="w-5 h-5" />
                         </div>
@@ -331,7 +331,7 @@ export function ProductForm({ open, onOpenChange, product, onSubmit }: ProductFo
                     <form id="product-form" onSubmit={handleSubmit(onFormSubmit, onError)} className="space-y-8 text-right">
                         {/* Main Info */}
                         <section className="space-y-4">
-                            <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">بيانات المنتج</h3>
+                            <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">بيانات المنتج</h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div className="space-y-2 col-span-2">
                                     <Label htmlFor="product-name" className="text-gray-700 block text-right">
@@ -344,7 +344,7 @@ export function ProductForm({ open, onOpenChange, product, onSubmit }: ProductFo
                                             minLength: { value: 2, message: 'الاسم يجب أن يكون حرفين على الأقل' }
                                         })}
                                         placeholder="مثال: تيشيرت قطن"
-                                        className={`text-right h-11 border-gray-300 focus:border-green-500 focus:ring-green-500 ${errors.name ? 'border-red-500' : ''}`}
+                                        className={`text-right h-11 border-border focus:border-green-500 focus:ring-green-500 ${errors.name ? 'border-red-500' : ''}`}
                                         aria-invalid={!!errors.name}
                                         aria-describedby={errors.name ? "name-error" : undefined}
                                     />
@@ -362,7 +362,7 @@ export function ProductForm({ open, onOpenChange, product, onSubmit }: ProductFo
                                         id="product-description"
                                         {...register('description')}
                                         placeholder="وصف المنتج..."
-                                        className="text-right min-h-[100px] border-gray-300 focus:border-green-500 focus:ring-green-500"
+                                        className="text-right min-h-[100px] border-border focus:border-green-500 focus:ring-green-500"
                                     />
                                 </div>
 
@@ -373,7 +373,7 @@ export function ProductForm({ open, onOpenChange, product, onSubmit }: ProductFo
                                         name="category_id"
                                         render={({ field }) => (
                                             <Select onValueChange={field.onChange} value={field.value}>
-                                                <SelectTrigger className="text-right bg-white border-gray-300 focus:border-green-500 focus:ring-green-500 h-11" dir="rtl">
+                                                <SelectTrigger className="text-right bg-card border-border focus:border-green-500 focus:ring-green-500 h-11" dir="rtl">
                                                     <SelectValue placeholder="اختر التصنيف" />
                                                 </SelectTrigger>
                                                 <SelectContent dir="rtl">
@@ -395,7 +395,7 @@ export function ProductForm({ open, onOpenChange, product, onSubmit }: ProductFo
                                         name="brand_id"
                                         render={({ field }) => (
                                             <Select onValueChange={field.onChange} value={field.value}>
-                                                <SelectTrigger className="text-right bg-white border-gray-300 focus:border-green-500 focus:ring-green-500 h-11" dir="rtl">
+                                                <SelectTrigger className="text-right bg-card border-border focus:border-green-500 focus:ring-green-500 h-11" dir="rtl">
                                                     <SelectValue placeholder="اختر العلامة التجارية" />
                                                 </SelectTrigger>
                                                 <SelectContent dir="rtl">
@@ -423,7 +423,7 @@ export function ProductForm({ open, onOpenChange, product, onSubmit }: ProductFo
                                             required: 'سعر التكلفة مطلوب',
                                             min: { value: 0, message: 'السعر يجب أن يكون 0 أو أكثر' }
                                         })}
-                                        className={`text-right h-11 border-gray-300 focus:border-green-500 focus:ring-green-500 ${errors.cost_price ? 'border-red-500' : ''}`}
+                                        className={`text-right h-11 border-border focus:border-green-500 focus:ring-green-500 ${errors.cost_price ? 'border-red-500' : ''}`}
                                         aria-invalid={!!errors.cost_price}
                                         aria-describedby={errors.cost_price ? "price-error" : undefined}
                                     />
@@ -435,22 +435,22 @@ export function ProductForm({ open, onOpenChange, product, onSubmit }: ProductFo
                                     )}
                                 </div>
 
-                                <div className="flex items-center justify-between border border-gray-200 p-3 rounded-lg bg-gray-50/50">
+                                <div className="flex items-center justify-between border border-border p-3 rounded-lg bg-muted/50">
                                     <Label htmlFor="is_published" className="cursor-pointer flex-1 text-right">
                                         <div className="flex items-center gap-1.5 justify-end">
                                             <TooltipProvider>
                                                 <Tooltip>
                                                     <TooltipTrigger asChild>
-                                                        <AlertCircle className="w-3.5 h-3.5 text-gray-400" />
+                                                        <AlertCircle className="w-3.5 h-3.5 text-muted-foreground" />
                                                     </TooltipTrigger>
                                                     <TooltipContent>
                                                         <p className="text-xs">لو مفعّلة، المنتج هيظهر للعملاء في المتجر</p>
                                                     </TooltipContent>
                                                 </Tooltip>
                                             </TooltipProvider>
-                                            <span className="block font-medium text-gray-900">ظاهر في المتجر</span>
+                                            <span className="block font-medium text-foreground">ظاهر في المتجر</span>
                                         </div>
-                                        <span className="block text-xs text-gray-500">التحكم في ظهور المنتج للعملاء</span>
+                                        <span className="block text-xs text-muted-foreground">التحكم في ظهور المنتج للعملاء</span>
                                     </Label>
                                     <Controller
                                         control={control}
@@ -466,22 +466,22 @@ export function ProductForm({ open, onOpenChange, product, onSubmit }: ProductFo
                                     />
                                 </div>
 
-                                <div className="flex items-center justify-between border border-gray-200 p-3 rounded-lg bg-gray-50/50">
+                                <div className="flex items-center justify-between border border-border p-3 rounded-lg bg-muted/50">
                                     <Label htmlFor="is_active" className="cursor-pointer flex-1 text-right">
                                         <div className="flex items-center gap-1.5 justify-end">
                                             <TooltipProvider>
                                                 <Tooltip>
                                                     <TooltipTrigger asChild>
-                                                        <AlertCircle className="w-3.5 h-3.5 text-gray-400" />
+                                                        <AlertCircle className="w-3.5 h-3.5 text-muted-foreground" />
                                                     </TooltipTrigger>
                                                     <TooltipContent>
                                                         <p className="text-xs">لو مفعّلة، العميل يقدر يطلب المنتج</p>
                                                     </TooltipContent>
                                                 </Tooltip>
                                             </TooltipProvider>
-                                            <span className="block font-medium text-gray-900">متاح للطلب</span>
+                                            <span className="block font-medium text-foreground">متاح للطلب</span>
                                         </div>
-                                        <span className="block text-xs text-gray-500">التحكم في إمكانية شراء المنتج</span>
+                                        <span className="block text-xs text-muted-foreground">التحكم في إمكانية شراء المنتج</span>
                                     </Label>
                                     <Controller
                                         control={control}
@@ -499,21 +499,21 @@ export function ProductForm({ open, onOpenChange, product, onSubmit }: ProductFo
                             </div>
                         </section>
 
-                        <div className="border-t border-gray-200" />
+                        <div className="border-t border-border" />
 
                         {/* Variants Manager */}
                         <section className="space-y-4">
                             <div className="flex items-center justify-between">
                                 <div>
-                                    <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">المتغيرات</h3>
-                                    <p className="text-xs text-gray-500 mt-1">أضف المقاسات والألوان المتاحة لهذا المنتج</p>
+                                    <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">المتغيرات</h3>
+                                    <p className="text-xs text-muted-foreground mt-1">أضف المقاسات والألوان المتاحة لهذا المنتج</p>
                                 </div>
                                 <Button
                                     type="button"
                                     size="sm"
                                     onClick={handleAddVariant}
                                     variant="outline"
-                                    className="gap-2 border-dashed border-gray-300 hover:border-green-500 hover:text-green-600 hover:bg-green-50"
+                                    className="gap-2 border-dashed border-border hover:border-green-500 hover:text-green-600 hover:bg-green-50"
                                 >
                                     <Plus className="w-4 h-4" />
                                     إضافة متغير
@@ -527,10 +527,10 @@ export function ProductForm({ open, onOpenChange, product, onSubmit }: ProductFo
                                 </p>
                             )}
 
-                            <div className="border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm">
+                            <div className="border border-border rounded-lg overflow-hidden bg-card shadow-sm">
                                 <Table>
                                     <TableHeader>
-                                        <TableRow className="bg-gray-50/50 hover:bg-gray-50/50">
+                                        <TableRow className="bg-muted/50 hover:bg-muted/50">
                                             <TableHead className="font-semibold text-gray-700 text-right">المقاس <span className="text-red-500">*</span></TableHead>
                                             <TableHead className="font-semibold text-gray-700 text-right">اللون <span className="text-red-500">*</span></TableHead>
                                             <TableHead className="font-semibold text-gray-700 text-right">السعر <span className="text-red-500">*</span></TableHead>
@@ -542,7 +542,7 @@ export function ProductForm({ open, onOpenChange, product, onSubmit }: ProductFo
                                     <TableBody>
                                         {fields.length === 0 ? (
                                             <TableRow>
-                                                <TableCell colSpan={4} className="text-center py-12 text-gray-500 italic">
+                                                <TableCell colSpan={4} className="text-center py-12 text-muted-foreground italic">
                                                     لا توجد متغيرات مضافة بعد
                                                 </TableCell>
                                             </TableRow>
@@ -556,7 +556,7 @@ export function ProductForm({ open, onOpenChange, product, onSubmit }: ProductFo
                                                                 validate: () => checkVariantUniqueness(index, {}) // Validate uniqueness on change
                                                             })}
                                                             placeholder="S, M..."
-                                                            className={`text-right h-9 border-gray-200 focus:border-green-500 focus:ring-green-500 ${errors.variants?.[index]?.size ? 'border-red-500' : ''}`}
+                                                            className={`text-right h-9 border-border focus:border-green-500 focus:ring-green-500 ${errors.variants?.[index]?.size ? 'border-red-500' : ''}`}
                                                             aria-invalid={!!errors.variants?.[index]?.size}
                                                         />
                                                         {errors.variants?.[index]?.size && (
@@ -572,7 +572,7 @@ export function ProductForm({ open, onOpenChange, product, onSubmit }: ProductFo
                                                                 validate: () => checkVariantUniqueness(index, {})
                                                             })}
                                                             placeholder="أحمر..."
-                                                            className={`text-right h-9 border-gray-200 focus:border-green-500 focus:ring-green-500 ${errors.variants?.[index]?.color ? 'border-red-500' : ''}`}
+                                                            className={`text-right h-9 border-border focus:border-green-500 focus:ring-green-500 ${errors.variants?.[index]?.color ? 'border-red-500' : ''}`}
                                                             aria-invalid={!!errors.variants?.[index]?.color}
                                                         />
                                                         {errors.variants?.[index]?.color && (
@@ -589,7 +589,7 @@ export function ProductForm({ open, onOpenChange, product, onSubmit }: ProductFo
                                                                 valueAsNumber: true
                                                             })}
                                                             placeholder="السعر..."
-                                                            className="text-right h-9 border-gray-200 focus:border-green-500 focus:ring-green-500"
+                                                            className="text-right h-9 border-border focus:border-green-500 focus:ring-green-500"
                                                         />
                                                     </TableCell>
                                                     <TableCell className="p-2 align-top">
@@ -600,14 +600,14 @@ export function ProductForm({ open, onOpenChange, product, onSubmit }: ProductFo
                                                                 valueAsNumber: true
                                                             })}
                                                             placeholder="الكمية..."
-                                                            className="text-right h-9 border-gray-200 focus:border-green-500 focus:ring-green-500"
+                                                            className="text-right h-9 border-border focus:border-green-500 focus:ring-green-500"
                                                         />
                                                     </TableCell>
                                                     <TableCell className="p-2 align-top">
                                                         <Input
                                                             {...register(`variants.${index}.sku`)}
                                                             placeholder="SKU-..."
-                                                            className="text-right h-9 border-gray-200 focus:border-green-500 focus:ring-green-500"
+                                                            className="text-right h-9 border-border focus:border-green-500 focus:ring-green-500"
                                                         />
                                                     </TableCell>
                                                     <TableCell className="p-2 align-top">
@@ -615,7 +615,7 @@ export function ProductForm({ open, onOpenChange, product, onSubmit }: ProductFo
                                                             type="button"
                                                             variant="ghost"
                                                             size="icon"
-                                                            className="h-9 w-9 text-gray-400 hover:text-red-600 hover:bg-red-50"
+                                                            className="h-9 w-9 text-muted-foreground hover:text-red-600 hover:bg-red-50"
                                                             onClick={() => remove(index)}
                                                             aria-label="حذف المتغير"
                                                         >
@@ -630,13 +630,13 @@ export function ProductForm({ open, onOpenChange, product, onSubmit }: ProductFo
                             </div>
                         </section>
 
-                        <div className="border-t border-gray-200" />
+                        <div className="border-t border-border" />
 
                         {/* Images Section */}
                         <section className="space-y-4">
                             <div>
-                                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">صور المنتج</h3>
-                                <p className="text-xs text-gray-500 mt-1">أضف الصور وقم بترتيبها. الصورة الأولى هي الصورة الأساسية.</p>
+                                <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">صور المنتج</h3>
+                                <p className="text-xs text-muted-foreground mt-1">أضف الصور وقم بترتيبها. الصورة الأولى هي الصورة الأساسية.</p>
                             </div>
 
                             {product && profile?.store_id ? (
@@ -663,7 +663,7 @@ export function ProductForm({ open, onOpenChange, product, onSubmit }: ProductFo
                     </form>
                 </div>
 
-                <DialogFooter className="p-6 border-t bg-gray-50 shrink-0 sm:justify-start gap-3">
+                <DialogFooter className="p-6 border-t bg-muted shrink-0 sm:justify-start gap-3">
                     <Button
                         type="submit"
                         form="product-form"
@@ -683,7 +683,7 @@ export function ProductForm({ open, onOpenChange, product, onSubmit }: ProductFo
                         )}
                     </Button>
                     <DialogClose asChild>
-                        <Button type="button" variant="outline" className="w-full sm:w-auto border-gray-300" disabled={isSubmitting}>
+                        <Button type="button" variant="outline" className="w-full sm:w-auto border-border" disabled={isSubmitting}>
                             إلغاء
                         </Button>
                     </DialogClose>

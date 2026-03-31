@@ -44,7 +44,7 @@ export function ProductQuickView({
                         )}
                     </div>
                     <SheetTitle className="text-2xl font-bold">{product.name}</SheetTitle>
-                    <SheetDescription className="text-gray-500">
+                    <SheetDescription className="text-muted-foreground">
                         {product.category_name || "بدون تصنيف"} • {product.brand_name || "بدون علامة تجارية"}
                     </SheetDescription>
                 </SheetHeader>
@@ -52,7 +52,7 @@ export function ProductQuickView({
                 <ScrollArea className="flex-1 p-6">
                     <div className="space-y-8">
                         {/* Image Preview */}
-                        <div className="aspect-square rounded-xl bg-gray-100 flex items-center justify-center overflow-hidden border border-gray-200">
+                        <div className="aspect-square rounded-xl bg-accent text-accent-foreground flex items-center justify-center overflow-hidden border border-border">
                             {product.primary_image ? (
                                 <img
                                     src={product.primary_image}
@@ -60,7 +60,7 @@ export function ProductQuickView({
                                     className="w-full h-full object-cover"
                                 />
                             ) : (
-                                <div className="flex flex-col items-center text-gray-400">
+                                <div className="flex flex-col items-center text-muted-foreground">
                                     <ImageIcon className="w-12 h-12 mb-2" />
                                     <span className="text-sm">لا توجد صورة</span>
                                 </div>
@@ -69,28 +69,28 @@ export function ProductQuickView({
 
                         {/* Stats Grid */}
                         <div className="grid grid-cols-2 gap-4">
-                            <div className="p-4 rounded-xl border border-gray-100 bg-gray-50/50">
-                                <div className="flex items-center text-gray-500 text-sm mb-1">
+                            <div className="p-4 rounded-xl border border-border bg-muted/50">
+                                <div className="flex items-center text-muted-foreground text-sm mb-1">
                                     <Tag className="w-4 h-4 ml-2" />
                                     السعر
                                 </div>
-                                <div className="text-xl font-bold text-gray-900">
-                                    {product.display_price} <span className="text-sm font-normal text-gray-500">ج.م</span>
+                                <div className="text-xl font-bold text-foreground">
+                                    {product.display_price} <span className="text-sm font-normal text-muted-foreground">ج.م</span>
                                 </div>
                                 {product.display_compare_at_price && (
-                                    <div className="text-sm text-gray-400 line-through">
+                                    <div className="text-sm text-muted-foreground line-through">
                                         {product.display_compare_at_price} ج.م
                                     </div>
                                 )}
                             </div>
 
-                            <div className="p-4 rounded-xl border border-gray-100 bg-gray-50/50">
-                                <div className="flex items-center text-gray-500 text-sm mb-1">
+                            <div className="p-4 rounded-xl border border-border bg-muted/50">
+                                <div className="flex items-center text-muted-foreground text-sm mb-1">
                                     <BarChart3 className="w-4 h-4 ml-2" />
                                     المخزون
                                 </div>
-                                <div className={`text-xl font-bold ${isOutOfStock ? 'text-red-600' : isLowStock ? 'text-amber-600' : 'text-gray-900'}`}>
-                                    {product.total_stock} <span className="text-sm font-normal text-gray-500">قطعة</span>
+                                <div className={`text-xl font-bold ${isOutOfStock ? 'text-red-600' : isLowStock ? 'text-amber-600' : 'text-foreground'}`}>
+                                    {product.total_stock} <span className="text-sm font-normal text-muted-foreground">قطعة</span>
                                 </div>
                                 <div className="text-sm">
                                     {isOutOfStock ? (
@@ -106,11 +106,11 @@ export function ProductQuickView({
 
                         {/* Description */}
                         <div className="space-y-2">
-                            <h4 className="font-semibold flex items-center text-gray-900">
-                                <Package className="w-4 h-4 ml-2 text-gray-400" />
+                            <h4 className="font-semibold flex items-center text-foreground">
+                                <Package className="w-4 h-4 ml-2 text-muted-foreground" />
                                 الوصف
                             </h4>
-                            <p className="text-gray-600 leading-relaxed text-sm">
+                            <p className="text-muted-foreground leading-relaxed text-sm">
                                 {product.description || product.short_description || "لا يوجد وصف لهذا المنتج."}
                             </p>
                         </div>
@@ -118,22 +118,22 @@ export function ProductQuickView({
                         {/* Variants */}
                         {product.has_variants && (
                             <div className="space-y-4">
-                                <h4 className="font-semibold flex items-center text-gray-900">
-                                    <Layers className="w-4 h-4 ml-2 text-gray-400" />
+                                <h4 className="font-semibold flex items-center text-foreground">
+                                    <Layers className="w-4 h-4 ml-2 text-muted-foreground" />
                                     المتغيرات
                                 </h4>
                                 <div className="border rounded-xl overflow-hidden">
                                     <table className="w-full text-sm text-right">
-                                        <thead className="bg-gray-50 border-b">
+                                        <thead className="bg-muted border-b">
                                             <tr>
-                                                <th className="px-4 py-2 font-medium text-gray-500">المتغير</th>
-                                                <th className="px-4 py-2 font-medium text-gray-500">السعر</th>
-                                                <th className="px-4 py-2 font-medium text-gray-500">المخزون</th>
+                                                <th className="px-4 py-2 font-medium text-muted-foreground">المتغير</th>
+                                                <th className="px-4 py-2 font-medium text-muted-foreground">السعر</th>
+                                                <th className="px-4 py-2 font-medium text-muted-foreground">المخزون</th>
                                             </tr>
                                         </thead>
                                         <tbody className="divide-y">
                                             {variants.map((variant) => (
-                                                <tr key={variant.id} className="hover:bg-gray-50">
+                                                <tr key={variant.id} className="hover:bg-muted">
                                                     <td className="px-4 py-2">
                                                         {variant.size && variant.color
                                                             ? `${variant.size} / ${variant.color}`

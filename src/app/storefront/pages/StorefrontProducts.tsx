@@ -113,13 +113,13 @@ export default function StorefrontProducts() {
 
     if (loading && !products.length) {
         return (
-            <div className="min-h-screen bg-white flex items-center justify-center">
+            <div className="min-h-screen bg-card flex items-center justify-center">
                 <Loader2 className="size-8 animate-spin text-gray-200" />
             </div>
         );
     }
 
-    if (!store) return <div className="min-h-screen flex items-center justify-center font-black text-gray-400">STORE NOT FOUND</div>;
+    if (!store) return <div className="min-h-screen flex items-center justify-center font-black text-muted-foreground">STORE NOT FOUND</div>;
 
     return (
         <StorefrontLayout
@@ -157,7 +157,7 @@ export default function StorefrontProducts() {
                         {loading && !products.length ? (
                             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
                                 {[...Array(6)].map((_, i) => (
-                                    <div key={i} className="aspect-[3/4] bg-gray-50 rounded-2xl animate-pulse" />
+                                    <div key={i} className="aspect-[3/4] bg-muted rounded-2xl animate-pulse" />
                                 ))}
                             </div>
                         ) : products.length > 0 ? (
@@ -185,7 +185,7 @@ export default function StorefrontProducts() {
                                             onClick={handleLoadMore}
                                             disabled={loadMoreLoading}
                                             variant="ghost"
-                                            className="h-14 px-10 rounded-xl font-black text-xs gap-3 transition-all hover:bg-gray-50 uppercase tracking-widest border border-gray-100"
+                                            className="h-14 px-10 rounded-xl font-black text-xs gap-3 transition-all hover:bg-muted uppercase tracking-widest border border-border"
                                         >
                                             {loadMoreLoading ? <Loader2 className="size-4 animate-spin" /> : <RotateCcw className="size-4" />}
                                             {isArabic ? 'عرض المزيد' : 'LOAD MORE'}
@@ -197,8 +197,8 @@ export default function StorefrontProducts() {
                             <div className="py-24 flex flex-col items-center text-center space-y-6">
                                 <Search className="size-16 text-gray-50" />
                                 <div className="space-y-1">
-                                    <h3 className="text-xl font-black text-gray-900">{isArabic ? 'لا توجد نتائج' : 'No results found'}</h3>
-                                    <p className="text-sm text-gray-400 font-medium">{isArabic ? 'جرب تغيير خيارات البحث أو تصفية السعر' : 'Try different filters or price range'}</p>
+                                    <h3 className="text-xl font-black text-foreground">{isArabic ? 'لا توجد نتائج' : 'No results found'}</h3>
+                                    <p className="text-sm text-muted-foreground font-medium">{isArabic ? 'جرب تغيير خيارات البحث أو تصفية السعر' : 'Try different filters or price range'}</p>
                                 </div>
                                 <Button
                                     onClick={() => updateFilter({ category: 'الكل', min: '', max: '' })}
@@ -227,7 +227,7 @@ export default function StorefrontProducts() {
             {/* Scroll to Top */}
             <button
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="fixed bottom-6 right-6 z-[100] size-14 bg-white border border-gray-100 shadow-xl rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-50 transition-all hidden md:flex"
+                className="fixed bottom-6 right-6 z-[100] size-14 bg-card border border-border shadow-xl rounded-full flex items-center justify-center text-foreground hover:bg-muted transition-all hidden md:flex"
             >
                 <ArrowUp className="size-5" />
             </button>

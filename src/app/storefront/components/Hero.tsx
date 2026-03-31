@@ -74,7 +74,7 @@ export function Hero({ store }: HeroProps) {
 
             {/* Scroll Indicator or Subtle Brand Edge */}
             <div className="absolute bottom-12 left-1/2 -translate-x-1/2 hidden md:block animate-bounce opacity-20">
-                <div className="w-px h-16 bg-white" />
+                <div className="w-px h-16 bg-card" />
             </div>
         </section>
     );

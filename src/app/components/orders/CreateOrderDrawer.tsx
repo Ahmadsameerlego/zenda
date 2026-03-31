@@ -346,7 +346,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                     نموذج لإنشاء طلب جديد، يتضمن بيانات العميل، المنتجات، والتسعير.
                 </div>
                 <DialogHeader className="p-6 border-b shrink-0 text-right space-y-0">
-                    <DialogTitle className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                    <DialogTitle className="text-xl font-bold text-foreground flex items-center gap-2">
                         <div className="bg-green-50 p-2 rounded-lg text-green-700">
                             <ShoppingCart className="w-5 h-5" />
                         </div>
@@ -384,7 +384,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                                                 })}
                                                 placeholder="01xxxxxxxxx"
                                                 dir="ltr"
-                                                className={`pr-10 h-10 text-right ${errors.phone ? 'border-red-500 focus-visible:ring-red-500' : 'border-gray-300'}`}
+                                                className={`pr-10 h-10 text-right ${errors.phone ? 'border-red-500 focus-visible:ring-red-500' : 'border-border'}`}
                                                 aria-invalid={!!errors.phone}
                                                 aria-describedby={errors.phone ? "phone-error" : undefined}
                                                 onBlur={(e) => {
@@ -401,7 +401,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                                             {isLookingUp ? (
                                                 <Loader2 className="w-4 h-4 absolute top-3 right-3 text-green-500 animate-spin pointer-events-none" />
                                             ) : (
-                                                <Search className="w-4 h-4 absolute top-3 right-3 text-gray-400 pointer-events-none" />
+                                                <Search className="w-4 h-4 absolute top-3 right-3 text-muted-foreground pointer-events-none" />
                                             )}
                                         </div>
                                         {errors.phone && (
@@ -427,7 +427,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                                                 minLength: { value: 2, message: 'الاسم يجب أن يكون حرفين على الأقل' }
                                             })}
                                             placeholder="الاسم الكامل"
-                                            className={`h-10 ${errors.customerName ? 'border-red-500 focus-visible:ring-red-500' : 'border-gray-300'}`}
+                                            className={`h-10 ${errors.customerName ? 'border-red-500 focus-visible:ring-red-500' : 'border-border'}`}
                                             aria-invalid={!!errors.customerName}
                                         />
                                         {errors.customerName && (
@@ -448,7 +448,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                                                 minLength: { value: 5, message: 'العنوان يجب أن يكون 5 أحرف على الأقل' }
                                             })}
                                             placeholder="العنوان بالتفصيل..."
-                                            className={`h-20 ${errors.address ? 'border-red-500 focus-visible:ring-red-500' : 'border-gray-300'}`}
+                                            className={`h-20 ${errors.address ? 'border-red-500 focus-visible:ring-red-500' : 'border-border'}`}
                                             aria-invalid={!!errors.address}
                                         />
                                         {errors.address && (
@@ -466,7 +466,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                                             id="notes"
                                             {...register('notes')}
                                             placeholder="ملاحظات إضافية (اختياري)..."
-                                            className="h-16 border-gray-300"
+                                            className="h-16 border-border"
                                         />
                                     </div>
                                 </div>
@@ -489,7 +489,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                                         onClick={handleAddItem}
                                         variant="outline"
                                         disabled={productsLoading}
-                                        className="gap-2 border-dashed border-gray-300 hover:border-green-500 hover:text-green-600 hover:bg-green-50"
+                                        className="gap-2 border-dashed border-border hover:border-green-500 hover:text-green-600 hover:bg-green-50"
                                     >
                                         <Plus className="w-4 h-4" />
                                         إضافة منتج
@@ -506,10 +506,10 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
 
                                 <div className="space-y-4">
                                     {fields.length === 0 ? (
-                                        <div className="text-center py-12 bg-gray-50 rounded-xl border-2 border-dashed border-gray-200">
-                                            <Package className="w-8 h-8 mx-auto text-gray-300 mb-2" />
-                                            <p className="text-gray-500">لم يتم إضافة منتجات بعد</p>
-                                            <p className="text-xs text-gray-400 mt-1">اضغط "إضافة منتج" للبدء</p>
+                                        <div className="text-center py-12 bg-muted rounded-xl border-2 border-dashed border-border">
+                                            <Package className="w-8 h-8 mx-auto text-muted-foreground mb-2" />
+                                            <p className="text-muted-foreground">لم يتم إضافة منتجات بعد</p>
+                                            <p className="text-xs text-muted-foreground mt-1">اضغط "إضافة منتج" للبدء</p>
                                         </div>
                                     ) : (
                                         fields.map((field, index) => {
@@ -522,14 +522,14 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                                             return (
                                                 <div
                                                     key={field.id}
-                                                    className={`bg-white p-4 rounded-xl border shadow-sm space-y-4 relative group transition-all ${itemError ? 'border-red-300 bg-red-50/10' : 'border-gray-200 hover:border-green-200'}`}
+                                                    className={`bg-card p-4 rounded-xl border shadow-sm space-y-4 relative group transition-all ${itemError ? 'border-red-300 bg-red-50/10' : 'border-border hover:border-green-200'}`}
                                                 >
                                                     {/* Remove button */}
                                                     <Button
                                                         type="button"
                                                         variant="ghost"
                                                         size="icon"
-                                                        className="absolute top-2 left-2 text-gray-400 hover:text-red-600 hover:bg-red-50 h-8 w-8"
+                                                        className="absolute top-2 left-2 text-muted-foreground hover:text-red-600 hover:bg-red-50 h-8 w-8"
                                                         onClick={() => remove(index)}
                                                         aria-label="حذف المنتج"
                                                     >
@@ -540,7 +540,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                         {/* Product select */}
                                                         <div className="space-y-1.5">
-                                                            <Label className="text-xs text-gray-500">المنتج <span className="text-red-500">*</span></Label>
+                                                            <Label className="text-xs text-muted-foreground">المنتج <span className="text-red-500">*</span></Label>
                                                             <Controller
                                                                 control={control}
                                                                 name={`items.${index}.productId`}
@@ -555,7 +555,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                                                                         dir="rtl"
                                                                     >
                                                                         <SelectTrigger
-                                                                            className={`h-10 border-gray-200 bg-gray-50/50 ${itemError?.productId ? 'border-red-300' : ''}`}
+                                                                            className={`h-10 border-border bg-muted/50 ${itemError?.productId ? 'border-red-300' : ''}`}
                                                                             aria-invalid={!!itemError?.productId}
                                                                         >
                                                                             <SelectValue placeholder={productsLoading ? 'جاري التحميل...' : 'اختر المنتج'} />
@@ -575,7 +575,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
 
                                                         {/* Variant select */}
                                                         <div className="space-y-1.5">
-                                                            <Label className="text-xs text-gray-500">المتغير (المقاس/اللون) <span className="text-red-500">*</span></Label>
+                                                            <Label className="text-xs text-muted-foreground">المتغير (المقاس/اللون) <span className="text-red-500">*</span></Label>
                                                             <Controller
                                                                 control={control}
                                                                 name={`items.${index}.variantId`}
@@ -591,7 +591,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                                                                         dir="rtl"
                                                                     >
                                                                         <SelectTrigger
-                                                                            className={`h-10 border-gray-200 bg-gray-50/50 ${itemError?.variantId ? 'border-red-300' : ''}`}
+                                                                            className={`h-10 border-border bg-muted/50 ${itemError?.variantId ? 'border-red-300' : ''}`}
                                                                             aria-invalid={!!itemError?.variantId}
                                                                         >
                                                                             <SelectValue placeholder="اختر المتغير" />
@@ -615,7 +615,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                                                     {/* Row 2: Qty, Price, Total */}
                                                     <div className="flex gap-4">
                                                         <div className="w-24 space-y-1.5">
-                                                            <Label className="text-xs text-gray-500">الكمية <span className="text-red-500">*</span></Label>
+                                                            <Label className="text-xs text-muted-foreground">الكمية <span className="text-red-500">*</span></Label>
                                                             <Input
                                                                 type="number"
                                                                 min="1"
@@ -633,7 +633,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                                                             )}
                                                         </div>
                                                         <div className="flex-1 space-y-1.5">
-                                                            <Label className="text-xs text-gray-500">سعر القطعة (ج.م) <span className="text-red-500">*</span></Label>
+                                                            <Label className="text-xs text-muted-foreground">سعر القطعة (ج.م) <span className="text-red-500">*</span></Label>
                                                             <Input
                                                                 type="number"
                                                                 min="0"
@@ -651,8 +651,8 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                                                             )}
                                                         </div>
                                                         <div className="w-32 space-y-1.5">
-                                                            <Label className="text-xs text-gray-500">الإجمالي</Label>
-                                                            <div className="h-10 flex items-center justify-end px-3 bg-gray-100 rounded-md font-medium text-gray-900 border border-gray-200">
+                                                            <Label className="text-xs text-muted-foreground">الإجمالي</Label>
+                                                            <div className="h-10 flex items-center justify-end px-3 bg-accent text-accent-foreground rounded-md font-medium text-foreground border border-border">
                                                                 {lineTotal.toLocaleString('ar-EG')} ج.م
                                                             </div>
                                                         </div>
@@ -692,7 +692,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                                                     return true;
                                                 }
                                             })}
-                                            className={`h-10 ${errors.discount ? 'border-red-500' : 'border-gray-300'}`}
+                                            className={`h-10 ${errors.discount ? 'border-red-500' : 'border-border'}`}
                                             aria-invalid={!!errors.discount}
                                         />
                                         {errors.discount && (
@@ -713,7 +713,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                                                 valueAsNumber: true,
                                                 min: { value: 0, message: 'تكلفة الشحن يجب أن تكون 0 أو أكثر' }
                                             })}
-                                            className={`h-10 ${errors.shipping ? 'border-red-500' : 'border-gray-300'}`}
+                                            className={`h-10 ${errors.shipping ? 'border-red-500' : 'border-border'}`}
                                             aria-invalid={!!errors.shipping}
                                         />
                                         {errors.shipping && (
@@ -731,7 +731,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                                 <div className="space-y-2">
                                     <Label className="text-gray-700">حالة الطلب</Label>
                                     <Select value={selectedStatus} onValueChange={setSelectedStatus} dir="rtl">
-                                        <SelectTrigger className="h-10 border-gray-300 w-full md:w-64">
+                                        <SelectTrigger className="h-10 border-border w-full md:w-64">
                                             <SelectValue />
                                         </SelectTrigger>
                                         <SelectContent align="end">
@@ -746,9 +746,9 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                     </ScrollArea>
 
                     {/* ─── Sticky Summary Panel ─── */}
-                    <div className="bg-gray-50 border-t sm:border-t-0 sm:border-r w-full sm:w-80 shrink-0 flex flex-col">
+                    <div className="bg-muted border-t sm:border-t-0 sm:border-r w-full sm:w-80 shrink-0 flex flex-col">
                         <div className="p-6 space-y-6 flex-1">
-                            <h3 className="font-semibold text-lg text-gray-900">ملخص الطلب</h3>
+                            <h3 className="font-semibold text-lg text-foreground">ملخص الطلب</h3>
 
                             <div className="space-y-3">
                                 {/* Items summary */}
@@ -756,11 +756,11 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                                     <div className="space-y-2 max-h-40 overflow-y-auto">
                                         {watchedItems.map((item, i) => (
                                             item?.productName && (
-                                                <div key={i} className="flex justify-between text-sm text-gray-600">
+                                                <div key={i} className="flex justify-between text-sm text-muted-foreground">
                                                     <span className="truncate flex-1">
                                                         {item.productName}
-                                                        {item.variantName && <span className="text-gray-400 text-xs"> ({item.variantName})</span>}
-                                                        {item.quantity > 1 && <span className="text-gray-400 text-xs"> ×{item.quantity}</span>}
+                                                        {item.variantName && <span className="text-muted-foreground text-xs"> ({item.variantName})</span>}
+                                                        {item.quantity > 1 && <span className="text-muted-foreground text-xs"> ×{item.quantity}</span>}
                                                     </span>
                                                     <span className="mr-2 shrink-0">{((item.quantity || 0) * (item.unitPrice || 0)).toLocaleString('ar-EG')} ج.م</span>
                                                 </div>
@@ -771,7 +771,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
 
                                 <Separator className="my-2" />
 
-                                <div className="flex justify-between text-gray-600">
+                                <div className="flex justify-between text-muted-foreground">
                                     <span>إجمالي المنتجات</span>
                                     <span>{subtotal.toLocaleString('ar-EG')} ج.م</span>
                                 </div>
@@ -782,7 +782,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                                     </div>
                                 )}
                                 {shipping > 0 && (
-                                    <div className="flex justify-between text-gray-600">
+                                    <div className="flex justify-between text-muted-foreground">
                                         <span>الشحن</span>
                                         <span>{shipping.toLocaleString('ar-EG')} ج.م</span>
                                     </div>
@@ -790,7 +790,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
 
                                 <Separator className="my-2" />
 
-                                <div className="flex justify-between font-bold text-xl text-gray-900">
+                                <div className="flex justify-between font-bold text-xl text-foreground">
                                     <span>الإجمالي النهائي</span>
                                     <span>{total.toLocaleString('ar-EG')} ج.م</span>
                                 </div>
@@ -798,7 +798,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                         </div>
 
                         {/* ─── Submit buttons ─── */}
-                        <div className="p-6 bg-white border-t space-y-3">
+                        <div className="p-6 bg-card border-t space-y-3">
                             <Button
                                 type="submit"
                                 form="create-order-form"
@@ -820,7 +820,7 @@ export function CreateOrderDrawer({ open, onOpenChange, onSuccess }: CreateOrder
                             <DialogClose asChild>
                                 <Button
                                     variant="outline"
-                                    className="w-full h-11 text-base border-gray-300 text-gray-700 hover:bg-gray-50"
+                                    className="w-full h-11 text-base border-border text-gray-700 hover:bg-muted"
                                     disabled={isSubmitting}
                                 >
                                     إلغاء

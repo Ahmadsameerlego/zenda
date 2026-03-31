@@ -137,7 +137,7 @@ const statusColors: Record<string, string> = {
   Shipped: 'bg-purple-50 text-purple-700 border-purple-200',
   Delivered: 'bg-green-50 text-green-700 border-green-200',
   Cancelled: 'bg-red-50 text-red-700 border-red-200',
-  Returned: 'bg-gray-50 text-gray-700 border-gray-200',
+  Returned: 'bg-muted text-gray-700 border-border',
 };
 
 interface DashboardArabicProps {
@@ -224,7 +224,7 @@ export function DashboardArabic({ language }: DashboardArabicProps) {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center py-40 text-gray-500">
+      <div className="flex flex-col items-center justify-center py-40 text-muted-foreground">
         <Loader2 className="w-10 h-10 animate-spin text-green-500 mb-4" />
         <p className="text-lg">{t.loading}</p>
       </div>
@@ -233,7 +233,7 @@ export function DashboardArabic({ language }: DashboardArabicProps) {
 
   if (error || !data) {
     return (
-      <div className="flex flex-col items-center justify-center py-40 text-gray-500">
+      <div className="flex flex-col items-center justify-center py-40 text-muted-foreground">
         <AlertCircle className="w-10 h-10 text-red-500 mb-4" />
         <p className="text-lg text-red-600 mb-6">{error || t.error}</p>
         <Button onClick={fetchMetrics} className="bg-green-600 hover:bg-green-700">
@@ -300,8 +300,8 @@ export function DashboardArabic({ language }: DashboardArabicProps) {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">{t.dashboard}</h1>
-          <p className="text-gray-500 mt-1">{t.description}</p>
+          <h1 className="text-2xl font-semibold text-foreground">{t.dashboard}</h1>
+          <p className="text-muted-foreground mt-1">{t.description}</p>
         </div>
 
         <Select value={dateFilter} onValueChange={setDateFilter}>
@@ -331,11 +331,11 @@ export function DashboardArabic({ language }: DashboardArabicProps) {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Latest Orders */}
-        <div className="bg-white rounded-2xl border border-gray-200 shadow-sm flex flex-col min-h-[400px]">
-          <div className="p-6 border-b border-gray-200 flex justify-between items-center shrink-0">
+        <div className="bg-card rounded-2xl border border-border shadow-sm flex flex-col min-h-[400px]">
+          <div className="p-6 border-b border-border flex justify-between items-center shrink-0">
             <div>
-              <h2 className="text-lg font-semibold text-gray-900">{t.recentOrders}</h2>
-              <p className="text-sm text-gray-500 mt-1">{t.latestOrders}</p>
+              <h2 className="text-lg font-semibold text-foreground">{t.recentOrders}</h2>
+              <p className="text-sm text-muted-foreground mt-1">{t.latestOrders}</p>
             </div>
             {latestOrders.length > 0 && (
               <Button variant="ghost" size="sm" className="text-green-600 hover:text-green-700">
@@ -360,37 +360,37 @@ export function DashboardArabic({ language }: DashboardArabicProps) {
                 </TableHeader>
                 <TableBody>
                   {latestOrders.map((order: any) => (
-                    <TableRow key={order.id} className="hover:bg-gray-50 cursor-pointer group">
-                      <TableCell className="font-bold text-gray-900">
+                    <TableRow key={order.id} className="hover:bg-muted cursor-pointer group">
+                      <TableCell className="font-bold text-foreground">
                         #{String(order.id).slice(0, 6).toUpperCase()}
                       </TableCell>
                       <TableCell className="font-medium whitespace-nowrap">{order.customer_name || '—'}</TableCell>
-                      <TableCell className="text-gray-500 text-xs font-mono" dir="ltr">{order.customer_phone || '—'}</TableCell>
+                      <TableCell className="text-muted-foreground text-xs font-mono" dir="ltr">{order.customer_phone || '—'}</TableCell>
                       <TableCell className="text-center font-medium">
                         {isRTL ? (order.items_count || 0).toLocaleString('ar-EG') : (order.items_count || 0)}
                       </TableCell>
                       <TableCell>
-                        <Badge variant="outline" className={cn("text-[10px] px-2 py-0 h-5 whitespace-nowrap", statusColors[order.status] || 'bg-gray-50')}>
+                        <Badge variant="outline" className={cn("text-[10px] px-2 py-0 h-5 whitespace-nowrap", statusColors[order.status] || 'bg-muted')}>
                           {st[order.status] || order.status}
                         </Badge>
                       </TableCell>
-                      <TableCell className="font-bold text-gray-900 whitespace-nowrap">
+                      <TableCell className="font-bold text-foreground whitespace-nowrap">
                         {formatCurrency((order.subtotal || 0) - (order.discount || 0))}
                       </TableCell>
-                      <TableCell className="text-gray-500 text-[10px] whitespace-nowrap">{formatDate(order.created_at)}</TableCell>
+                      <TableCell className="text-muted-foreground text-[10px] whitespace-nowrap">{formatDate(order.created_at)}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
               </Table>
             ) : (
               <div className="h-full flex flex-col items-center justify-center p-10 text-center">
-                <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mb-4">
-                  <Package className="w-8 h-8 text-gray-300" />
+                <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-4">
+                  <Package className="w-8 h-8 text-muted-foreground" />
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-1">
+                <h3 className="text-lg font-bold text-foreground mb-1">
                   {isRTL ? 'لسه مفيش طلبات' : 'No orders yet'}
                 </h3>
-                <p className="text-gray-500 max-w-[250px] text-sm">
+                <p className="text-muted-foreground max-w-[250px] text-sm">
                   {isRTL ? 'أول ما يبدأ يجيلك طلبات هتظهر هنا.' : 'Orders will appear here once you start receiving them.'}
                 </p>
               </div>
@@ -399,15 +399,15 @@ export function DashboardArabic({ language }: DashboardArabicProps) {
         </div>
 
         {/* Top Customers Table (Enhanced) */}
-        <div className="bg-white rounded-2xl border border-gray-200 shadow-sm flex flex-col min-h-[400px]">
-          <div className="p-6 border-b border-gray-200 shrink-0">
+        <div className="bg-card rounded-2xl border border-border shadow-sm flex flex-col min-h-[400px]">
+          <div className="p-6 border-b border-border shrink-0">
             <div className="flex justify-between items-center">
               <div>
-                <h2 className="text-lg font-semibold text-gray-900">{t.topCustomers}</h2>
-                <p className="text-sm text-gray-500 mt-1">{t.top20Info}</p>
+                <h2 className="text-lg font-semibold text-foreground">{t.topCustomers}</h2>
+                <p className="text-sm text-muted-foreground mt-1">{t.top20Info}</p>
               </div>
               <div className="text-right">
-                <p className="text-[10px] text-gray-400 font-medium mb-1">{t.contributionLabel}</p>
+                <p className="text-[10px] text-muted-foreground font-medium mb-1">{t.contributionLabel}</p>
                 <div className="bg-green-50 text-green-700 px-3 py-1 rounded-full text-xs font-bold inline-block">
                   {formatPercent(metrics?.top20_customers_contribution || 0)}
                 </div>
@@ -430,18 +430,18 @@ export function DashboardArabic({ language }: DashboardArabicProps) {
                 </TableHeader>
                 <TableBody>
                   {topCustomers.map((customer: any, index: number) => (
-                    <TableRow key={customer.customer_id || index} className="hover:bg-gray-50 border-0 group">
+                    <TableRow key={customer.customer_id || index} className="hover:bg-muted border-0 group">
                       <TableCell>
-                        <div className="font-bold text-gray-900 whitespace-nowrap">{customer.name || '—'}</div>
+                        <div className="font-bold text-foreground whitespace-nowrap">{customer.name || '—'}</div>
                       </TableCell>
-                      <TableCell className="text-gray-500 text-xs font-mono" dir="ltr">{customer.phone}</TableCell>
+                      <TableCell className="text-muted-foreground text-xs font-mono" dir="ltr">{customer.phone}</TableCell>
                       <TableCell className="text-center font-bold">
                         {isRTL ? (customer.delivered_orders_count || 0).toLocaleString('ar-EG') : (customer.delivered_orders_count || 0)}
                       </TableCell>
-                      <TableCell className="text-gray-500 text-[10px] whitespace-nowrap">
+                      <TableCell className="text-muted-foreground text-[10px] whitespace-nowrap">
                         {formatDate(customer.last_delivered_at)}
                       </TableCell>
-                      <TableCell className="text-left font-bold text-gray-900 whitespace-nowrap">
+                      <TableCell className="text-left font-bold text-foreground whitespace-nowrap">
                         {formatCurrency(customer.revenue)}
                       </TableCell>
                       <TableCell className="text-left">
@@ -455,13 +455,13 @@ export function DashboardArabic({ language }: DashboardArabicProps) {
               </Table>
             ) : (
               <div className="h-full flex flex-col items-center justify-center p-10 text-center">
-                <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mb-4">
-                  <Users className="w-8 h-8 text-gray-300" />
+                <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-4">
+                  <Users className="w-8 h-8 text-muted-foreground" />
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-1">
+                <h3 className="text-lg font-bold text-foreground mb-1">
                   {isRTL ? 'لسه مفيش عملاء مميزين' : 'No top customers yet'}
                 </h3>
-                <p className="text-gray-500 max-w-[250px] text-sm">
+                <p className="text-muted-foreground max-w-[250px] text-sm">
                   {isRTL ? 'أول ما يبدأ العملاء يكرروا الشراء هتظهر بياناتهم هنا.' : 'Customer data will appear here once they repeat purchases.'}
                 </p>
               </div>

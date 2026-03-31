@@ -221,7 +221,7 @@ export function ProductsArabic({ language }: ProductsArabicProps) {
         <div className="bg-red-50 p-4 rounded-full">
           <AlertCircle className="w-8 h-8 text-red-500" />
         </div>
-        <h3 className="text-lg font-semibold text-gray-900">{error}</h3>
+        <h3 className="text-lg font-semibold text-foreground">{error}</h3>
         <Button onClick={fetchData} variant="outline" className="gap-2">
           <RefreshCw className="w-4 h-4" />
           إعادة المحاولة
@@ -234,10 +234,10 @@ export function ProductsArabic({ language }: ProductsArabicProps) {
     <div className="space-y-6" dir={isRTL ? 'rtl' : 'ltr'}>
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">
+          <h1 className="text-2xl font-bold text-foreground">
             {language === 'ar' ? 'المنتجات' : 'Products'}
           </h1>
-          <p className="text-gray-500 mt-1">
+          <p className="text-muted-foreground mt-1">
             {language === 'ar'
               ? 'إدارة محتوى متجرك والمخزون والأسعار'
               : 'Manage your store products, inventory, and pricing'}
@@ -250,28 +250,28 @@ export function ProductsArabic({ language }: ProductsArabicProps) {
         </Button>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+      <div className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden">
         {/* Advanced Filters Section */}
-        <div className="p-6 border-b border-gray-100 bg-white shadow-sm">
+        <div className="p-6 border-b border-border bg-card shadow-sm">
           <div className="flex flex-col space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {/* Search Input */}
               <div className="relative col-span-1 md:col-span-2 lg:col-span-1">
                 <div className={`absolute top-1/2 -translate-y-1/2 flex items-center h-full ${isRTL ? 'right-3' : 'left-3'} pointer-events-none z-10`}>
-                  <Search className="w-4 h-4 text-gray-400" />
+                  <Search className="w-4 h-4 text-muted-foreground" />
                 </div>
                 <Input
                   placeholder={language === 'ar' ? 'بحث باسم المنتج أو الرابط...' : 'Search by name or slug...'}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className={`h-11 ${isRTL ? 'pr-10 text-right' : 'pl-10'} bg-white border-gray-300 rounded-lg focus:border-green-500 focus:ring-green-500 transition-all shadow-sm placeholder:text-gray-400 placeholder:text-right`}
+                  className={`h-11 ${isRTL ? 'pr-10 text-right' : 'pl-10'} bg-card border-border rounded-lg focus:border-green-500 focus:ring-green-500 transition-all shadow-sm placeholder:text-muted-foreground placeholder:text-right`}
                   dir={isRTL ? 'rtl' : 'ltr'}
                 />
               </div>
 
               {/* Status Select */}
               <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="h-11 bg-white border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 transition-all text-right shadow-sm" dir={isRTL ? 'rtl' : 'ltr'}>
+                <SelectTrigger className="h-11 bg-card border-border rounded-lg focus:ring-green-500 focus:border-green-500 transition-all text-right shadow-sm" dir={isRTL ? 'rtl' : 'ltr'}>
                   <SelectValue placeholder="الحالة" />
                 </SelectTrigger>
                 <SelectContent dir={isRTL ? 'rtl' : 'ltr'}>
@@ -284,7 +284,7 @@ export function ProductsArabic({ language }: ProductsArabicProps) {
 
               {/* Category Select */}
               <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-                <SelectTrigger className="h-11 bg-white border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 transition-all text-right shadow-sm" dir={isRTL ? 'rtl' : 'ltr'}>
+                <SelectTrigger className="h-11 bg-card border-border rounded-lg focus:ring-green-500 focus:border-green-500 transition-all text-right shadow-sm" dir={isRTL ? 'rtl' : 'ltr'}>
                   <SelectValue placeholder="التصنيف" />
                 </SelectTrigger>
                 <SelectContent dir={isRTL ? 'rtl' : 'ltr'}>
@@ -297,7 +297,7 @@ export function ProductsArabic({ language }: ProductsArabicProps) {
 
               {/* Brand Select */}
               <Select value={brandFilter} onValueChange={setBrandFilter}>
-                <SelectTrigger className="h-11 bg-white border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 transition-all text-right shadow-sm" dir={isRTL ? 'rtl' : 'ltr'}>
+                <SelectTrigger className="h-11 bg-card border-border rounded-lg focus:ring-green-500 focus:border-green-500 transition-all text-right shadow-sm" dir={isRTL ? 'rtl' : 'ltr'}>
                   <SelectValue placeholder="العلامة التجارية" />
                 </SelectTrigger>
                 <SelectContent dir={isRTL ? 'rtl' : 'ltr'}>
@@ -310,7 +310,7 @@ export function ProductsArabic({ language }: ProductsArabicProps) {
 
               {/* Stock Select */}
               <Select value={stockFilter} onValueChange={setStockFilter}>
-                <SelectTrigger className="h-11 bg-white border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 transition-all text-right shadow-sm" dir={isRTL ? 'rtl' : 'ltr'}>
+                <SelectTrigger className="h-11 bg-card border-border rounded-lg focus:ring-green-500 focus:border-green-500 transition-all text-right shadow-sm" dir={isRTL ? 'rtl' : 'ltr'}>
                   <SelectValue placeholder="حالة المخزون" />
                 </SelectTrigger>
                 <SelectContent dir={isRTL ? 'rtl' : 'ltr'}>
@@ -323,7 +323,7 @@ export function ProductsArabic({ language }: ProductsArabicProps) {
 
               {/* Featured Select */}
               <Select value={featuredFilter} onValueChange={setFeaturedFilter}>
-                <SelectTrigger className="h-11 bg-white border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 transition-all text-right shadow-sm" dir={isRTL ? 'rtl' : 'ltr'}>
+                <SelectTrigger className="h-11 bg-card border-border rounded-lg focus:ring-green-500 focus:border-green-500 transition-all text-right shadow-sm" dir={isRTL ? 'rtl' : 'ltr'}>
                   <SelectValue placeholder="مميز" />
                 </SelectTrigger>
                 <SelectContent dir={isRTL ? 'rtl' : 'ltr'}>
@@ -337,7 +337,7 @@ export function ProductsArabic({ language }: ProductsArabicProps) {
               <Button
                 variant="outline"
                 onClick={handleResetFilters}
-                className="h-11 border-gray-300 rounded-lg text-gray-500 hover:text-gray-900 transition-all gap-2"
+                className="h-11 border-border rounded-lg text-muted-foreground hover:text-foreground transition-all gap-2"
               >
                 <RefreshCw className="w-4 h-4" />
                 {language === 'ar' ? 'إعادة ضبط' : 'Reset Filters'}
@@ -349,19 +349,19 @@ export function ProductsArabic({ language }: ProductsArabicProps) {
         <div className="overflow-x-auto">
           <Table>
             <TableHeader>
-              <TableRow className="hover:bg-transparent bg-gray-50/50">
-                <TableHead className="w-[300px] font-bold text-gray-900">المنتج</TableHead>
-                <TableHead className="font-bold text-gray-900">التصنيف</TableHead>
-                <TableHead className="font-bold text-gray-900">السعر</TableHead>
-                <TableHead className="font-bold text-gray-900 text-center">المخزون</TableHead>
-                <TableHead className="font-bold text-gray-900">النوع</TableHead>
-                <TableHead className="font-bold text-gray-900">
+              <TableRow className="hover:bg-transparent bg-muted/50">
+                <TableHead className="w-[300px] font-bold text-foreground">المنتج</TableHead>
+                <TableHead className="font-bold text-foreground">التصنيف</TableHead>
+                <TableHead className="font-bold text-foreground">السعر</TableHead>
+                <TableHead className="font-bold text-foreground text-center">المخزون</TableHead>
+                <TableHead className="font-bold text-foreground">النوع</TableHead>
+                <TableHead className="font-bold text-foreground">
                   <div className="flex items-center gap-1.5 justify-center">
                     ظاهر في المتجر
                     <TooltipProvider>
                       <Tooltip>
                         <TooltipTrigger>
-                          <AlertCircle className="w-3.5 h-3.5 text-gray-400" />
+                          <AlertCircle className="w-3.5 h-3.5 text-muted-foreground" />
                         </TooltipTrigger>
                         <TooltipContent>
                           <p className="text-xs">لو مفعّلة، المنتج هيظهر للعملاء في المتجر</p>
@@ -370,13 +370,13 @@ export function ProductsArabic({ language }: ProductsArabicProps) {
                     </TooltipProvider>
                   </div>
                 </TableHead>
-                <TableHead className="font-bold text-gray-900">
+                <TableHead className="font-bold text-foreground">
                   <div className="flex items-center gap-1.5 justify-center">
                     متاح للطلب
                     <TooltipProvider>
                       <Tooltip>
                         <TooltipTrigger>
-                          <AlertCircle className="w-3.5 h-3.5 text-gray-400" />
+                          <AlertCircle className="w-3.5 h-3.5 text-muted-foreground" />
                         </TooltipTrigger>
                         <TooltipContent>
                           <p className="text-xs">لو مفعّلة، العميل يقدر يطلب المنتج</p>
@@ -405,12 +405,12 @@ export function ProductsArabic({ language }: ProductsArabicProps) {
               ) : filteredProducts.length === 0 ? (
                 <TableRow>
                   <TableCell colSpan={8} className="h-[400px] text-center">
-                    <div className="flex flex-col items-center justify-center gap-4 text-gray-500">
-                      <div className="bg-gray-100 p-6 rounded-full">
-                        <Package className="w-12 h-12 text-gray-300" />
+                    <div className="flex flex-col items-center justify-center gap-4 text-muted-foreground">
+                      <div className="bg-accent text-accent-foreground p-6 rounded-full">
+                        <Package className="w-12 h-12 text-muted-foreground" />
                       </div>
                       <div className="max-w-[200px]">
-                        <p className="text-lg font-medium text-gray-900">لا توجد منتجات</p>
+                        <p className="text-lg font-medium text-foreground">لا توجد منتجات</p>
                         <p className="text-sm mt-1">ابدأ بإضافة أول منتج لتظهر هنا في القائمة</p>
                       </div>
                       <Button onClick={handleAddNewClick} variant="outline" className="mt-2 text-green-600 border-green-200 hover:bg-green-50">
@@ -421,42 +421,42 @@ export function ProductsArabic({ language }: ProductsArabicProps) {
                 </TableRow>
               ) : (
                 filteredProducts.map((product: ProductListItem) => (
-                  <TableRow key={product.id} className="group hover:bg-gray-50/80 transition-colors border-b last:border-0">
+                  <TableRow key={product.id} className="group hover:bg-muted/80 transition-colors border-b last:border-0">
                     <TableCell className="py-4">
                       <div className="flex items-center gap-4">
-                        <div className="h-12 w-12 rounded-lg bg-gray-100 border border-gray-100 overflow-hidden flex-shrink-0">
+                        <div className="h-12 w-12 rounded-lg bg-accent text-accent-foreground border border-border overflow-hidden flex-shrink-0">
                           {product.primary_image ? (
                             <img src={product.primary_image} alt={product.name} className="h-full w-full object-cover" />
                           ) : (
-                            <div className="h-full w-full flex items-center justify-center text-gray-400">
+                            <div className="h-full w-full flex items-center justify-center text-muted-foreground">
                               <ImageIcon className="w-5 h-5" />
                             </div>
                           )}
                         </div>
                         <div className="flex flex-col min-w-0">
-                          <span className="font-semibold text-gray-900 truncate">
+                          <span className="font-semibold text-foreground truncate">
                             {product.name}
                             {product.is_featured && <Star className="inline w-3.5 h-3.5 mr-1.5 text-amber-500 fill-amber-500" />}
                           </span>
-                          <span className="text-xs text-gray-500 truncate mt-0.5">/{product.slug || String(product.id).substring(0, 8)}</span>
+                          <span className="text-xs text-muted-foreground truncate mt-0.5">/{product.slug || String(product.id).substring(0, 8)}</span>
                         </div>
                       </div>
                     </TableCell>
                     <TableCell>
-                      <span className="text-sm text-gray-600">{product.category_name || "—"}</span>
+                      <span className="text-sm text-muted-foreground">{product.category_name || "—"}</span>
                     </TableCell>
                     <TableCell>
                       <div className="flex flex-col">
-                        <span className="font-bold text-gray-900">{product.display_price} ج.م</span>
+                        <span className="font-bold text-foreground">{product.display_price} ج.م</span>
                         {product.display_compare_at_price && (
-                          <span className="text-xs text-gray-400 line-through">{product.display_compare_at_price} ج.م</span>
+                          <span className="text-xs text-muted-foreground line-through">{product.display_compare_at_price} ج.م</span>
                         )}
                       </div>
                     </TableCell>
                     <TableCell className="text-center">
                       <div className="flex flex-col items-center">
                         <span className={`text-sm font-semibold ${product.total_stock === 0 ? 'text-red-600' :
-                          product.total_stock <= 5 ? 'text-amber-600' : 'text-gray-900'
+                          product.total_stock <= 5 ? 'text-amber-600' : 'text-foreground'
                           }`}>
                           {product.total_stock}
                         </span>
@@ -470,7 +470,7 @@ export function ProductsArabic({ language }: ProductsArabicProps) {
                       </div>
                     </TableCell>
                     <TableCell>
-                      <Badge variant="secondary" className="font-normal bg-gray-100 text-gray-600 border-0">
+                      <Badge variant="secondary" className="font-normal bg-accent text-accent-foreground text-muted-foreground border-0">
                         {product.has_variants ? "متعدد المتغيرات" : "منتج بسيط"}
                       </Badge>
                     </TableCell>
@@ -479,7 +479,7 @@ export function ProductsArabic({ language }: ProductsArabicProps) {
                         variant={product.is_published ? 'default' : 'secondary'}
                         className={`font-medium ${product.is_published
                           ? 'bg-green-100 text-green-700 hover:bg-green-100 shadow-none border-0'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-100 shadow-none border-0'
+                          : 'bg-accent text-accent-foreground text-gray-700 hover:bg-accent hover:text-accent-foreground shadow-none border-0'
                           }`}
                       >
                         {product.is_published ? 'ظاهر' : 'مخفي'}
@@ -499,31 +499,31 @@ export function ProductsArabic({ language }: ProductsArabicProps) {
                     <TableCell>
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" className="h-9 w-9 p-0 hover:bg-white border hover:border-gray-200">
-                            <MoreHorizontal className="h-4 w-4 text-gray-500" />
+                          <Button variant="ghost" className="h-9 w-9 p-0 hover:bg-card border hover:border-border">
+                            <MoreHorizontal className="h-4 w-4 text-muted-foreground" />
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align={isRTL ? 'start' : 'end'} className="w-[180px]">
-                          <DropdownMenuLabel className="text-xs font-normal text-gray-500">الإجراءات</DropdownMenuLabel>
+                          <DropdownMenuLabel className="text-xs font-normal text-muted-foreground">الإجراءات</DropdownMenuLabel>
                           <DropdownMenuItem onClick={() => handleOpenQuickView(product)}>
-                            <Eye className="w-4 h-4 ml-2 text-gray-500" />
+                            <Eye className="w-4 h-4 ml-2 text-muted-foreground" />
                             عرض المنتج
                           </DropdownMenuItem>
                           <DropdownMenuItem onClick={() => handleEditClick(product)}>
-                            <Edit className="w-4 h-4 ml-2 text-gray-500" />
+                            <Edit className="w-4 h-4 ml-2 text-muted-foreground" />
                             تعديل المنتج
                           </DropdownMenuItem>
                           <DropdownMenuItem onClick={() => handleCopyLink(product)}>
-                            <Copy className="w-4 h-4 ml-2 text-gray-500" />
+                            <Copy className="w-4 h-4 ml-2 text-muted-foreground" />
                             نسخ الرابط
                           </DropdownMenuItem>
 
                           <DropdownMenuSeparator />
-                          <DropdownMenuLabel className="text-xs font-normal text-gray-500">حالة الظهور</DropdownMenuLabel>
+                          <DropdownMenuLabel className="text-xs font-normal text-muted-foreground">حالة الظهور</DropdownMenuLabel>
                           <DropdownMenuItem onClick={() => handleTogglePublished(product)}>
                             {product.is_published ? (
                               <>
-                                <XCircle className="w-4 h-4 ml-2 text-gray-500" />
+                                <XCircle className="w-4 h-4 ml-2 text-muted-foreground" />
                                 إخفاء المنتج
                               </>
                             ) : (
@@ -535,7 +535,7 @@ export function ProductsArabic({ language }: ProductsArabicProps) {
                           </DropdownMenuItem>
 
                           <DropdownMenuSeparator />
-                          <DropdownMenuLabel className="text-xs font-normal text-gray-500">حالة الطلب</DropdownMenuLabel>
+                          <DropdownMenuLabel className="text-xs font-normal text-muted-foreground">حالة الطلب</DropdownMenuLabel>
                           <DropdownMenuItem onClick={() => handleToggleStatus(product)}>
                             {product.is_active ? (
                               <>
@@ -552,7 +552,7 @@ export function ProductsArabic({ language }: ProductsArabicProps) {
 
                           <DropdownMenuSeparator />
                           <DropdownMenuItem onClick={() => handleToggleFeatured(product)}>
-                            <Star className={`w-4 h-4 ml-2 ${product.is_featured ? 'text-gray-400' : 'text-amber-500 fill-amber-500'}`} />
+                            <Star className={`w-4 h-4 ml-2 ${product.is_featured ? 'text-muted-foreground' : 'text-amber-500 fill-amber-500'}`} />
                             {product.is_featured ? 'إلغاء التمييز' : 'تمييز كمنتج خاص'}
                           </DropdownMenuItem>
 

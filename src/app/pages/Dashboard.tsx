@@ -111,8 +111,8 @@ export function Dashboard() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
-          <p className="text-gray-500 mt-1">Monitor your store performance</p>
+          <h1 className="text-2xl font-semibold text-foreground">Dashboard</h1>
+          <p className="text-muted-foreground mt-1">Monitor your store performance</p>
         </div>
 
         {/* Date Filter */}
@@ -138,10 +138,10 @@ export function Dashboard() {
       </div>
 
       {/* Recent Orders Table */}
-      <div className="bg-white rounded-2xl border border-gray-200 shadow-sm">
-        <div className="p-6 border-b border-gray-200">
-          <h2 className="text-lg font-semibold text-gray-900">Recent Orders</h2>
-          <p className="text-sm text-gray-500 mt-1">Latest orders from your customers</p>
+      <div className="bg-card rounded-2xl border border-border shadow-sm">
+        <div className="p-6 border-b border-border">
+          <h2 className="text-lg font-semibold text-foreground">Recent Orders</h2>
+          <p className="text-sm text-muted-foreground mt-1">Latest orders from your customers</p>
         </div>
 
         <div className="overflow-x-auto">
@@ -158,10 +158,10 @@ export function Dashboard() {
             </TableHeader>
             <TableBody>
               {paginatedOrders.map((order) => (
-                <TableRow key={order.id} className="hover:bg-gray-50">
-                  <TableCell className="font-medium text-gray-900">{order.id}</TableCell>
+                <TableRow key={order.id} className="hover:bg-muted">
+                  <TableCell className="font-medium text-foreground">{order.id}</TableCell>
                   <TableCell>{order.customer}</TableCell>
-                  <TableCell className="text-gray-600">{order.phone}</TableCell>
+                  <TableCell className="text-muted-foreground">{order.phone}</TableCell>
                   <TableCell>
                     <Select defaultValue={order.status}>
                       <SelectTrigger className="w-32 h-8 border-0 focus:ring-0">
@@ -181,7 +181,7 @@ export function Dashboard() {
                       </SelectContent>
                     </Select>
                   </TableCell>
-                  <TableCell className="text-gray-600">{order.time}</TableCell>
+                  <TableCell className="text-muted-foreground">{order.time}</TableCell>
                   <TableCell className="text-right">
                     <Button variant="ghost" size="sm" className="text-green-600 hover:text-green-700 hover:bg-green-50">
                       <Eye className="w-4 h-4 mr-1" />
@@ -195,8 +195,8 @@ export function Dashboard() {
         </div>
 
         {/* Pagination */}
-        <div className="p-6 border-t border-gray-200 flex items-center justify-between">
-          <p className="text-sm text-gray-600">
+        <div className="p-6 border-t border-border flex items-center justify-between">
+          <p className="text-sm text-muted-foreground">
             Showing {(currentPage - 1) * itemsPerPage + 1} to{' '}
             {Math.min(currentPage * itemsPerPage, recentOrders.length)} of {recentOrders.length}{' '}
             orders

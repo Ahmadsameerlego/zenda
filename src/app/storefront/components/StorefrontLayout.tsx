@@ -22,7 +22,7 @@ export function StorefrontLayout({
     const [isCartOpen, setIsCartOpen] = useState(false);
 
     return (
-        <div className="min-h-screen bg-white" dir={isArabic ? 'rtl' : 'ltr'}>
+        <div className="min-h-screen bg-card" dir={isArabic ? 'rtl' : 'ltr'}>
             <Header
                 store={store}
                 pages={pages}

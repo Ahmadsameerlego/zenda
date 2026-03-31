@@ -41,7 +41,7 @@ export function QuickOrderDrawer({ isOpen, onClose, store, product, isArabic }: 
             {/* Side Drawer */}
             <div
                 className={cn(
-                    "fixed inset-y-0 w-full md:w-[450px] bg-white shadow-2xl z-[101] flex flex-col transition-transform duration-500 ease-out",
+                    "fixed inset-y-0 w-full md:w-[450px] bg-card shadow-2xl z-[101] flex flex-col transition-transform duration-500 ease-out",
                     isArabic ? "right-0" : "left-0",
                     isOpen ? "translate-x-0" : (isArabic ? "translate-x-full" : "-translate-x-full")
                 )}
@@ -50,16 +50,16 @@ export function QuickOrderDrawer({ isOpen, onClose, store, product, isArabic }: 
                 {/* Header */}
                 <div className="p-6 md:p-8 flex items-center justify-between border-b border-gray-50">
                     <div className="space-y-1">
-                        <h3 className="text-xl md:text-2xl font-black text-gray-900 tracking-tight">
+                        <h3 className="text-xl md:text-2xl font-black text-foreground tracking-tight">
                             {isArabic ? 'طلب المنتج' : 'Complete Order'}
                         </h3>
-                        <p className="text-[10px] font-black text-gray-300 uppercase tracking-widest">
+                        <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">
                             {isArabic ? 'خطوة واحدة بسيطة' : 'ONE SIMPLE STEP'}
                         </p>
                     </div>
                     <button
                         onClick={onClose}
-                        className="size-12 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:text-gray-900 hover:bg-gray-100 transition-all"
+                        className="size-12 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-accent hover:text-accent-foreground transition-all"
                     >
                         <X className="size-5" />
                     </button>
@@ -70,16 +70,16 @@ export function QuickOrderDrawer({ isOpen, onClose, store, product, isArabic }: 
                         <div className="space-y-10">
                             {/* Product Summary */}
                             {product && (
-                                <div className="flex gap-5 p-5 rounded-2xl bg-gray-50/50 border border-gray-100 items-center">
-                                    <div className="size-24 rounded-xl bg-white border border-gray-100 overflow-hidden shrink-0 shadow-sm">
+                                <div className="flex gap-5 p-5 rounded-2xl bg-muted/50 border border-border items-center">
+                                    <div className="size-24 rounded-xl bg-card border border-border overflow-hidden shrink-0 shadow-sm">
                                         <img src={product.main_image_url} alt={product.name} className="w-full h-full object-cover" />
                                     </div>
                                     <div className="space-y-2">
-                                        <h4 className="font-bold text-gray-900 leading-tight line-clamp-2">{product.name}</h4>
+                                        <h4 className="font-bold text-foreground leading-tight line-clamp-2">{product.name}</h4>
                                         <div className="flex items-baseline gap-2">
-                                            <span className="text-lg font-black text-gray-900">
+                                            <span className="text-lg font-black text-foreground">
                                                 {(product.sale_price || product.base_price)?.toLocaleString()}
-                                                <span className="text-[10px] mr-1 text-gray-400 uppercase tracking-widest">{isArabic ? 'ج.م' : 'EGP'}</span>
+                                                <span className="text-[10px] mr-1 text-muted-foreground uppercase tracking-widest">{isArabic ? 'ج.م' : 'EGP'}</span>
                                             </span>
                                         </div>
                                     </div>
@@ -90,44 +90,44 @@ export function QuickOrderDrawer({ isOpen, onClose, store, product, isArabic }: 
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div className="space-y-6">
                                     <div className="space-y-2">
-                                        <Label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] px-1">
+                                        <Label className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em] px-1">
                                             {isArabic ? 'الاسم بالكامل' : 'FULL NAME'}
                                         </Label>
                                         <div className="relative">
-                                            <User className={cn("absolute top-1/2 -translate-y-1/2 size-4 text-gray-300", isArabic ? "right-4" : "left-4")} />
+                                            <User className={cn("absolute top-1/2 -translate-y-1/2 size-4 text-muted-foreground", isArabic ? "right-4" : "left-4")} />
                                             <Input
                                                 required
                                                 placeholder={isArabic ? 'الاسم...' : 'Your name...'}
-                                                className={cn("h-14 rounded-xl border-gray-100 bg-gray-50/30 focus:bg-white focus:ring-0 font-bold transition-all", isArabic ? "pr-12" : "pl-12")}
+                                                className={cn("h-14 rounded-xl border-border bg-muted/30 focus:bg-card focus:ring-0 font-bold transition-all", isArabic ? "pr-12" : "pl-12")}
                                             />
                                         </div>
                                     </div>
 
                                     <div className="space-y-2">
-                                        <Label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] px-1">
+                                        <Label className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em] px-1">
                                             {isArabic ? 'رقم الموبايل' : 'PHONE NUMBER'}
                                         </Label>
                                         <div className="relative">
-                                            <Phone className={cn("absolute top-1/2 -translate-y-1/2 size-4 text-gray-300", isArabic ? "right-4" : "left-4")} />
+                                            <Phone className={cn("absolute top-1/2 -translate-y-1/2 size-4 text-muted-foreground", isArabic ? "right-4" : "left-4")} />
                                             <Input
                                                 required
                                                 placeholder="01xxxxxxxxx"
-                                                className={cn("h-14 rounded-xl border-gray-100 bg-gray-50/30 focus:bg-white focus:ring-0 font-bold transition-all", isArabic ? "pr-12" : "pl-12")}
+                                                className={cn("h-14 rounded-xl border-border bg-muted/30 focus:bg-card focus:ring-0 font-bold transition-all", isArabic ? "pr-12" : "pl-12")}
                                                 dir="ltr"
                                             />
                                         </div>
                                     </div>
 
                                     <div className="space-y-2">
-                                        <Label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] px-1">
+                                        <Label className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em] px-1">
                                             {isArabic ? 'العنوان بالتفصيل' : 'SHIPPING ADDRESS'}
                                         </Label>
                                         <div className="relative">
-                                            <MapPin className={cn("absolute top-4 size-4 text-gray-300", isArabic ? "right-4" : "left-4")} />
+                                            <MapPin className={cn("absolute top-4 size-4 text-muted-foreground", isArabic ? "right-4" : "left-4")} />
                                             <textarea
                                                 required
                                                 placeholder={isArabic ? 'المدينة، المنطقة، الشارع...' : 'City, Area, Street...'}
-                                                className={cn("w-full min-h-[120px] pt-4 rounded-xl border border-gray-100 bg-gray-50/30 focus:bg-white focus:ring-0 font-bold transition-all outline-none p-4", isArabic ? "pr-12" : "pl-12")}
+                                                className={cn("w-full min-h-[120px] pt-4 rounded-xl border border-border bg-muted/30 focus:bg-card focus:ring-0 font-bold transition-all outline-none p-4", isArabic ? "pr-12" : "pl-12")}
                                             />
                                         </div>
                                     </div>
@@ -143,7 +143,7 @@ export function QuickOrderDrawer({ isOpen, onClose, store, product, isArabic }: 
                                         {loading ? <Loader2 className="size-5 animate-spin" /> : <ShoppingBag className="size-4" />}
                                         {isArabic ? 'تأكيد الطلب' : 'CONFIRM ORDER'}
                                     </Button>
-                                    <p className="mt-4 text-[10px] text-center font-bold text-gray-400 uppercase tracking-widest leading-relaxed">
+                                    <p className="mt-4 text-[10px] text-center font-bold text-muted-foreground uppercase tracking-widest leading-relaxed">
                                         {isArabic ? 'الدفع عند الاستلام متاح لجميع الطلبات' : 'Cash on delivery available for all orders'}
                                     </p>
                                 </div>
@@ -155,10 +155,10 @@ export function QuickOrderDrawer({ isOpen, onClose, store, product, isArabic }: 
                                 <CheckCircle2 className="size-12" strokeWidth={1.5} />
                             </div>
                             <div className="space-y-3">
-                                <h2 className="text-3xl font-black text-gray-900 tracking-tight">
+                                <h2 className="text-3xl font-black text-foreground tracking-tight">
                                     {isArabic ? 'تم بنجاح!' : 'Order Placed!'}
                                 </h2>
-                                <p className="text-sm text-gray-400 font-medium max-w-[280px] leading-loose">
+                                <p className="text-sm text-muted-foreground font-medium max-w-[280px] leading-loose">
                                     {isArabic
                                         ? 'شكراً لتسوقك معنا. سنتواصل معك لتأكيد موعد التسليم.'
                                         : 'Thank you for shopping. We will contact you to confirm delivery.'}
@@ -167,7 +167,7 @@ export function QuickOrderDrawer({ isOpen, onClose, store, product, isArabic }: 
                             <Button
                                 onClick={onClose}
                                 variant="outline"
-                                className="h-14 px-10 rounded-xl font-black border-gray-100 hover:border-gray-900 gap-3 group"
+                                className="h-14 px-10 rounded-xl font-black border-border hover:border-gray-900 gap-3 group"
                             >
                                 {isArabic ? 'متابعة التسوق' : 'CONTINUE SHOPPING'}
                                 {isArabic ? <ArrowLeft className="size-4 group-hover:-translate-x-1 transition-transform" /> : <ArrowLeft className="size-4 rotate-180 group-hover:translate-x-1 transition-transform" />}

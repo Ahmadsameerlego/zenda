@@ -34,7 +34,7 @@ export function StatCardArabic({
   return (
     <div
       className={cn(
-        'bg-white rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow relative group/card',
+        'bg-card rounded-2xl p-6 border border-border shadow-sm hover:shadow-md transition-shadow relative group/card',
         isMoney && 'border-green-100',
         className
       )}
@@ -42,10 +42,10 @@ export function StatCardArabic({
     >
       <div className="flex justify-between items-start mb-2">
         <div className="flex items-center gap-1.5 min-w-0">
-          <p className="text-sm text-gray-500 truncate">{title}</p>
+          <p className="text-sm text-muted-foreground truncate">{title}</p>
           {tooltipText && (
             <div className="relative group/tooltip inline-block">
-              <Info className="w-3.5 h-3.5 text-gray-400 cursor-help hover:text-gray-600 transition-colors" />
+              <Info className="w-3.5 h-3.5 text-muted-foreground cursor-help hover:text-muted-foreground transition-colors" />
               <div className={cn(
                 "absolute bottom-full mb-2 hidden group-hover/tooltip:block z-[100] w-56 p-3 bg-gray-900/95 backdrop-blur-sm text-white text-[11px] rounded-xl shadow-2xl leading-relaxed border border-white/10",
                 isRTL ? "right-0 text-right" : "left-0 text-left"
@@ -59,12 +59,12 @@ export function StatCardArabic({
             </div>
           )}
         </div>
-        {icon && <div className="text-gray-400 shrink-0">{icon}</div>}
+        {icon && <div className="text-muted-foreground shrink-0">{icon}</div>}
       </div>
 
       <div className="flex items-end justify-between gap-2 mt-auto">
         <h3 className={cn(
-          'font-bold text-gray-900 truncate',
+          'font-bold text-foreground truncate',
           isMoney ? 'text-2xl' : 'text-2xl'
         )}>
           {value}
@@ -91,12 +91,12 @@ export function StatCardArabic({
                       : `${absDeltaPct?.toFixed(1)}%`}
                   </span>
                 </div>
-                <span className="text-[9px] text-gray-400 mt-0.5 font-medium">
+                <span className="text-[9px] text-muted-foreground mt-0.5 font-medium">
                   {isRTL ? 'مقارنة بالسابقة' : 'vs prev'}
                 </span>
               </>
             ) : (
-              <span className="text-[10px] text-gray-300">—</span>
+              <span className="text-[10px] text-muted-foreground">—</span>
             )}
           </div>
         )}

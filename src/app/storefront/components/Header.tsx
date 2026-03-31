@@ -32,7 +32,7 @@ export function Header({ store, pages, isArabic, onCartClick }: HeaderProps) {
         <header
             className={cn(
                 "sticky top-0 z-[100] w-full transition-all duration-300",
-                isScrolled ? "bg-white/80 backdrop-blur-xl border-b border-gray-50 py-2" : "bg-transparent py-4"
+                isScrolled ? "bg-card/80 backdrop-blur-xl border-b border-gray-50 py-2" : "bg-transparent py-4"
             )}
         >
             <div className="max-w-7xl mx-auto px-4 md:px-6">
@@ -42,7 +42,7 @@ export function Header({ store, pages, isArabic, onCartClick }: HeaderProps) {
                     <div className="flex items-center gap-8">
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className="lg:hidden size-10 flex items-center justify-center text-gray-900"
+                            className="lg:hidden size-10 flex items-center justify-center text-foreground"
                         >
                             {isMenuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
                         </button>
@@ -52,7 +52,7 @@ export function Header({ store, pages, isArabic, onCartClick }: HeaderProps) {
                                 <Link
                                     key={link.path}
                                     to={link.path}
-                                    className="text-[10px] font-black text-gray-400 hover:text-gray-900 tracking-[0.2em] uppercase transition-colors"
+                                    className="text-[10px] font-black text-muted-foreground hover:text-foreground tracking-[0.2em] uppercase transition-colors"
                                 >
                                     {link.name}
                                 </Link>
@@ -65,7 +65,7 @@ export function Header({ store, pages, isArabic, onCartClick }: HeaderProps) {
                         {store.logo_url && store.show_logo ? (
                             <img src={store.logo_url} alt={store.store_name} className="h-7 md:h-9 w-auto" />
                         ) : (
-                            <span className="text-xl md:text-2xl font-black text-gray-900 tracking-tighter uppercase">
+                            <span className="text-xl md:text-2xl font-black text-foreground tracking-tighter uppercase">
                                 {store.store_name}
                             </span>
                         )}
@@ -73,13 +73,13 @@ export function Header({ store, pages, isArabic, onCartClick }: HeaderProps) {
 
                     {/* 3. Right: Actions */}
                     <div className="flex items-center gap-1 md:gap-3">
-                        <button className="size-10 flex items-center justify-center text-gray-400 hover:text-gray-900 transition-colors">
+                        <button className="size-10 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors">
                             <Search className="size-4" />
                         </button>
 
                         <button
                             onClick={onCartClick}
-                            className="group relative size-10 flex items-center justify-center text-gray-400 hover:text-gray-900 transition-all"
+                            className="group relative size-10 flex items-center justify-center text-muted-foreground hover:text-foreground transition-all"
                         >
                             <ShoppingBag className="size-4 group-hover:scale-110" />
                             <span
@@ -88,7 +88,7 @@ export function Header({ store, pages, isArabic, onCartClick }: HeaderProps) {
                             />
                         </button>
 
-                        <div className="hidden md:block w-px h-4 bg-gray-100 mx-2" />
+                        <div className="hidden md:block w-px h-4 bg-accent text-accent-foreground mx-2" />
 
                         <button
                             className="hidden md:flex size-10 items-center justify-center bg-gray-900 text-white rounded-full hover:scale-105 active:scale-95 transition-all shadow-lg shadow-gray-200"
@@ -102,7 +102,7 @@ export function Header({ store, pages, isArabic, onCartClick }: HeaderProps) {
 
             {/* Mobile Nav Overlay */}
             <div className={cn(
-                "lg:hidden fixed inset-x-0 top-[72px] bg-white border-b border-gray-50 transition-all duration-500 overflow-hidden",
+                "lg:hidden fixed inset-x-0 top-[72px] bg-card border-b border-gray-50 transition-all duration-500 overflow-hidden",
                 isMenuOpen ? "max-h-screen py-10 opacity-100" : "max-h-0 py-0 opacity-0"
             )}>
                 <nav className="flex flex-col items-center gap-8">
@@ -111,14 +111,14 @@ export function Header({ store, pages, isArabic, onCartClick }: HeaderProps) {
                             key={link.path}
                             to={link.path}
                             onClick={() => setIsMenuOpen(false)}
-                            className="text-2xl font-black text-gray-900 tracking-tighter uppercase"
+                            className="text-2xl font-black text-foreground tracking-tighter uppercase"
                         >
                             {link.name}
                         </Link>
                     ))}
                     <div className="flex items-center gap-8 pt-6">
-                        <button className="text-[10px] font-black text-gray-300 tracking-widest uppercase">{isArabic ? 'حسابي' : 'ACCOUNT'}</button>
-                        <button className="text-[10px] font-black text-gray-300 tracking-widest uppercase">{isArabic ? 'المساعدة' : 'HELP'}</button>
+                        <button className="text-[10px] font-black text-muted-foreground tracking-widest uppercase">{isArabic ? 'حسابي' : 'ACCOUNT'}</button>
+                        <button className="text-[10px] font-black text-muted-foreground tracking-widest uppercase">{isArabic ? 'المساعدة' : 'HELP'}</button>
                     </div>
                 </nav>
             </div>

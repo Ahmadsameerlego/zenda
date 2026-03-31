@@ -58,13 +58,13 @@ export default function ProductDetails() {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-white flex items-center justify-center">
+            <div className="min-h-screen bg-card flex items-center justify-center">
                 <Loader2 className="size-8 animate-spin text-gray-200" />
             </div>
         );
     }
 
-    if (!product || !store) return <div className="min-h-screen flex items-center justify-center font-black text-gray-400 uppercase">PRODUCT NOT FOUND</div>;
+    if (!product || !store) return <div className="min-h-screen flex items-center justify-center font-black text-muted-foreground uppercase">PRODUCT NOT FOUND</div>;
 
     const images = [product.image_url, ...(product.images || [])].filter(Boolean);
 
@@ -75,7 +75,7 @@ export default function ProductDetails() {
 
                     {/* 1. Image Gallery */}
                     <div className="flex-1 space-y-6 md:sticky md:top-24 h-fit">
-                        <div className="relative aspect-[3/4] bg-gray-50/50 rounded-2xl md:rounded-[2.5rem] overflow-hidden group">
+                        <div className="relative aspect-[3/4] bg-muted/50 rounded-2xl md:rounded-[2.5rem] overflow-hidden group">
                             <img
                                 key={activeImage}
                                 src={images[activeImage]}
@@ -123,23 +123,23 @@ export default function ProductDetails() {
                     <div className={`flex-1 space-y-10 ${isArabic ? 'text-right' : 'text-left'}`} dir={isArabic ? 'rtl' : 'ltr'}>
                         <div className="space-y-4">
                             <div className="flex items-center gap-3">
-                                <span className="text-[10px] font-black text-gray-300 uppercase tracking-[0.2em]">
+                                <span className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em]">
                                     {product.category_name || (isArabic ? 'تشكيلة مختارة' : 'CURATED PIECE')}
                                 </span>
                                 <div className="flex items-center gap-1">
                                     <Star className="size-3 fill-yellow-400 text-yellow-400" />
-                                    <span className="text-[10px] font-black text-gray-900">4.9/5</span>
+                                    <span className="text-[10px] font-black text-foreground">4.9/5</span>
                                 </div>
                             </div>
 
-                            <h1 className="text-3xl md:text-5xl font-black text-gray-900 leading-tight tracking-tight">
+                            <h1 className="text-3xl md:text-5xl font-black text-foreground leading-tight tracking-tight">
                                 {product.name}
                             </h1>
 
                             <div className="flex items-baseline gap-4">
-                                <span className="text-3xl md:text-4xl font-black tracking-tight text-gray-900">
+                                <span className="text-3xl md:text-4xl font-black tracking-tight text-foreground">
                                     {((product.sale_price !== null && product.sale_price !== undefined) ? product.sale_price : (product.base_price || 0)).toLocaleString()}
-                                    <span className="text-xs font-black mr-2 text-gray-400 uppercase tracking-widest">
+                                    <span className="text-xs font-black mr-2 text-muted-foreground uppercase tracking-widest">
                                         {isArabic ? 'ج.م' : 'EGP'}
                                     </span>
                                 </span>
@@ -152,14 +152,14 @@ export default function ProductDetails() {
                         </div>
 
                         {/* Description (Short) */}
-                        <p className="text-gray-500 font-medium leading-relaxed">
+                        <p className="text-muted-foreground font-medium leading-relaxed">
                             {product.short_description || product.description?.substring(0, 160) || (isArabic ? 'لا يوجد وصف متاح لهذا المنتج.' : 'No description available for this product.')}
                         </p>
 
                         {/* Variants Selector */}
                         {product.variants && product.variants.length > 0 && (
                             <div className="space-y-4 pt-6 border-t border-gray-50">
-                                <h4 className="text-[11px] font-black text-gray-400 uppercase tracking-widest">
+                                <h4 className="text-[11px] font-black text-muted-foreground uppercase tracking-widest">
                                     {isArabic ? 'المقاس / النوع' : 'SIZE / VARIANT'}
                                 </h4>
                                 <div className="flex flex-wrap gap-2">
@@ -171,7 +171,7 @@ export default function ProductDetails() {
                                                 "px-6 h-12 rounded-xl border font-bold text-sm transition-all flex items-center gap-2",
                                                 selectedVariant === variant.id
                                                     ? "border-gray-900 bg-gray-900 text-white shadow-lg shadow-gray-200"
-                                                    : "border-gray-100 bg-gray-50/50 hover:border-gray-300 text-gray-500"
+                                                    : "border-border bg-muted/50 hover:border-border text-muted-foreground"
                                             )}
                                         >
                                             {variant.name}
@@ -184,19 +184,19 @@ export default function ProductDetails() {
 
                         {/* Quantity Selector */}
                         <div className="space-y-4 pt-6">
-                            <h4 className="text-[11px] font-black text-gray-400 uppercase tracking-widest">{isArabic ? 'الكمية' : 'QUANTITY'}</h4>
+                            <h4 className="text-[11px] font-black text-muted-foreground uppercase tracking-widest">{isArabic ? 'الكمية' : 'QUANTITY'}</h4>
                             <div className="flex items-center gap-4">
-                                <div className="flex items-center bg-gray-50 rounded-xl border border-gray-100 p-1">
+                                <div className="flex items-center bg-muted rounded-xl border border-border p-1">
                                     <button
                                         onClick={() => setQuantity(q => Math.max(1, q - 1))}
-                                        className="size-10 rounded-lg flex items-center justify-center hover:bg-white transition-all text-gray-400 hover:text-gray-900"
+                                        className="size-10 rounded-lg flex items-center justify-center hover:bg-card transition-all text-muted-foreground hover:text-foreground"
                                     >
                                         <Minus className="size-3" />
                                     </button>
                                     <span className="w-10 text-center font-black text-sm">{quantity}</span>
                                     <button
                                         onClick={() => setQuantity(q => q + 1)}
-                                        className="size-10 rounded-lg flex items-center justify-center hover:bg-white transition-all text-gray-400 hover:text-gray-900"
+                                        className="size-10 rounded-lg flex items-center justify-center hover:bg-card transition-all text-muted-foreground hover:text-foreground"
                                     >
                                         <Plus className="size-3" />
                                     </button>
@@ -219,7 +219,7 @@ export default function ProductDetails() {
                             </Button>
                             <Button
                                 variant="outline"
-                                className="sm:col-span-2 h-14 md:h-16 text-sm font-black gap-2 border-gray-100 hover:border-gray-900 rounded-xl transition-all"
+                                className="sm:col-span-2 h-14 md:h-16 text-sm font-black gap-2 border-border hover:border-gray-900 rounded-xl transition-all"
                                 onClick={() => window.open(`https://wa.me/${store.whatsapp_phone?.replace(/\D/g, '')}?text=${encodeURIComponent(`${isArabic ? 'أهلاً، أرغب في الاستفسار عن' : 'Hello, I want to ask about'} ${product.name}`)}`, '_blank')}
                             >
                                 <MessageSquare className="size-4 text-[#25D366]" />
@@ -235,9 +235,9 @@ export default function ProductDetails() {
                                 { icon: RotateCcw, label: isArabic ? 'استبدال مرن' : 'Easy Returns' },
                                 { icon: Star, label: isArabic ? 'منتج أصلي' : '100% Original' }
                             ].map((badge, bI) => (
-                                <div key={bI} className="flex items-center gap-3 py-3 px-4 rounded-xl border border-gray-50 bg-gray-50/20">
-                                    <badge.icon className="size-4 text-gray-300" />
-                                    <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest">{badge.label}</span>
+                                <div key={bI} className="flex items-center gap-3 py-3 px-4 rounded-xl border border-gray-50 bg-muted/20">
+                                    <badge.icon className="size-4 text-muted-foreground" />
+                                    <span className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">{badge.label}</span>
                                 </div>
                             ))}
                         </div>
@@ -245,26 +245,26 @@ export default function ProductDetails() {
                 </div>
 
                 {/* Extended Details */}
-                <div className="mt-24 md:mt-32 border-t border-gray-100 pt-16 space-y-20">
+                <div className="mt-24 md:mt-32 border-t border-border pt-16 space-y-20">
                     <div className="max-w-4xl space-y-8">
-                        <h2 className="text-2xl md:text-4xl font-black text-gray-900 tracking-tight">
+                        <h2 className="text-2xl md:text-4xl font-black text-foreground tracking-tight">
                             {isArabic ? 'تفاصيل المنتج' : 'Product Information'}
                         </h2>
-                        <div className={`text-base md:text-lg text-gray-500 leading-loose font-medium whitespace-pre-line ${isArabic ? 'text-right' : 'text-left'}`}>
+                        <div className={`text-base md:text-lg text-muted-foreground leading-loose font-medium whitespace-pre-line ${isArabic ? 'text-right' : 'text-left'}`}>
                             {product.description || (isArabic ? 'لا يوجد وصف متاح.' : 'No description available.')}
                         </div>
                     </div>
 
                     {/* Related Products */}
                     {relatedProducts.length > 0 && (
-                        <div className="space-y-12 pt-12 border-t border-gray-100">
+                        <div className="space-y-12 pt-12 border-t border-border">
                             <div className="flex items-center justify-between">
-                                <h3 className="text-2xl md:text-3xl font-black text-gray-900 tracking-tight">
+                                <h3 className="text-2xl md:text-3xl font-black text-foreground tracking-tight">
                                     {isArabic ? 'قد يعجبك أيضاً' : 'Related Products'}
                                 </h3>
                                 <button
                                     onClick={() => navigate(`/store/${slug}/products?category=${product.category_name}`)}
-                                    className="text-[10px] font-black text-gray-400 hover:text-gray-900 transition-colors uppercase tracking-[0.2em]"
+                                    className="text-[10px] font-black text-muted-foreground hover:text-foreground transition-colors uppercase tracking-[0.2em]"
                                 >
                                     {isArabic ? 'تصفح الكل' : 'VIEW ALL'}
                                 </button>

@@ -216,7 +216,7 @@ export function CreateOrderModal({ open, onOpenChange, onSubmit }: CreateOrderMo
                     نموذج لإنشاء طلب جديد، يتضمن بيانات العميل، المنتجات، والشحن.
                 </div>
                 <DialogHeader className="p-6 border-b shrink-0 text-right space-y-0" dir="rtl">
-                    <DialogTitle className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                    <DialogTitle className="text-xl font-bold text-foreground flex items-center gap-2">
                         <div className="bg-green-50 p-2 rounded-lg text-green-700">
                             <Package className="w-5 h-5" />
                         </div>
@@ -253,11 +253,11 @@ export function CreateOrderModal({ open, onOpenChange, onSubmit }: CreateOrderMo
                                                 })}
                                                 placeholder="01xxxxxxxxx"
                                                 dir="ltr"
-                                                className={`pr-10 h-10 text-right ${errors.phone ? 'border-red-500 focus-visible:ring-red-500' : 'border-gray-300 focus:border-green-500 focus:ring-green-500'}`}
+                                                className={`pr-10 h-10 text-right ${errors.phone ? 'border-red-500 focus-visible:ring-red-500' : 'border-border focus:border-green-500 focus:ring-green-500'}`}
                                                 aria-invalid={!!errors.phone}
                                                 aria-describedby={errors.phone ? "phone-error" : undefined}
                                             />
-                                            <Search className="w-4 h-4 absolute top-3 right-3 text-gray-400 pointer-events-none" />
+                                            <Search className="w-4 h-4 absolute top-3 right-3 text-muted-foreground pointer-events-none" />
                                         </div>
                                         {errors.phone && (
                                             <p id="phone-error" className="text-sm text-red-500 flex items-center gap-1">
@@ -278,7 +278,7 @@ export function CreateOrderModal({ open, onOpenChange, onSubmit }: CreateOrderMo
                                             id="customerName"
                                             {...register('customerName', { required: 'اسم العميل مطلوب', minLength: { value: 2, message: 'الاسم قصير جداً' } })}
                                             placeholder="الاسم ثلاثي"
-                                            className={`h-10 ${errors.customerName ? 'border-red-500 focus-visible:ring-red-500' : 'border-gray-300 focus:border-green-500 focus:ring-green-500'}`}
+                                            className={`h-10 ${errors.customerName ? 'border-red-500 focus-visible:ring-red-500' : 'border-border focus:border-green-500 focus:ring-green-500'}`}
                                             aria-invalid={!!errors.customerName}
                                         />
                                         {errors.customerName && (
@@ -296,7 +296,7 @@ export function CreateOrderModal({ open, onOpenChange, onSubmit }: CreateOrderMo
                                             name="governorate"
                                             render={({ field }) => (
                                                 <Select value={field.value} onValueChange={field.onChange} dir="rtl">
-                                                    <SelectTrigger className="h-10 border-gray-300 focus:border-green-500 focus:ring-green-500">
+                                                    <SelectTrigger className="h-10 border-border focus:border-green-500 focus:ring-green-500">
                                                         <SelectValue placeholder="اختر المحافظة" />
                                                     </SelectTrigger>
                                                     <SelectContent align="end">
@@ -314,7 +314,7 @@ export function CreateOrderModal({ open, onOpenChange, onSubmit }: CreateOrderMo
                                         <Input
                                             id="city"
                                             {...register('city')}
-                                            className="h-10 border-gray-300 focus:border-green-500 focus:ring-green-500"
+                                            className="h-10 border-border focus:border-green-500 focus:ring-green-500"
                                         />
                                     </div>
 
@@ -324,7 +324,7 @@ export function CreateOrderModal({ open, onOpenChange, onSubmit }: CreateOrderMo
                                             id="address"
                                             {...register('address')}
                                             placeholder="اسم الشارع، رقم العمارة..."
-                                            className="resize-none h-20 border-gray-300 focus:border-green-500 focus:ring-green-500"
+                                            className="resize-none h-20 border-border focus:border-green-500 focus:ring-green-500"
                                         />
                                     </div>
                                 </div>
@@ -346,7 +346,7 @@ export function CreateOrderModal({ open, onOpenChange, onSubmit }: CreateOrderMo
                                         size="sm"
                                         onClick={handleAddItem}
                                         variant="outline"
-                                        className="gap-2 border-dashed border-gray-300 hover:border-green-500 hover:text-green-600 hover:bg-green-50"
+                                        className="gap-2 border-dashed border-border hover:border-green-500 hover:text-green-600 hover:bg-green-50"
                                     >
                                         <Plus className="w-4 h-4" />
                                         إضافة منتج
@@ -362,8 +362,8 @@ export function CreateOrderModal({ open, onOpenChange, onSubmit }: CreateOrderMo
 
                                 <div className="space-y-4">
                                     {fields.length === 0 ? (
-                                        <div className="text-center py-12 bg-gray-50 rounded-xl border-2 border-dashed border-gray-200">
-                                            <p className="text-gray-500">لم يتم إضافة منتجات بعد</p>
+                                        <div className="text-center py-12 bg-muted rounded-xl border-2 border-dashed border-border">
+                                            <p className="text-muted-foreground">لم يتم إضافة منتجات بعد</p>
                                         </div>
                                     ) : (
                                         fields.map((field, index) => {
@@ -373,12 +373,12 @@ export function CreateOrderModal({ open, onOpenChange, onSubmit }: CreateOrderMo
                                             const itemError = errors.items?.[index];
 
                                             return (
-                                                <div key={field.id} className={`bg-white p-4 rounded-xl border shadow-sm space-y-4 relative group transition-all ${itemError ? 'border-red-300 bg-red-50/10' : 'border-gray-200 hover:border-green-200'}`}>
+                                                <div key={field.id} className={`bg-card p-4 rounded-xl border shadow-sm space-y-4 relative group transition-all ${itemError ? 'border-red-300 bg-red-50/10' : 'border-border hover:border-green-200'}`}>
                                                     <Button
                                                         type="button"
                                                         variant="ghost"
                                                         size="icon"
-                                                        className="absolute top-2 left-2 text-gray-400 hover:text-red-600 hover:bg-red-50 h-8 w-8"
+                                                        className="absolute top-2 left-2 text-muted-foreground hover:text-red-600 hover:bg-red-50 h-8 w-8"
                                                         onClick={() => remove(index)}
                                                         aria-label="حذف المنتج"
                                                     >
@@ -387,7 +387,7 @@ export function CreateOrderModal({ open, onOpenChange, onSubmit }: CreateOrderMo
 
                                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                         <div className="space-y-1.5">
-                                                            <Label className="text-xs text-gray-500">المنتج <span className="text-red-500">*</span></Label>
+                                                            <Label className="text-xs text-muted-foreground">المنتج <span className="text-red-500">*</span></Label>
                                                             <Controller
                                                                 control={control}
                                                                 name={`items.${index}.productId`}
@@ -401,7 +401,7 @@ export function CreateOrderModal({ open, onOpenChange, onSubmit }: CreateOrderMo
                                                                         }}
                                                                         dir="rtl"
                                                                     >
-                                                                        <SelectTrigger className={`h-10 border-gray-200 bg-gray-50/50 ${itemError?.productId ? 'border-red-300' : ''}`}>
+                                                                        <SelectTrigger className={`h-10 border-border bg-muted/50 ${itemError?.productId ? 'border-red-300' : ''}`}>
                                                                             <SelectValue placeholder="اختر المنتج" />
                                                                         </SelectTrigger>
                                                                         <SelectContent align="end">
@@ -415,7 +415,7 @@ export function CreateOrderModal({ open, onOpenChange, onSubmit }: CreateOrderMo
                                                         </div>
 
                                                         <div className="space-y-1.5">
-                                                            <Label className="text-xs text-gray-500">الموديل (Variant) <span className="text-red-500">*</span></Label>
+                                                            <Label className="text-xs text-muted-foreground">الموديل (Variant) <span className="text-red-500">*</span></Label>
                                                             <Controller
                                                                 control={control}
                                                                 name={`items.${index}.variantId`}
@@ -430,7 +430,7 @@ export function CreateOrderModal({ open, onOpenChange, onSubmit }: CreateOrderMo
                                                                         disabled={!item.productId}
                                                                         dir="rtl"
                                                                     >
-                                                                        <SelectTrigger className={`h-10 border-gray-200 bg-gray-50/50 ${itemError?.variantId ? 'border-red-300' : ''}`}>
+                                                                        <SelectTrigger className={`h-10 border-border bg-muted/50 ${itemError?.variantId ? 'border-red-300' : ''}`}>
                                                                             <SelectValue placeholder="اختر المقاس واللون" />
                                                                         </SelectTrigger>
                                                                         <SelectContent align="end">
@@ -448,7 +448,7 @@ export function CreateOrderModal({ open, onOpenChange, onSubmit }: CreateOrderMo
 
                                                     <div className="flex gap-4">
                                                         <div className="w-24 space-y-1.5">
-                                                            <Label className="text-xs text-gray-500">الكمية <span className="text-red-500">*</span></Label>
+                                                            <Label className="text-xs text-muted-foreground">الكمية <span className="text-red-500">*</span></Label>
                                                             <Input
                                                                 type="number"
                                                                 min="1"
@@ -457,7 +457,7 @@ export function CreateOrderModal({ open, onOpenChange, onSubmit }: CreateOrderMo
                                                             />
                                                         </div>
                                                         <div className="flex-1 space-y-1.5">
-                                                            <Label className="text-xs text-gray-500">السعر (للقطعة) <span className="text-red-500">*</span></Label>
+                                                            <Label className="text-xs text-muted-foreground">السعر (للقطعة) <span className="text-red-500">*</span></Label>
                                                             <Input
                                                                 type="number"
                                                                 min="0"
@@ -466,8 +466,8 @@ export function CreateOrderModal({ open, onOpenChange, onSubmit }: CreateOrderMo
                                                             />
                                                         </div>
                                                         <div className="w-32 space-y-1.5">
-                                                            <Label className="text-xs text-gray-500">الإجمالي</Label>
-                                                            <div className="h-10 flex items-center justify-end px-3 bg-gray-100 rounded-md font-medium text-gray-900 border border-gray-200">
+                                                            <Label className="text-xs text-muted-foreground">الإجمالي</Label>
+                                                            <div className="h-10 flex items-center justify-end px-3 bg-accent text-accent-foreground rounded-md font-medium text-foreground border border-border">
                                                                 {(item?.quantity && item?.unitPrice ? item.quantity * item.unitPrice : 0).toLocaleString()}
                                                             </div>
                                                         </div>
@@ -498,7 +498,7 @@ export function CreateOrderModal({ open, onOpenChange, onSubmit }: CreateOrderMo
                                             type="number"
                                             min="0"
                                             {...register('shippingCost', { valueAsNumber: true, min: 0 })}
-                                            className="h-10 border-gray-300"
+                                            className="h-10 border-border"
                                         />
                                     </div>
                                     <div className="space-y-2">
@@ -507,7 +507,7 @@ export function CreateOrderModal({ open, onOpenChange, onSubmit }: CreateOrderMo
                                             id="shippingCompany"
                                             {...register('shippingCompany')}
                                             placeholder="اختياري"
-                                            className="h-10 border-gray-300"
+                                            className="h-10 border-border"
                                         />
                                     </div>
                                     <div className="col-span-1 md:col-span-2 space-y-2">
@@ -516,7 +516,7 @@ export function CreateOrderModal({ open, onOpenChange, onSubmit }: CreateOrderMo
                                             id="waybill"
                                             {...register('waybill')}
                                             placeholder="اختياري"
-                                            className="h-10 border-gray-300"
+                                            className="h-10 border-border"
                                         />
                                     </div>
                                 </div>
@@ -525,28 +525,28 @@ export function CreateOrderModal({ open, onOpenChange, onSubmit }: CreateOrderMo
                     </ScrollArea>
 
                     {/* Sticky Summary (Desktop Sidebar / Mobile Bottom) */}
-                    <div className="bg-gray-50 border-t sm:border-t-0 sm:border-r w-full sm:w-80 shrink-0 flex flex-col">
+                    <div className="bg-muted border-t sm:border-t-0 sm:border-r w-full sm:w-80 shrink-0 flex flex-col">
                         <div className="p-6 space-y-6 flex-1">
-                            <h3 className="font-semibold text-lg text-gray-900">ملخص الطلب</h3>
+                            <h3 className="font-semibold text-lg text-foreground">ملخص الطلب</h3>
 
                             <div className="space-y-3">
-                                <div className="flex justify-between text-gray-600">
+                                <div className="flex justify-between text-muted-foreground">
                                     <span>إجمالي المنتجات ({watchedItems.reduce((s, i) => s + (i.quantity || 0), 0)})</span>
                                     <span>{productsTotal.toLocaleString()} ج.م</span>
                                 </div>
-                                <div className="flex justify-between text-gray-600">
+                                <div className="flex justify-between text-muted-foreground">
                                     <span>الشحن</span>
                                     <span>{(watchedShippingCost || 0).toLocaleString()} ج.م</span>
                                 </div>
                                 <Separator className="my-2" />
-                                <div className="flex justify-between font-bold text-xl text-gray-900">
+                                <div className="flex justify-between font-bold text-xl text-foreground">
                                     <span>الإجمالي النهائي</span>
                                     <span>{finalTotal.toLocaleString()} ج.م</span>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="p-6 bg-white border-t space-y-3">
+                        <div className="p-6 bg-card border-t space-y-3">
                             <Button
                                 type="submit"
                                 form="create-order-form"
@@ -557,7 +557,7 @@ export function CreateOrderModal({ open, onOpenChange, onSubmit }: CreateOrderMo
                                 حفظ الطلب
                             </Button>
                             <DialogClose asChild>
-                                <Button variant="outline" className="w-full h-11 text-base border-gray-300 text-gray-700 hover:bg-gray-50">
+                                <Button variant="outline" className="w-full h-11 text-base border-border text-gray-700 hover:bg-muted">
                                     إلغاء
                                 </Button>
                             </DialogClose>

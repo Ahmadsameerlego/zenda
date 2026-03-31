@@ -84,7 +84,7 @@ export default function StorefrontHome() {
 
             {/* 3. Featured Products */}
             {featuredProducts.length > 0 && (
-                <section className="py-24 md:py-32 bg-white relative overflow-hidden">
+                <section className="py-24 md:py-32 bg-card relative overflow-hidden">
                     <ProductGrid
                         id="featured-products"
                         title={store.featured_products_title || (isArabic ? 'منتجاتنا المختارة' : 'Featured Products')}

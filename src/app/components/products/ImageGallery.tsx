@@ -53,7 +53,7 @@ function SortableImage({ image, onDelete, onSetPrimary, isDeleting, isSettingPri
         <div
             ref={setNodeRef}
             style={style}
-            className="group relative bg-white border border-gray-200 rounded-xl overflow-hidden aspect-square shadow-sm hover:shadow-md transition-shadow"
+            className="group relative bg-card border border-border rounded-xl overflow-hidden aspect-square shadow-sm hover:shadow-md transition-shadow"
         >
             <img
                 src={image.image_url}
@@ -67,7 +67,7 @@ function SortableImage({ image, onDelete, onSetPrimary, isDeleting, isSettingPri
                     <div
                         {...attributes}
                         {...listeners}
-                        className="p-1.5 bg-white/20 hover:bg-white/40 rounded-lg cursor-grab active:cursor-grabbing text-white"
+                        className="p-1.5 bg-card/20 hover:bg-card/40 rounded-lg cursor-grab active:cursor-grabbing text-white"
                     >
                         <GripVertical className="w-4 h-4" />
                     </div>
@@ -89,7 +89,7 @@ function SortableImage({ image, onDelete, onSetPrimary, isDeleting, isSettingPri
                 <Button
                     variant="secondary"
                     size="sm"
-                    className={`w-full gap-2 ${image.is_primary ? 'bg-yellow-100 text-yellow-700 hover:bg-yellow-100' : 'bg-white/90 hover:bg-white'}`}
+                    className={`w-full gap-2 ${image.is_primary ? 'bg-yellow-100 text-yellow-700 hover:bg-yellow-100' : 'bg-card/90 hover:bg-card'}`}
                     onClick={() => !image.is_primary && onSetPrimary(image.id)}
                     disabled={isSettingPrimary || image.is_primary}
                 >
@@ -205,7 +205,7 @@ export function ImageGallery({ images, productId, onUpdate }: ImageGalleryProps)
             </DndContext>
 
             {images.length === 0 && (
-                <div className="bg-gray-50 border border-dashed border-gray-200 rounded-xl p-12 flex flex-col items-center justify-center text-gray-400 gap-2">
+                <div className="bg-muted border border-dashed border-border rounded-xl p-12 flex flex-col items-center justify-center text-muted-foreground gap-2">
                     <ImageIcon className="w-12 h-12" />
                     <p className="text-sm">لا توجد صور لهذا المنتج بعد</p>
                 </div>

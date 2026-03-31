@@ -249,7 +249,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     if (loading) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-gray-50">
+            <div className="min-h-screen flex items-center justify-center bg-muted">
                 <Loader2 className="w-8 h-8 text-green-600 animate-spin" />
             </div>
         );
@@ -257,17 +257,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     if (session && !profile && !loading && profileError) {
         return (
-            <div dir="rtl" className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
-                <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full text-center space-y-6">
+            <div dir="rtl" className="min-h-screen flex flex-col items-center justify-center bg-muted p-4">
+                <div className="bg-card p-8 rounded-lg shadow-md max-w-md w-full text-center space-y-6">
                     <div className="mx-auto w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
                         <span className="text-2xl">⚠️</span>
                     </div>
 
-                    <h2 className="text-xl font-bold text-gray-900">
+                    <h2 className="text-xl font-bold text-foreground">
                         حدث خطأ أثناء تحميل الملف الشخصي
                     </h2>
 
-                    <p className="text-gray-600">
+                    <p className="text-muted-foreground">
                         عذرًا، لم نتمكن من تحميل بيانات حسابك. جرّب إعادة المحاولة أو تسجيل الخروج ثم الدخول مرة أخرى.
                     </p>
 
@@ -292,13 +292,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     if (session && !profile && !loading) {
         return (
-            <div dir="rtl" className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
-                <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full text-center space-y-6">
-                    <h2 className="text-xl font-bold text-gray-900">
+            <div dir="rtl" className="min-h-screen flex flex-col items-center justify-center bg-muted p-4">
+                <div className="bg-card p-8 rounded-lg shadow-md max-w-md w-full text-center space-y-6">
+                    <h2 className="text-xl font-bold text-foreground">
                         جاري إعداد حسابك...
                     </h2>
 
-                    <p className="text-gray-600">
+                    <p className="text-muted-foreground">
                         يبدو أن ملف التعريف الخاص بك غير جاهز بعد. جرّب إعادة التحميل.
                     </p>
 

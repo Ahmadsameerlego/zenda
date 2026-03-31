@@ -101,14 +101,14 @@ export function Login() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4" dir="rtl">
-            <div className="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div className="min-h-screen bg-muted flex items-center justify-center p-4" dir="rtl">
+            <div className="w-full max-w-md bg-card rounded-2xl shadow-xl overflow-hidden">
                 <div className="p-8 space-y-6">
                     <div className="text-center space-y-2">
-                        <h1 className="text-3xl font-bold text-gray-900 tracking-tight">
+                        <h1 className="text-3xl font-bold text-foreground tracking-tight">
                             {mode === 'signin' ? 'تسجيل الدخول' : 'إنشاء حساب جديد'}
                         </h1>
-                        <p className="text-gray-500 text-sm">
+                        <p className="text-muted-foreground text-sm">
                             {mode === 'signin'
                                 ? 'مرحباً بك مجدداً! أدخل بياناتك للمتابعة.'
                                 : 'أدخل بياناتك لإنشاء حساب جديد والبدء.'}
@@ -126,7 +126,7 @@ export function Login() {
                         <div className="space-y-2">
                             <Label htmlFor="email">البريد الإلكتروني</Label>
                             <div className="relative">
-                                <Mail className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                                <Mail className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                                 <Input
                                     id="email"
                                     type="email"
@@ -148,7 +148,7 @@ export function Login() {
                         <div className="space-y-2">
                             <Label htmlFor="password">كلمة المرور</Label>
                             <div className="relative">
-                                <Lock className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                                <Lock className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                                 <Input
                                     id="password"
                                     type="password"
@@ -183,7 +183,7 @@ export function Login() {
                         </Button>
                     </form>
 
-                    <div className="pt-4 border-t border-gray-100 flex flex-col gap-3">
+                    <div className="pt-4 border-t border-border flex flex-col gap-3">
                         <Button
                             type="button"
                             variant="ghost"
@@ -192,7 +192,7 @@ export function Login() {
                                 setAuthError(null);
                                 setErrors({});
                             }}
-                            className="w-full text-gray-600 hover:bg-gray-50 hover:text-green-700"
+                            className="w-full text-muted-foreground hover:bg-muted hover:text-green-700"
                         >
                             {mode === 'signin'
                                 ? 'ليس لديك حساب؟ أنشئ حساب جديد'

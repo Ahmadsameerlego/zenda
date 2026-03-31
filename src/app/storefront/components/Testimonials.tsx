@@ -17,13 +17,13 @@ interface TestimonialsProps {
 
 export function Testimonials({ testimonials, isArabic }: TestimonialsProps) {
     return (
-        <section className="py-24 md:py-32 bg-white overflow-hidden">
+        <section className="py-24 md:py-32 bg-card overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 md:px-6">
                 <div className="text-center mb-16 md:mb-24 space-y-4">
-                    <span className="text-[10px] font-black tracking-[0.4em] text-gray-300 uppercase block">
+                    <span className="text-[10px] font-black tracking-[0.4em] text-muted-foreground uppercase block">
                         {isArabic ? "ماذا يقولون عنا" : "CLIENT STORIES"}
                     </span>
-                    <h2 className="text-4xl md:text-6xl font-black text-gray-900 tracking-tight">
+                    <h2 className="text-4xl md:text-6xl font-black text-foreground tracking-tight">
                         {isArabic ? "ثقة نعتز بها" : "Trusted by Many"}
                     </h2>
                 </div>
@@ -49,10 +49,10 @@ export function Testimonials({ testimonials, isArabic }: TestimonialsProps) {
                             </blockquote>
 
                             <div className="space-y-1">
-                                <p className="font-black text-sm text-gray-900 uppercase tracking-widest">
+                                <p className="font-black text-sm text-foreground uppercase tracking-widest">
                                     {t.name}
                                 </p>
-                                <p className="text-[10px] font-black text-gray-300 uppercase tracking-widest">
+                                <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">
                                     {t.role}
                                 </p>
                             </div>

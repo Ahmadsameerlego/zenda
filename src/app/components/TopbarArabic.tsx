@@ -9,6 +9,7 @@ import {
 } from './ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Button } from './ui/button';
+import { ThemeToggle } from './ThemeToggle';
 
 interface TopbarArabicProps {
   onMenuClick: () => void;
@@ -47,7 +48,7 @@ export function TopbarArabic({ onMenuClick, language, onLanguageToggle, storeNam
   return (
     <header
       className={cn(
-        'fixed top-0 h-16 bg-white border-b border-gray-200 z-20 transition-all',
+        'fixed top-0 h-16 bg-background border-b border-border z-20 transition-all duration-200',
         isRTL ? 'right-0 left-0 lg:right-64' : 'right-0 left-0 lg:left-64'
       )}
       dir={isRTL ? 'rtl' : 'ltr'}
@@ -57,18 +58,20 @@ export function TopbarArabic({ onMenuClick, language, onLanguageToggle, storeNam
         <div className="flex items-center gap-4">
           <button
             onClick={onMenuClick}
-            className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            className="lg:hidden p-2 hover:bg-accent rounded-lg transition-colors"
           >
-            <Menu className="w-6 h-6 text-gray-600" />
+            <Menu className="w-6 h-6 text-foreground" />
           </button>
           <div>
-            <h1 className="font-semibold text-gray-900">{storeName || t.storeName}</h1>
-            <p className="text-sm text-gray-500 hidden sm:block">{t.storeDescription}</p>
+            <h1 className="font-semibold text-foreground">{storeName || t.storeName}</h1>
+            <p className="text-sm text-muted-foreground hidden sm:block">{t.storeDescription}</p>
           </div>
         </div>
 
         {/* Right/Left side (actions) */}
         <div className="flex items-center gap-3">
+          <ThemeToggle />
+
           {/* Language Toggle */}
           <Button
             variant="ghost"
@@ -81,30 +84,30 @@ export function TopbarArabic({ onMenuClick, language, onLanguageToggle, storeNam
           </Button>
 
           {/* Notifications */}
-          <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors relative">
-            <Bell className="w-5 h-5 text-gray-600" />
+          <button className="p-2 hover:bg-accent rounded-lg transition-colors relative">
+            <Bell className="w-5 h-5 text-foreground" />
             <span className="absolute top-1 right-1 w-2 h-2 bg-green-500 rounded-full"></span>
           </button>
 
           {/* Profile dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button className="flex items-center gap-2 hover:bg-gray-50 rounded-lg px-2 py-1 transition-colors">
-                <Avatar className="w-9 h-9">
+              <button className="flex items-center gap-2 hover:bg-accent rounded-lg px-2 py-1 transition-colors">
+                <Avatar className="w-9 h-9 border border-border">
                   <AvatarImage src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" />
-                  <AvatarFallback className="bg-green-100 text-green-700">
+                  <AvatarFallback className="bg-primary/10 text-primary">
                     {language === 'ar' ? 'سا' : 'SA'}
                   </AvatarFallback>
                 </Avatar>
-                <span className="hidden sm:block font-medium text-sm text-gray-700">{t.profile}</span>
-                <ChevronDown className="w-4 h-4 text-gray-500 hidden sm:block" />
+                <span className="hidden sm:block font-medium text-sm text-foreground">{t.profile}</span>
+                <ChevronDown className="w-4 h-4 text-muted-foreground hidden sm:block" />
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align={isRTL ? 'start' : 'end'} className="w-56">
               <DropdownMenuLabel>
                 <div>
-                  <p className="font-medium">{t.profile}</p>
-                  <p className="text-xs text-gray-500">{t.email}</p>
+                  <p className="font-medium text-foreground">{t.profile}</p>
+                  <p className="text-xs text-muted-foreground">{t.email}</p>
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />

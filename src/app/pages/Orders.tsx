@@ -166,8 +166,8 @@ export function Orders() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">Orders</h1>
-          <p className="text-gray-500 mt-1">Manage and track all your orders</p>
+          <h1 className="text-2xl font-semibold text-foreground">Orders</h1>
+          <p className="text-muted-foreground mt-1">Manage and track all your orders</p>
         </div>
 
         {/* Action Buttons */}
@@ -184,11 +184,11 @@ export function Orders() {
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+      <div className="bg-card rounded-2xl border border-border shadow-sm p-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Search */}
           <div className="lg:col-span-2 relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
             <Input
               placeholder="Search by Order ID, Phone, or Customer..."
               value={searchQuery}
@@ -231,11 +231,11 @@ export function Orders() {
       </div>
 
       {/* Orders Table */}
-      <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+      <div className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <Table>
             <TableHeader>
-              <TableRow className="hover:bg-transparent border-b border-gray-200">
+              <TableRow className="hover:bg-transparent border-b border-border">
                 <TableHead className="font-semibold">Order ID</TableHead>
                 <TableHead className="font-semibold">Customer</TableHead>
                 <TableHead className="font-semibold">Phone</TableHead>
@@ -248,22 +248,22 @@ export function Orders() {
             <TableBody>
               {paginatedOrders.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={7} className="text-center py-12 text-gray-500">
+                  <TableCell colSpan={7} className="text-center py-12 text-muted-foreground">
                     No orders found
                   </TableCell>
                 </TableRow>
               ) : (
                 paginatedOrders.map((order) => (
-                  <TableRow key={order.id} className="hover:bg-gray-50 cursor-pointer">
-                    <TableCell className="font-semibold text-gray-900">{order.id}</TableCell>
+                  <TableRow key={order.id} className="hover:bg-muted cursor-pointer">
+                    <TableCell className="font-semibold text-foreground">{order.id}</TableCell>
                     <TableCell>
                       <div>
-                        <p className="font-medium text-gray-900">{order.customer}</p>
+                        <p className="font-medium text-foreground">{order.customer}</p>
                       </div>
                     </TableCell>
-                    <TableCell className="text-gray-600">{order.phone}</TableCell>
-                    <TableCell className="text-gray-600">{order.items} items</TableCell>
-                    <TableCell className="font-medium text-gray-900">{order.amount}</TableCell>
+                    <TableCell className="text-muted-foreground">{order.phone}</TableCell>
+                    <TableCell className="text-muted-foreground">{order.items} items</TableCell>
+                    <TableCell className="font-medium text-foreground">{order.amount}</TableCell>
                     <TableCell>
                       <Select defaultValue={order.status}>
                         <SelectTrigger className="w-32 h-9 border-0 focus:ring-0">
@@ -283,7 +283,7 @@ export function Orders() {
                         </SelectContent>
                       </Select>
                     </TableCell>
-                    <TableCell className="text-gray-600">{order.time}</TableCell>
+                    <TableCell className="text-muted-foreground">{order.time}</TableCell>
                   </TableRow>
                 ))
               )}
@@ -293,8 +293,8 @@ export function Orders() {
 
         {/* Pagination */}
         {filteredOrders.length > 0 && (
-          <div className="p-6 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-gray-600">
+          <div className="p-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-sm text-muted-foreground">
               Showing {(currentPage - 1) * itemsPerPage + 1} to{' '}
               {Math.min(currentPage * itemsPerPage, filteredOrders.length)} of{' '}
               {filteredOrders.length} orders

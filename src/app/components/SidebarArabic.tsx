@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router';
-import { LayoutDashboard, ShoppingCart, Package, RefreshCw, Users, ChevronLeft, ChevronRight, Tag, Award } from 'lucide-react';
+import { LayoutDashboard, ShoppingCart, Package, RefreshCw, Users, ChevronLeft, ChevronRight, Tag, Award, UserCheck } from 'lucide-react';
 import { cn } from './ui/utils';
 
 interface SidebarArabicProps {
@@ -14,6 +14,7 @@ const navItems = {
     { icon: LayoutDashboard, label: 'لوحة التحكم', path: '/' },
     { icon: ShoppingCart, label: 'الطلبات', path: '/orders' },
     { icon: Package, label: 'المنتجات', path: '/products' },
+    { icon: UserCheck, label: 'العملاء', path: '/customers' },
     { icon: Tag, label: 'التصنيفات', path: '/categories' },
     { icon: Award, label: 'البراندات', path: '/brands' },
     { icon: RefreshCw, label: 'المرتجعات والاستبدال', path: '/returns' },
@@ -24,6 +25,7 @@ const navItems = {
     { icon: LayoutDashboard, label: 'Dashboard', path: '/' },
     { icon: ShoppingCart, label: 'Orders', path: '/orders' },
     { icon: Package, label: 'Products', path: '/products' },
+    { icon: UserCheck, label: 'Customers', path: '/customers' },
     { icon: Tag, label: 'Categories', path: '/categories' },
     { icon: Award, label: 'Brands', path: '/brands' },
     { icon: RefreshCw, label: 'Returns / Exchanges', path: '/returns' },
@@ -39,30 +41,30 @@ export function SidebarArabic({ isOpen, onToggle, onClose, language }: SidebarAr
   return (
     <aside
       className={cn(
-        'fixed top-0 h-full bg-white border-gray-200 transition-all duration-300 z-30',
+        'fixed top-0 h-full bg-background border-border transition-all duration-300 z-30',
         isRTL ? 'right-0 border-l' : 'left-0 border-r',
         isOpen ? 'w-64' : 'w-20'
       )}
       dir={isRTL ? 'rtl' : 'ltr'}
     >
       {/* Logo and Toggle */}
-      <div className="flex items-center justify-between h-16 px-5 border-b border-gray-200">
+      <div className="flex items-center justify-between h-16 px-5 border-b border-border">
         {isOpen && (
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center">
               <span className="text-white font-bold text-lg">Z</span>
             </div>
-            <span className="font-semibold text-gray-900">Zenda</span>
+            <span className="font-semibold text-foreground">Zenda</span>
           </div>
         )}
         <button
           onClick={onToggle}
-          className="p-2 hover:bg-gray-100 rounded-lg transition-colors hidden lg:flex items-center justify-center"
+          className="p-2 hover:bg-accent rounded-lg transition-colors hidden lg:flex items-center justify-center text-muted-foreground hover:text-accent-foreground"
         >
           {isOpen ? (
-            isRTL ? <ChevronRight className="w-5 h-5 text-gray-600" /> : <ChevronLeft className="w-5 h-5 text-gray-600" />
+            isRTL ? <ChevronRight className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />
           ) : (
-            isRTL ? <ChevronLeft className="w-5 h-5 text-gray-600" /> : <ChevronRight className="w-5 h-5 text-gray-600" />
+            isRTL ? <ChevronLeft className="w-5 h-5" /> : <ChevronRight className="w-5 h-5" />
           )}
         </button>
       </div>
@@ -78,14 +80,14 @@ export function SidebarArabic({ isOpen, onToggle, onClose, language }: SidebarAr
               cn(
                 'flex items-center gap-3 px-3 py-3 rounded-xl transition-all',
                 isActive
-                  ? 'bg-green-50 text-green-700'
-                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                  ? 'bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400'
+                  : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
               )
             }
           >
             {({ isActive }) => (
               <>
-                <item.icon className={cn('w-5 h-5 shrink-0', isActive && 'text-green-600')} />
+                <item.icon className={cn('w-5 h-5 shrink-0', isActive && 'text-green-600 dark:text-green-500')} />
                 {isOpen && <span className="font-medium">{item.label}</span>}
               </>
             )}

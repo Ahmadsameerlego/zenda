@@ -30,7 +30,7 @@ export function TrustSection({ isArabic }: TrustSectionProps) {
     ];
 
     return (
-        <section className="py-20 border-y border-gray-50 bg-white">
+        <section className="py-20 border-y border-gray-50 bg-card">
             <div className="max-w-7xl mx-auto px-4 md:px-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
                     {items.map((item, i) => (
@@ -41,14 +41,14 @@ export function TrustSection({ isArabic }: TrustSectionProps) {
                                 isArabic ? "font-cairo" : ""
                             )}
                         >
-                            <div className="size-16 rounded-[2rem] bg-gray-50 flex items-center justify-center transition-all duration-500 group-hover:bg-gray-900 group-hover:rotate-[10deg] shadow-sm">
-                                <item.icon className="size-6 text-gray-400 group-hover:text-white transition-colors" strokeWidth={1.5} />
+                            <div className="size-16 rounded-[2rem] bg-muted flex items-center justify-center transition-all duration-500 group-hover:bg-gray-900 group-hover:rotate-[10deg] shadow-sm">
+                                <item.icon className="size-6 text-muted-foreground group-hover:text-white transition-colors" strokeWidth={1.5} />
                             </div>
                             <div className="space-y-1">
-                                <h3 className="font-black text-sm md:text-base text-gray-900 uppercase tracking-wide">
+                                <h3 className="font-black text-sm md:text-base text-foreground uppercase tracking-wide">
                                     {item.title}
                                 </h3>
-                                <p className="text-xs text-gray-400 font-medium">
+                                <p className="text-xs text-muted-foreground font-medium">
                                     {item.desc}
                                 </p>
                             </div>

@@ -10,10 +10,10 @@ interface StatCardProps {
 
 export function StatCard({ title, value, change, isPositive = true }: StatCardProps) {
   return (
-    <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-      <p className="text-sm text-gray-500 mb-2">{title}</p>
+    <div className="bg-card rounded-2xl p-6 border border-border shadow-sm hover:shadow-md transition-shadow">
+      <p className="text-sm text-muted-foreground mb-2">{title}</p>
       <div className="flex items-end justify-between">
-        <h3 className="text-3xl font-semibold text-gray-900">{value}</h3>
+        <h3 className="text-3xl font-semibold text-foreground">{value}</h3>
         <div
           className={cn(
             'flex items-center gap-1 px-2 py-1 rounded-lg text-sm font-medium',

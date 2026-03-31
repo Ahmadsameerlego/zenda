@@ -189,8 +189,8 @@ export function CategoriesArabic({ language }: CategoriesArabicProps) {
         <div className="space-y-6" dir={isRTL ? 'rtl' : 'ltr'}>
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-2xl font-bold text-gray-900">التصنيفات</h1>
-                    <p className="text-gray-500 mt-1">إدارة تصنيفات المنتجات في متجرك</p>
+                    <h1 className="text-2xl font-bold text-foreground">التصنيفات</h1>
+                    <p className="text-muted-foreground mt-1">إدارة تصنيفات المنتجات في متجرك</p>
                 </div>
                 <Button onClick={() => handleOpenModal()} className="bg-green-600 hover:bg-green-700 gap-2 h-11 px-6">
                     <Plus className="w-5 h-5" />
@@ -198,15 +198,15 @@ export function CategoriesArabic({ language }: CategoriesArabicProps) {
                 </Button>
             </div>
 
-            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-                <div className="p-4 border-b border-gray-100">
+            <div className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden">
+                <div className="p-4 border-b border-border">
                     <div className="relative max-w-sm">
-                        <Search className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 ${isRTL ? 'right-3' : 'left-3'}`} />
+                        <Search className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground ${isRTL ? 'right-3' : 'left-3'}`} />
                         <Input
                             placeholder="البحث عن تصنيف..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className={`h-11 ${isRTL ? 'pr-10' : 'pl-10'} bg-gray-50/50 border-gray-200 focus:bg-white transition-all`}
+                            className={`h-11 ${isRTL ? 'pr-10' : 'pl-10'} bg-muted/50 border-border focus:bg-card transition-all`}
                         />
                     </div>
                 </div>
@@ -214,7 +214,7 @@ export function CategoriesArabic({ language }: CategoriesArabicProps) {
                 <div className="overflow-x-auto">
                     <Table>
                         <TableHeader>
-                            <TableRow className="bg-gray-50/50 hover:bg-transparent">
+                            <TableRow className="bg-muted/50 hover:bg-transparent">
                                 <TableHead className="font-bold">اسم التصنيف</TableHead>
                                 <TableHead className="font-bold">Slug</TableHead>
                                 <TableHead className="font-bold text-center">الترتيب</TableHead>
@@ -236,11 +236,11 @@ export function CategoriesArabic({ language }: CategoriesArabicProps) {
                             ) : filteredCategories.length === 0 ? (
                                 <TableRow>
                                     <TableCell colSpan={5} className="h-[300px] text-center">
-                                        <div className="flex flex-col items-center justify-center gap-4 text-gray-500">
-                                            <div className="bg-gray-100 p-6 rounded-full text-gray-300">
+                                        <div className="flex flex-col items-center justify-center gap-4 text-muted-foreground">
+                                            <div className="bg-accent text-accent-foreground p-6 rounded-full text-muted-foreground">
                                                 <Tag className="w-12 h-12" />
                                             </div>
-                                            <p className="text-lg font-medium text-gray-900">لا توجد تصنيفات</p>
+                                            <p className="text-lg font-medium text-foreground">لا توجد تصنيفات</p>
                                             <Button onClick={() => handleOpenModal()} variant="outline" className="text-green-600 border-green-200">
                                                 إضافة أول تصنيف
                                             </Button>
@@ -249,16 +249,16 @@ export function CategoriesArabic({ language }: CategoriesArabicProps) {
                                 </TableRow>
                             ) : (
                                 filteredCategories.map((category) => (
-                                    <TableRow key={category.id} className="group hover:bg-gray-50/80 transition-colors">
-                                        <TableCell className="font-medium text-gray-900">{category.name}</TableCell>
-                                        <TableCell className="text-gray-500 text-sm">{category.slug}</TableCell>
-                                        <TableCell className="text-center text-gray-600">{category.sort_order}</TableCell>
+                                    <TableRow key={category.id} className="group hover:bg-muted/80 transition-colors">
+                                        <TableCell className="font-medium text-foreground">{category.name}</TableCell>
+                                        <TableCell className="text-muted-foreground text-sm">{category.slug}</TableCell>
+                                        <TableCell className="text-center text-muted-foreground">{category.sort_order}</TableCell>
                                         <TableCell className="text-center">
                                             <Badge
                                                 variant={category.is_active ? 'default' : 'secondary'}
                                                 className={`font-medium ${category.is_active
                                                     ? 'bg-green-100 text-green-700 hover:bg-green-100'
-                                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-100'
+                                                    : 'bg-accent text-accent-foreground text-gray-700 hover:bg-accent hover:text-accent-foreground'
                                                     }`}
                                             >
                                                 {category.is_active ? 'نشط' : 'معطل'}
@@ -273,7 +273,7 @@ export function CategoriesArabic({ language }: CategoriesArabicProps) {
                                                 </DropdownMenuTrigger>
                                                 <DropdownMenuContent align={isRTL ? 'start' : 'end'}>
                                                     <DropdownMenuItem onClick={() => handleOpenModal(category)}>
-                                                        <Edit className="w-4 h-4 ml-2 text-gray-500" />
+                                                        <Edit className="w-4 h-4 ml-2 text-muted-foreground" />
                                                         تعديل
                                                     </DropdownMenuItem>
                                                     <DropdownMenuItem onClick={() => handleToggleStatus(category)}>
@@ -333,7 +333,7 @@ export function CategoriesArabic({ language }: CategoriesArabicProps) {
                                 id="slug"
                                 value={formData.slug}
                                 onChange={(e) => setFormData(prev => ({ ...prev, slug: e.target.value }))}
-                                className="text-right font-mono text-sm bg-gray-50"
+                                className="text-right font-mono text-sm bg-muted"
                             />
                         </div>
                         <div className="grid grid-cols-2 gap-4">
@@ -355,7 +355,7 @@ export function CategoriesArabic({ language }: CategoriesArabicProps) {
                                         checked={formData.is_active}
                                         onCheckedChange={(checked) => setFormData(prev => ({ ...prev, is_active: checked }))}
                                     />
-                                    <span className="text-sm text-gray-600">{formData.is_active ? 'نشط' : 'معطل'}</span>
+                                    <span className="text-sm text-muted-foreground">{formData.is_active ? 'نشط' : 'معطل'}</span>
                                 </div>
                             </div>
                         </div>
@@ -380,7 +380,7 @@ export function CategoriesArabic({ language }: CategoriesArabicProps) {
                         <DialogTitle>تأكيد الحذف</DialogTitle>
                     </DialogHeader>
                     <div className="py-4">
-                        <p className="text-gray-600">هل أنت متأكد من حذف هذا التصنيف؟ لا يمكن التراجع عن هذا الإجراء، وسيتم إزالة التصنيف من جميع المنتجات المرتبطة به.</p>
+                        <p className="text-muted-foreground">هل أنت متأكد من حذف هذا التصنيف؟ لا يمكن التراجع عن هذا الإجراء، وسيتم إزالة التصنيف من جميع المنتجات المرتبطة به.</p>
                     </div>
                     <DialogFooter className="gap-2">
                         <Button variant="outline" onClick={() => setCategoryToDelete(null)}>إلغاء</Button>

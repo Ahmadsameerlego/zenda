@@ -37,7 +37,7 @@ export default function AboutUs() {
     return (
         <StorefrontLayout store={store} pages={pages} isArabic={isArabic}>
             {/* Immersive Hero */}
-            <section className="relative h-[70vh] flex items-center justify-center overflow-hidden bg-gray-900 border-b border-gray-100">
+            <section className="relative h-[70vh] flex items-center justify-center overflow-hidden bg-gray-900 border-b border-border">
                 <div className="absolute inset-0">
                     <img
                         src={store.cover_url || 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80'}
@@ -48,12 +48,12 @@ export default function AboutUs() {
 
                 <div className="relative z-10 text-center space-y-8 px-6">
                     <span
-                        className="text-xs md:text-sm font-black tracking-[0.4em] text-gray-400 uppercase"
+                        className="text-xs md:text-sm font-black tracking-[0.4em] text-muted-foreground uppercase"
                     >
                         {isArabic ? 'قصة علامتنا التجارية' : 'OUR BRAND STORY'}
                     </span>
                     <h1
-                        className="text-5xl md:text-8xl font-[1000] text-gray-900 tracking-tighter"
+                        className="text-5xl md:text-8xl font-[1000] text-foreground tracking-tighter"
                     >
                         {isArabic ? 'نحن نؤمن بالتميز' : 'We Believe In Excellence'}
                     </h1>
@@ -66,22 +66,22 @@ export default function AboutUs() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                         <div className="space-y-10 text-right" dir="rtl">
                             <div className="space-y-6">
-                                <h2 className="text-3xl md:text-5xl font-[950] text-gray-900 tracking-tighter leading-tight">
+                                <h2 className="text-3xl md:text-5xl font-[950] text-foreground tracking-tighter leading-tight">
                                     {isArabic ? 'رؤية بدأت بشغف، ونمت بإخلاص.' : 'A vision born from passion, grown with dedication.'}
                                 </h2>
-                                <p className="text-lg md:text-2xl text-gray-500 leading-relaxed font-medium">
+                                <p className="text-lg md:text-2xl text-muted-foreground leading-relaxed font-medium">
                                     {store.full_description || store.short_description || (isArabic ? 'نحن نسعى لتقديم أفضل المنتجات لعملائنا بكل حب وإخلاص.' : 'We strive to provide the best products to our customers with love and sincerity.')}
                                 </p>
                             </div>
 
-                            <div className="grid grid-cols-2 gap-8 pt-10 border-t border-gray-100">
+                            <div className="grid grid-cols-2 gap-8 pt-10 border-t border-border">
                                 <div className="space-y-2">
-                                    <h4 className="text-4xl font-[1000] text-gray-900">12k+</h4>
-                                    <p className="text-sm font-bold text-gray-400 uppercase tracking-widest">{isArabic ? 'عميل سعيد' : 'Happy Customers'}</p>
+                                    <h4 className="text-4xl font-[1000] text-foreground">12k+</h4>
+                                    <p className="text-sm font-bold text-muted-foreground uppercase tracking-widest">{isArabic ? 'عميل سعيد' : 'Happy Customers'}</p>
                                 </div>
                                 <div className="space-y-2">
-                                    <h4 className="text-4xl font-[1000] text-gray-900">100%</h4>
-                                    <p className="text-sm font-bold text-gray-400 uppercase tracking-widest">{isArabic ? 'ضمان جودة' : 'Quality Guarantee'}</p>
+                                    <h4 className="text-4xl font-[1000] text-foreground">100%</h4>
+                                    <p className="text-sm font-bold text-muted-foreground uppercase tracking-widest">{isArabic ? 'ضمان جودة' : 'Quality Guarantee'}</p>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +90,7 @@ export default function AboutUs() {
                             <div className="aspect-square rounded-[4rem] overflow-hidden shadow-22">
                                 <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80" className="w-full h-full object-cover" />
                             </div>
-                            <div className="absolute -bottom-10 -right-10 size-48 bg-gray-50 rounded-full flex items-center justify-center p-8 text-center text-[1000] tracking-widest leading-relaxed border border-gray-100 rotate-12">
+                            <div className="absolute -bottom-10 -right-10 size-48 bg-muted rounded-full flex items-center justify-center p-8 text-center text-[1000] tracking-widest leading-relaxed border border-border rotate-12">
                                 {isArabic ? 'بكل فخر منذ ٢٠٢٤' : 'PROUDLY SINCE 2024'}
                             </div>
                         </div>
@@ -99,7 +99,7 @@ export default function AboutUs() {
             </section>
 
             {/* Mission & Vision */}
-            <section className="py-24 md:py-32 bg-gray-50">
+            <section className="py-24 md:py-32 bg-muted">
                 <div className="max-w-7xl mx-auto px-4 md:px-6">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
@@ -109,13 +109,13 @@ export default function AboutUs() {
                         ].map((item, i) => (
                             <div
                                 key={i}
-                                className="p-12 rounded-[3.5rem] bg-white shadow-xl shadow-gray-200/50 space-y-6 text-center border border-gray-100"
+                                className="p-12 rounded-[3.5rem] bg-card shadow-xl shadow-gray-200/50 space-y-6 text-center border border-border"
                             >
-                                <div className="size-20 rounded-3xl bg-gray-50 flex items-center justify-center mx-auto text-gray-900">
+                                <div className="size-20 rounded-3xl bg-muted flex items-center justify-center mx-auto text-foreground">
                                     <item.icon className="size-8" />
                                 </div>
-                                <h3 className="text-3xl font-black text-gray-900 tracking-tighter">{item.title}</h3>
-                                <p className="text-gray-500 font-bold leading-relaxed">{item.text}</p>
+                                <h3 className="text-3xl font-black text-foreground tracking-tighter">{item.title}</h3>
+                                <p className="text-muted-foreground font-bold leading-relaxed">{item.text}</p>
                             </div>
                         ))}
                     </div>
@@ -124,7 +124,7 @@ export default function AboutUs() {
 
             {/* Final CTA */}
             <section className="py-24 md:py-40 text-center space-y-12">
-                <h2 className="text-4xl md:text-7xl font-[1000] text-gray-900 tracking-tighter leading-none">
+                <h2 className="text-4xl md:text-7xl font-[1000] text-foreground tracking-tighter leading-none">
                     {isArabic ? 'اكتشف مجموعتنا الآن' : 'Discover Our Collection'}
                 </h2>
                 <Button

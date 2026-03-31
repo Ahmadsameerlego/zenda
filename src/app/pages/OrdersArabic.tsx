@@ -114,7 +114,7 @@ const statusColors: Record<string, string> = {
   Shipped: 'bg-purple-50 text-purple-700 border-purple-200',
   Delivered: 'bg-green-50 text-green-700 border-green-200',
   Cancelled: 'bg-red-50 text-red-700 border-red-200',
-  Returned: 'bg-gray-50 text-gray-700 border-gray-200',
+  Returned: 'bg-muted text-gray-700 border-border',
 };
 
 interface OrdersArabicProps {
@@ -234,8 +234,8 @@ export function OrdersArabic({ language }: OrdersArabicProps) {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">{t.orders}</h1>
-          <p className="text-gray-500 mt-1">{t.description}</p>
+          <h1 className="text-2xl font-semibold text-foreground">{t.orders}</h1>
+          <p className="text-muted-foreground mt-1">{t.description}</p>
         </div>
 
         <div className="flex gap-3">
@@ -254,11 +254,11 @@ export function OrdersArabic({ language }: OrdersArabicProps) {
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+      <div className="bg-card rounded-2xl border border-border shadow-sm p-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Search */}
           <div className="lg:col-span-2 relative">
-            <Search className={`absolute top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 ${isRTL ? 'right-3' : 'left-3'}`} />
+            <Search className={`absolute top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground ${isRTL ? 'right-3' : 'left-3'}`} />
             <Input
               placeholder={t.searchPlaceholder}
               value={searchQuery}
@@ -300,14 +300,14 @@ export function OrdersArabic({ language }: OrdersArabicProps) {
       </div>
 
       {/* Orders Table */}
-      <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+      <div className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden">
         {loading ? (
-          <div className="flex flex-col items-center justify-center py-20 text-gray-500">
+          <div className="flex flex-col items-center justify-center py-20 text-muted-foreground">
             <Loader2 className="w-8 h-8 animate-spin text-green-500 mb-3" />
             <p>{t.loadingOrders}</p>
           </div>
         ) : error ? (
-          <div className="flex flex-col items-center justify-center py-20 text-gray-500">
+          <div className="flex flex-col items-center justify-center py-20 text-muted-foreground">
             <AlertCircle className="w-8 h-8 text-red-400 mb-3" />
             <p className="text-red-600 mb-3">{error}</p>
             <Button variant="outline" size="sm" onClick={fetchOrders} className="gap-2">
@@ -320,7 +320,7 @@ export function OrdersArabic({ language }: OrdersArabicProps) {
             <div className="overflow-x-auto">
               <Table>
                 <TableHeader>
-                  <TableRow className="hover:bg-transparent border-b border-gray-200">
+                  <TableRow className="hover:bg-transparent border-b border-border">
                     <TableHead className="font-semibold">{t.orderId}</TableHead>
                     <TableHead className="font-semibold">{t.customer}</TableHead>
                     <TableHead className="font-semibold">{t.phone}</TableHead>
@@ -333,7 +333,7 @@ export function OrdersArabic({ language }: OrdersArabicProps) {
                 <TableBody>
                   {paginatedOrders.length === 0 ? (
                     <TableRow>
-                      <TableCell colSpan={7} className="text-center py-12 text-gray-500">
+                      <TableCell colSpan={7} className="text-center py-12 text-muted-foreground">
                         {t.noOrders}
                       </TableCell>
                     </TableRow>
@@ -343,16 +343,16 @@ export function OrdersArabic({ language }: OrdersArabicProps) {
                       const displayId = `#${String(order.id).slice(0, 6).toUpperCase()}`;
 
                       return (
-                        <TableRow key={order.id} className="hover:bg-gray-50 cursor-pointer">
-                          <TableCell className="font-semibold text-gray-900">{displayId}</TableCell>
+                        <TableRow key={order.id} className="hover:bg-muted cursor-pointer">
+                          <TableCell className="font-semibold text-foreground">{displayId}</TableCell>
                           <TableCell>
-                            <p className="font-medium text-gray-900">{order.customer_name}</p>
+                            <p className="font-medium text-foreground">{order.customer_name}</p>
                           </TableCell>
-                          <TableCell className="text-gray-600" dir="ltr">{order.customer_phone}</TableCell>
-                          <TableCell className="text-gray-600">
+                          <TableCell className="text-muted-foreground" dir="ltr">{order.customer_phone}</TableCell>
+                          <TableCell className="text-muted-foreground">
                             {itemCount} {language === 'ar' ? 'قطع' : 'items'}
                           </TableCell>
-                          <TableCell className="font-medium text-gray-900">
+                          <TableCell className="font-medium text-foreground">
                             {isRTL
                               ? `${Number(order.total).toLocaleString('ar-EG')} ج.م`
                               : `EGP ${Number(order.total).toLocaleString()}`}
@@ -360,12 +360,12 @@ export function OrdersArabic({ language }: OrdersArabicProps) {
                           <TableCell>
                             <Badge
                               variant="outline"
-                              className={statusColors[order.status] || 'bg-gray-50 text-gray-700 border-gray-200'}
+                              className={statusColors[order.status] || 'bg-muted text-gray-700 border-border'}
                             >
                               {st[order.status] || order.status}
                             </Badge>
                           </TableCell>
-                          <TableCell className="text-gray-600">
+                          <TableCell className="text-muted-foreground">
                             {order.created_at ? formatRelativeTime(order.created_at) : '—'}
                           </TableCell>
                         </TableRow>
@@ -378,8 +378,8 @@ export function OrdersArabic({ language }: OrdersArabicProps) {
 
             {/* Pagination */}
             {filteredOrders.length > 0 && (
-              <div className="p-6 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <p className="text-sm text-gray-600">
+              <div className="p-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p className="text-sm text-muted-foreground">
                   {t.showing} {(currentPage - 1) * itemsPerPage + 1} {t.to}{' '}
                   {Math.min(currentPage * itemsPerPage, filteredOrders.length)} {t.of}{' '}
                   {filteredOrders.length} {t.ordersText}

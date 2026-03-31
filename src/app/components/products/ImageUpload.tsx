@@ -64,12 +64,12 @@ export function ImageUpload({ productId, storeId, onUploadComplete }: ImageUploa
                 className={`
                     border-2 border-dashed rounded-xl p-8 transition-all cursor-pointer
                     flex flex-col items-center justify-center gap-3
-                    ${isDragActive ? 'border-green-500 bg-green-50' : 'border-gray-200 bg-gray-50/50 hover:bg-gray-50'}
+                    ${isDragActive ? 'border-green-500 bg-green-50' : 'border-border bg-muted/50 hover:bg-muted'}
                     ${uploading ? 'opacity-50 cursor-not-allowed' : ''}
                 `}
             >
                 <input {...getInputProps()} />
-                <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-400">
+                <div className="w-12 h-12 rounded-full bg-card shadow-sm flex items-center justify-center text-muted-foreground">
                     {uploading ? (
                         <Loader2 className="w-6 h-6 animate-spin text-green-600" />
                     ) : (
@@ -77,10 +77,10 @@ export function ImageUpload({ productId, storeId, onUploadComplete }: ImageUploa
                     )}
                 </div>
                 <div className="text-center">
-                    <p className="text-sm font-medium text-gray-900">
+                    <p className="text-sm font-medium text-foreground">
                         اسحب الصور هنا أو انقر للاختيار
                     </p>
-                    <p className="text-xs text-gray-500 mt-1">
+                    <p className="text-xs text-muted-foreground mt-1">
                         JPG, PNG, WebP (بحد أقصى 5 ميجابايت)
                     </p>
                 </div>
@@ -88,11 +88,11 @@ export function ImageUpload({ productId, storeId, onUploadComplete }: ImageUploa
 
             {uploading && (
                 <div className="space-y-2">
-                    <div className="flex justify-between text-xs text-gray-500">
+                    <div className="flex justify-between text-xs text-muted-foreground">
                         <span>جاري الرفع...</span>
                         <span>{progress}%</span>
                     </div>
-                    <Progress value={progress} className="h-1 bg-gray-100" />
+                    <Progress value={progress} className="h-1 bg-accent text-accent-foreground" />
                 </div>
             )}
         </div>

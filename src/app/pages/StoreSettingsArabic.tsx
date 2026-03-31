@@ -455,7 +455,7 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
 
     if (loading) {
         return (
-            <div className="flex flex-col items-center justify-center py-40 text-gray-500" dir="rtl">
+            <div className="flex flex-col items-center justify-center py-40 text-muted-foreground" dir="rtl">
                 <Loader2 className="w-10 h-10 animate-spin text-green-500 mb-4" />
                 <p className="text-lg text-right">{isArabic ? 'جاري تحميل الإعدادات...' : 'Loading settings...'}</p>
             </div>
@@ -467,8 +467,8 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
             {/* Header */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-right">
                 <div className="text-right flex-1">
-                    <h1 className="text-2xl font-semibold text-gray-900 text-right">{isArabic ? 'إعدادات المتجر' : 'Store Settings'}</h1>
-                    <p className="text-gray-500 mt-1 text-right">{isArabic ? 'إدارة معلومات متجرك وهويته' : 'Manage your store information and identity'}</p>
+                    <h1 className="text-2xl font-semibold text-foreground text-right">{isArabic ? 'إعدادات المتجر' : 'Store Settings'}</h1>
+                    <p className="text-muted-foreground mt-1 text-right">{isArabic ? 'إدارة معلومات متجرك وهويته' : 'Manage your store information and identity'}</p>
                 </div>
 
                 <div className="flex justify-end group">
@@ -489,7 +489,7 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
             </div>
 
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full text-right" dir="rtl">
-                <TabsList className="bg-white border border-gray-200 p-1 rounded-xl h-auto flex flex-wrap gap-1 mb-6 justify-start">
+                <TabsList className="bg-card border border-border p-1 rounded-xl h-auto flex flex-wrap gap-1 mb-6 justify-start">
                     <TabsTrigger
                         value="basic"
                         className="rounded-lg py-2 px-6 data-[state=active]:bg-green-50 data-[state=active]:text-green-700 data-[state=active]:shadow-none text-right"
@@ -520,8 +520,8 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 text-right">
                         <div className="lg:col-span-2 space-y-6 text-right">
                             {/* Store Identity */}
-                            <Card className="border-gray-200 shadow-sm overflow-hidden text-right">
-                                <CardHeader className="bg-gray-50/50 border-b border-gray-100 text-right">
+                            <Card className="border-border shadow-sm overflow-hidden text-right">
+                                <CardHeader className="bg-muted/50 border-b border-border text-right">
                                     <div className="flex items-center gap-2 justify-start">
                                         <Globe className="w-5 h-5 text-green-600" />
                                         <CardTitle className="text-lg text-right">{isArabic ? 'هوية المتجر' : 'Store Identity'}</CardTitle>
@@ -562,12 +562,12 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                                                 />
                                             </div>
                                             {errors.store_slug && <p className="text-xs text-red-500 text-right">{errors.store_slug}</p>}
-                                            <p className="text-[11px] text-gray-500 text-right">
+                                            <p className="text-[11px] text-muted-foreground text-right">
                                                 {isArabic ? 'سيتم استخدام هذا الرابط للوصول لمتجرك مباشرة.' : 'This slug will be used for your store link.'}
                                             </p>
-                                            <div className="bg-gray-50 p-2 rounded-lg border border-gray-200 flex items-center gap-2 overflow-hidden" dir="rtl">
-                                                <ExternalLink className="w-3 h-3 text-gray-400 shrink-0" />
-                                                <span className="text-xs text-gray-600 truncate flex-1 text-left" dir="ltr">
+                                            <div className="bg-muted p-2 rounded-lg border border-border flex items-center gap-2 overflow-hidden" dir="rtl">
+                                                <ExternalLink className="w-3 h-3 text-muted-foreground shrink-0" />
+                                                <span className="text-xs text-muted-foreground truncate flex-1 text-left" dir="ltr">
                                                     /store/{settings.store_slug || '...'}
                                                 </span>
                                             </div>
@@ -598,10 +598,10 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                                             dir="rtl"
                                         />
                                         <div className="flex flex-row justify-between items-center px-1">
-                                            <span className="text-[10px] font-mono text-gray-400">
+                                            <span className="text-[10px] font-mono text-muted-foreground">
                                                 {(settings.short_description?.length || 0)} / 160
                                             </span>
-                                            <p className="text-[10px] text-gray-400 text-right">{isArabic ? 'يظهر في محركات البحث ومواقع التواصل' : 'Shown in search engines and social media'}</p>
+                                            <p className="text-[10px] text-muted-foreground text-right">{isArabic ? 'يظهر في محركات البحث ومواقع التواصل' : 'Shown in search engines and social media'}</p>
                                         </div>
                                     </div>
 
@@ -620,8 +620,8 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                             </Card>
 
                             {/* Contact Information */}
-                            <Card className="border-gray-200 shadow-sm overflow-hidden text-right">
-                                <CardHeader className="bg-gray-50/50 border-b border-gray-100 text-right">
+                            <Card className="border-border shadow-sm overflow-hidden text-right">
+                                <CardHeader className="bg-muted/50 border-b border-border text-right">
                                     <div className="flex items-center gap-2 justify-start">
                                         <Phone className="w-5 h-5 text-green-600" />
                                         <CardTitle className="text-lg text-right">{isArabic ? 'معلومات التواصل' : 'Contact Information'}</CardTitle>
@@ -635,7 +635,7 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                                         <div className="space-y-2 text-right">
                                             <Label htmlFor="contact_phone" className="inline-block w-full text-right">{isArabic ? 'رقم الهاتف' : 'Contact Phone'}</Label>
                                             <div className="relative">
-                                                <Phone className="absolute right-3 top-3 w-4 h-4 text-gray-400" />
+                                                <Phone className="absolute right-3 top-3 w-4 h-4 text-muted-foreground" />
                                                 <Input
                                                     id="contact_phone"
                                                     value={settings.contact_phone || ''}
@@ -670,7 +670,7 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                                                 {isArabic ? 'البريد الإلكتروني' : 'Contact Email'}
                                             </Label>
                                             <div className="relative">
-                                                <Mail className="absolute right-3 top-3 w-4 h-4 text-gray-400" />
+                                                <Mail className="absolute right-3 top-3 w-4 h-4 text-muted-foreground" />
                                                 <Input
                                                     id="contact_email"
                                                     type="email"
@@ -688,8 +688,8 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                             </Card>
 
                             {/* Address */}
-                            <Card className="border-gray-200 shadow-sm overflow-hidden text-right">
-                                <CardHeader className="bg-gray-50/50 border-b border-gray-100 text-right">
+                            <Card className="border-border shadow-sm overflow-hidden text-right">
+                                <CardHeader className="bg-muted/50 border-b border-border text-right">
                                     <div className="flex items-center gap-2 justify-start">
                                         <MapPin className="w-5 h-5 text-green-600" />
                                         <CardTitle className="text-lg text-right">{isArabic ? 'العنوان' : 'Address'}</CardTitle>
@@ -751,8 +751,8 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
 
                         <div className="space-y-6 text-right">
                             {/* Store Status */}
-                            <Card className="border-gray-200 shadow-sm overflow-hidden text-right">
-                                <CardHeader className="bg-gray-50/50 border-b border-gray-100 text-right">
+                            <Card className="border-border shadow-sm overflow-hidden text-right">
+                                <CardHeader className="bg-muted/50 border-b border-border text-right">
                                     <div className="flex items-center gap-2 justify-start">
                                         <CheckCircle2 className="w-5 h-5 text-green-600" />
                                         <CardTitle className="text-lg text-right">{isArabic ? 'حالة المتجر' : 'Store Status'}</CardTitle>
@@ -762,7 +762,7 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                                     <div className="flex items-center justify-between gap-4">
                                         <div className="space-y-0.5 text-right flex-1">
                                             <Label className="text-base inline-block w-full text-right">{isArabic ? 'تفعيل المتجر' : 'Store Active'}</Label>
-                                            <p className="text-xs text-gray-500 text-right">
+                                            <p className="text-xs text-muted-foreground text-right">
                                                 {isArabic ? 'إيقاف هذا الخيار سيغلق وصول المشرفين أيضاً' : 'Disabling this will close access for admins too'}
                                             </p>
                                         </div>
@@ -777,7 +777,7 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                                     <div className="flex items-center justify-between gap-4 border-t pt-6" dir="rtl">
                                         <div className="space-y-0.5 text-right flex-1">
                                             <Label className="text-base inline-block w-full text-right">{isArabic ? 'نشر المتجر' : 'Publish Storefront'}</Label>
-                                            <p className="text-xs text-gray-500 text-right">
+                                            <p className="text-xs text-muted-foreground text-right">
                                                 {isArabic ? 'إتاحة المتجر للعملاء على الإنترنت' : 'Make store visible to customers online'}
                                             </p>
                                         </div>
@@ -792,8 +792,8 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                             </Card>
 
                             {/* Social Links */}
-                            <Card className="border-gray-200 shadow-sm overflow-hidden text-right">
-                                <CardHeader className="bg-gray-50/50 border-b border-gray-100 text-right">
+                            <Card className="border-border shadow-sm overflow-hidden text-right">
+                                <CardHeader className="bg-muted/50 border-b border-border text-right">
                                     <div className="flex items-center gap-2 justify-start">
                                         <Share2 className="w-5 h-5 text-green-600" />
                                         <CardTitle className="text-lg text-right">{isArabic ? 'روابط التواصل الاجتماعي' : 'Social Links'}</CardTitle>
@@ -853,7 +853,7 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                                     <div className="space-y-2 border-t pt-4 text-right">
                                         <Label htmlFor="website_url" className={cn("inline-block w-full text-right", errors.website_url && "text-red-500")}>{isArabic ? 'الموقع الإلكتروني' : 'Website URL'}</Label>
                                         <div className="relative">
-                                            <GlobeIcon className="absolute right-3 top-3 w-4 h-4 text-gray-400" />
+                                            <GlobeIcon className="absolute right-3 top-3 w-4 h-4 text-muted-foreground" />
                                             <Input
                                                 id="website_url"
                                                 value={settings.website_url || ''}
@@ -884,8 +884,8 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 text-right">
                         <div className="lg:col-span-2 space-y-6 text-right">
                             {/* Brand Colors */}
-                            <Card className="border-gray-200 shadow-sm overflow-hidden text-right">
-                                <CardHeader className="bg-gray-50/50 border-b border-gray-100 text-right">
+                            <Card className="border-border shadow-sm overflow-hidden text-right">
+                                <CardHeader className="bg-muted/50 border-b border-border text-right">
                                     <div className="flex items-center gap-2 justify-start">
                                         <Palette className="w-5 h-5 text-green-600" />
                                         <CardTitle className="text-lg text-right">{isArabic ? 'ألوان العلامة التجارية' : 'Brand Colors'}</CardTitle>
@@ -917,7 +917,7 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                                                             dir="ltr"
                                                         />
                                                         <div
-                                                            className="absolute left-2 top-2 w-5 h-5 rounded border border-gray-200"
+                                                            className="absolute left-2 top-2 w-5 h-5 rounded border border-border"
                                                             style={{ backgroundColor: (themeSettings as any)[color.id] || '#000000' }}
                                                         />
                                                     </div>
@@ -936,8 +936,8 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                             </Card>
 
                             {/* Shape & Style */}
-                            <Card className="border-gray-200 shadow-sm overflow-hidden text-right">
-                                <CardHeader className="bg-gray-50/50 border-b border-gray-100 text-right">
+                            <Card className="border-border shadow-sm overflow-hidden text-right">
+                                <CardHeader className="bg-muted/50 border-b border-border text-right">
                                     <div className="flex items-center gap-2 justify-start">
                                         <Layers className="w-5 h-5 text-green-600" />
                                         <CardTitle className="text-lg text-right">{isArabic ? 'الحواف والنمط' : 'Shape & Style'}</CardTitle>
@@ -985,8 +985,8 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                             </Card>
 
                             {/* Products Section */}
-                            <Card className="border-gray-200 shadow-sm overflow-hidden text-right">
-                                <CardHeader className="bg-gray-50/50 border-b border-gray-100 text-right">
+                            <Card className="border-border shadow-sm overflow-hidden text-right">
+                                <CardHeader className="bg-muted/50 border-b border-border text-right">
                                     <div className="flex items-center gap-2 justify-start">
                                         <Settings2 className="w-5 h-5 text-green-600" />
                                         <CardTitle className="text-lg text-right">{isArabic ? 'قسم المنتجات' : 'Products Section'}</CardTitle>
@@ -1023,7 +1023,7 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                                                     ))}
                                                 </SelectContent>
                                             </Select>
-                                            <p className="text-[11px] text-gray-500 text-right">
+                                            <p className="text-[11px] text-muted-foreground text-right">
                                                 {isArabic ? 'سيتم ترتيب المنتجات بهذا النمط تلقائياً في المتجر.' : 'Products will be sorted by this style by default.'}
                                             </p>
                                         </div>
@@ -1034,8 +1034,8 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
 
                         <div className="space-y-6 text-right">
                             {/* Live Preview Card */}
-                            <Card className="border-gray-300 shadow-md overflow-hidden sticky top-6 z-10 transition-all duration-300 ring-2 ring-green-100">
-                                <CardHeader className="bg-white border-b border-gray-100 py-3">
+                            <Card className="border-border shadow-md overflow-hidden sticky top-6 z-10 transition-all duration-300 ring-2 ring-green-100">
+                                <CardHeader className="bg-card border-b border-border py-3">
                                     <div className="flex items-center gap-2 justify-start">
                                         <Eye className="w-5 h-5 text-green-600 animate-pulse" />
                                         <CardTitle className="text-lg text-right font-bold text-green-700">{isArabic ? 'معاينة مباشرة' : 'Live Preview'}</CardTitle>
@@ -1048,7 +1048,7 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                                         <div className="p-4 border-b flex items-center justify-between" style={{ borderColor: `${themeSettings.text_color}15` }}>
                                             <div className="flex items-center gap-2">
                                                 {themeSettings.show_logo ? (
-                                                    <div className="size-8 bg-gray-200 rounded-full flex items-center justify-center text-[10px] font-bold text-gray-400">LOGO</div>
+                                                    <div className="size-8 bg-gray-200 rounded-full flex items-center justify-center text-[10px] font-bold text-muted-foreground">LOGO</div>
                                                 ) : (
                                                     <span className="font-bold text-sm" style={{ color: themeSettings.text_color || '#000000' }}>{settings.store_name || 'My Store'}</span>
                                                 )}
@@ -1061,7 +1061,7 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
 
                                         {/* Mock Cover */}
                                         {themeSettings.show_cover && (
-                                            <div className="h-24 w-full bg-gray-100 flex items-center justify-center overflow-hidden">
+                                            <div className="h-24 w-full bg-accent text-accent-foreground flex items-center justify-center overflow-hidden">
                                                 <div
                                                     className="w-full h-full opacity-50"
                                                     style={{
@@ -1082,11 +1082,11 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
 
                                             {/* Mock Product Card */}
                                             <div
-                                                className={cn("bg-white p-3 shadow-sm border space-y-3 transition-all", getRadiusClass(themeSettings.card_radius, 'card'))}
+                                                className={cn("bg-card p-3 shadow-sm border space-y-3 transition-all", getRadiusClass(themeSettings.card_radius, 'card'))}
                                                 style={{ borderColor: `${themeSettings.text_color}10` }}
                                             >
-                                                <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center relative overflow-hidden">
-                                                    <ShoppingCart className="size-8 text-gray-300" />
+                                                <div className="aspect-square bg-accent text-accent-foreground rounded-lg flex items-center justify-center relative overflow-hidden">
+                                                    <ShoppingCart className="size-8 text-muted-foreground" />
                                                     {themeSettings.show_stock && (
                                                         <span className="absolute top-2 right-2 text-[8px] bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full font-bold">
                                                             {isArabic ? 'متوفر' : 'In Stock'}
@@ -1127,16 +1127,16 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                                         </div>
                                     </div>
                                 </CardContent>
-                                <div className="p-3 bg-gray-50 border-t border-gray-100">
-                                    <p className="text-[10px] text-gray-400 text-center italic">
+                                <div className="p-3 bg-muted border-t border-border">
+                                    <p className="text-[10px] text-muted-foreground text-center italic">
                                         {isArabic ? '* هذه المعاينة تقريبية لتوضيح الألوان والتنسيق فقط' : '* This preview is approximate for colors and layout only'}
                                     </p>
                                 </div>
                             </Card>
 
                             {/* Visibility Toggles */}
-                            <Card className="border-gray-200 shadow-sm overflow-hidden text-right">
-                                <CardHeader className="bg-gray-50/50 border-b border-gray-100 text-right">
+                            <Card className="border-border shadow-sm overflow-hidden text-right">
+                                <CardHeader className="bg-muted/50 border-b border-border text-right">
                                     <div className="flex items-center gap-2 justify-start">
                                         <Eye className="w-5 h-5 text-green-600" />
                                         <CardTitle className="text-lg text-right">{isArabic ? 'خيارات العرض' : 'Visibility Toggles'}</CardTitle>
@@ -1155,7 +1155,7 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                                         <div key={toggle.id} className="flex items-center justify-between gap-4 py-4">
                                             <div className="space-y-0.5 text-right flex-1">
                                                 <Label className="text-sm font-semibold inline-block w-full text-right">{toggle.label}</Label>
-                                                <p className="text-[11px] text-gray-500 text-right">{toggle.desc}</p>
+                                                <p className="text-[11px] text-muted-foreground text-right">{toggle.desc}</p>
                                             </div>
                                             <div className="shrink-0">
                                                 <Switch
@@ -1173,8 +1173,8 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                 <TabsContent value="branding" className="space-y-6 text-right">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 text-right">
                         {/* Store Logo Card */}
-                        <Card className="border-gray-200 shadow-sm overflow-hidden text-right">
-                            <CardHeader className="bg-gray-50/50 border-b border-gray-100 text-right">
+                        <Card className="border-border shadow-sm overflow-hidden text-right">
+                            <CardHeader className="bg-muted/50 border-b border-border text-right">
                                 <div className="flex items-center gap-2 justify-start">
                                     <ShieldCheck className="w-5 h-5 text-green-600" />
                                     <CardTitle className="text-lg text-right">{isArabic ? 'شعار المتجر' : 'Store Logo'}</CardTitle>
@@ -1184,10 +1184,10 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="p-6 space-y-4 text-right">
-                                <div className="flex flex-col items-center justify-center border-2 border-dashed border-gray-200 rounded-2xl p-8 bg-gray-50/50 transition-all hover:bg-gray-50">
+                                <div className="flex flex-col items-center justify-center border-2 border-dashed border-border rounded-2xl p-8 bg-muted/50 transition-all hover:bg-muted">
                                     {logoPreview ? (
                                         <div className="relative group">
-                                            <div className="w-32 h-32 rounded-2xl overflow-hidden border bg-white shadow-sm flex items-center justify-center p-2">
+                                            <div className="w-32 h-32 rounded-2xl overflow-hidden border bg-card shadow-sm flex items-center justify-center p-2">
                                                 <img src={logoPreview} alt="Logo" className="max-w-full max-h-full object-contain" />
                                             </div>
                                             <button
@@ -1199,10 +1199,10 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                                         </div>
                                     ) : (
                                         <div className="text-center space-y-3">
-                                            <div className="w-16 h-16 bg-white rounded-2xl shadow-sm border flex items-center justify-center mx-auto">
-                                                <ImageIcon className="w-8 h-8 text-gray-300" />
+                                            <div className="w-16 h-16 bg-card rounded-2xl shadow-sm border flex items-center justify-center mx-auto">
+                                                <ImageIcon className="w-8 h-8 text-muted-foreground" />
                                             </div>
-                                            <p className="text-sm text-gray-500">{isArabic ? 'لم يتم رفع شعار بعد' : 'No logo uploaded yet'}</p>
+                                            <p className="text-sm text-muted-foreground">{isArabic ? 'لم يتم رفع شعار بعد' : 'No logo uploaded yet'}</p>
                                         </div>
                                     )}
 
@@ -1225,15 +1225,15 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                                     </div>
                                     {brandingErrors.logo && <p className="mt-2 text-xs text-red-500">{brandingErrors.logo}</p>}
                                 </div>
-                                <p className="text-[11px] text-gray-400 text-center">
+                                <p className="text-[11px] text-muted-foreground text-center">
                                     {isArabic ? 'الحجم الأقصى 2MB • فضل صيغة PNG أو JPG' : 'Max size 2MB • PNG or JPG preferred'}
                                 </p>
                             </CardContent>
                         </Card>
 
                         {/* Store Cover Card */}
-                        <Card className="border-gray-200 shadow-sm overflow-hidden text-right">
-                            <CardHeader className="bg-gray-50/50 border-b border-gray-100 text-right">
+                        <Card className="border-border shadow-sm overflow-hidden text-right">
+                            <CardHeader className="bg-muted/50 border-b border-border text-right">
                                 <div className="flex items-center gap-2 justify-start">
                                     <Layout className="w-5 h-5 text-green-600" />
                                     <CardTitle className="text-lg text-right">{isArabic ? 'صورة الغلاف' : 'Cover Image'}</CardTitle>
@@ -1243,10 +1243,10 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="p-6 space-y-4 text-right">
-                                <div className="flex flex-col items-center justify-center border-2 border-dashed border-gray-200 rounded-2xl p-8 bg-gray-50/50 transition-all hover:bg-gray-50">
+                                <div className="flex flex-col items-center justify-center border-2 border-dashed border-border rounded-2xl p-8 bg-muted/50 transition-all hover:bg-muted">
                                     {coverPreview ? (
                                         <div className="relative group w-full">
-                                            <div className="w-full h-32 rounded-2xl overflow-hidden border bg-white shadow-sm">
+                                            <div className="w-full h-32 rounded-2xl overflow-hidden border bg-card shadow-sm">
                                                 <img src={coverPreview} alt="Cover" className="w-full h-full object-cover" />
                                             </div>
                                             <button
@@ -1258,10 +1258,10 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                                         </div>
                                     ) : (
                                         <div className="text-center space-y-3">
-                                            <div className="w-full h-16 bg-white rounded-2xl shadow-sm border flex items-center justify-center px-8">
-                                                <ImageIcon className="w-8 h-8 text-gray-300" />
+                                            <div className="w-full h-16 bg-card rounded-2xl shadow-sm border flex items-center justify-center px-8">
+                                                <ImageIcon className="w-8 h-8 text-muted-foreground" />
                                             </div>
-                                            <p className="text-sm text-gray-500">{isArabic ? 'لم يتم رفع غلاف بعد' : 'No cover uploaded yet'}</p>
+                                            <p className="text-sm text-muted-foreground">{isArabic ? 'لم يتم رفع غلاف بعد' : 'No cover uploaded yet'}</p>
                                         </div>
                                     )}
 
@@ -1284,7 +1284,7 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                                     </div>
                                     {brandingErrors.cover && <p className="mt-2 text-xs text-red-500">{brandingErrors.cover}</p>}
                                 </div>
-                                <p className="text-[11px] text-gray-400 text-center">
+                                <p className="text-[11px] text-muted-foreground text-center">
                                     {isArabic ? 'الحجم الأقصى 5MB • يفضل الصور العريضة' : 'Max size 5MB • Wide images preferred'}
                                 </p>
                             </CardContent>
@@ -1304,7 +1304,7 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                         </div>
                     </div>
 
-                    <div className="flex justify-center mt-8 pt-6 border-t border-gray-100">
+                    <div className="flex justify-center mt-8 pt-6 border-t border-border">
                         <Button
                             onClick={handleSaveBranding}
                             disabled={brandingSaving}
@@ -1319,9 +1319,9 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                     <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 text-right" dir="rtl">
                         {/* Sidebar: Page Selection */}
                         <div className="lg:col-span-1 space-y-3">
-                            <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
-                                <div className="p-4 border-b border-gray-100 bg-gray-50/50">
-                                    <h3 className="font-bold text-gray-900 text-sm">{isArabic ? 'قائمة الصفحات' : 'Pages List'}</h3>
+                            <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-sm">
+                                <div className="p-4 border-b border-border bg-muted/50">
+                                    <h3 className="font-bold text-foreground text-sm">{isArabic ? 'قائمة الصفحات' : 'Pages List'}</h3>
                                 </div>
                                 <div className="p-2 space-y-1">
                                     {Object.entries(PAGE_LABELS).map(([key, label]) => {
@@ -1339,7 +1339,7 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                                                     "w-full text-right px-4 py-3 rounded-xl transition-all flex items-center justify-between group",
                                                     isSelected
                                                         ? "bg-green-50 text-green-700 shadow-sm ring-1 ring-green-100"
-                                                        : "hover:bg-gray-50 text-gray-600"
+                                                        : "hover:bg-muted text-muted-foreground"
                                                 )}
                                             >
                                                 <div className="flex flex-col gap-0.5 overflow-hidden flex-1">
@@ -1382,37 +1382,37 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                         {/* Main Editor Panel */}
                         <div className="lg:col-span-3 space-y-6">
                             {pagesLoading ? (
-                                <Card className="border-gray-200 shadow-sm h-[600px] flex items-center justify-center">
+                                <Card className="border-border shadow-sm h-[600px] flex items-center justify-center">
                                     <div className="text-center space-y-3">
                                         <Loader2 className="w-8 h-8 animate-spin text-green-500 mx-auto" />
-                                        <p className="text-sm text-gray-500">{isArabic ? 'جاري تحميل محتوى الصفحة...' : 'Loading page content...'}</p>
+                                        <p className="text-sm text-muted-foreground">{isArabic ? 'جاري تحميل محتوى الصفحة...' : 'Loading page content...'}</p>
                                     </div>
                                 </Card>
                             ) : (() => {
                                 const currentPage = pages.find(p => p.page_key === selectedPageKey);
                                 if (!currentPage) return (
-                                    <Card className="border-gray-200 shadow-sm h-[600px] flex items-center justify-center">
-                                        <p className="text-gray-500 italic">{isArabic ? 'يرجى اختيار صفحة من القائمة للبدء' : 'Select a page to start editing'}</p>
+                                    <Card className="border-border shadow-sm h-[600px] flex items-center justify-center">
+                                        <p className="text-muted-foreground italic">{isArabic ? 'يرجى اختيار صفحة من القائمة للبدء' : 'Select a page to start editing'}</p>
                                     </Card>
                                 );
 
                                 return (
                                     <>
                                         {/* Status Header */}
-                                        <div className="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm flex flex-wrap items-center justify-between gap-4">
+                                        <div className="bg-card border border-border rounded-2xl p-4 shadow-sm flex flex-wrap items-center justify-between gap-4">
                                             <div className="flex items-center gap-3">
                                                 <div className="size-10 bg-green-50 rounded-xl flex items-center justify-center text-green-600">
                                                     <Settings2 className="w-5 h-5" />
                                                 </div>
                                                 <div>
-                                                    <h2 className="text-lg font-bold text-gray-900">{PAGE_LABELS[selectedPageKey]}</h2>
-                                                    <p className="text-xs text-gray-500">
+                                                    <h2 className="text-lg font-bold text-foreground">{PAGE_LABELS[selectedPageKey]}</h2>
+                                                    <p className="text-xs text-muted-foreground">
                                                         {isArabic ? 'آخر تحديث:' : 'Last updated:'} {currentPage.updated_at ? new Date(currentPage.updated_at).toLocaleDateString('ar-EG') : (isArabic ? 'لم يتم التحديث' : 'Never updated')}
                                                     </p>
                                                 </div>
                                             </div>
 
-                                            <div className="flex items-center gap-6 bg-gray-50 px-6 py-2 rounded-xl border border-gray-100">
+                                            <div className="flex items-center gap-6 bg-muted px-6 py-2 rounded-xl border border-border">
                                                 <div className="flex items-center gap-3">
                                                     <Label className="text-sm font-medium m-0 cursor-pointer" htmlFor="publish-toggle">
                                                         {currentPage.is_published ? (isArabic ? 'منشورة علنياً' : 'Publicly Published') : (isArabic ? 'محفوظة كمسودة' : 'Saved as Draft')}
@@ -1430,8 +1430,8 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                                         </div>
 
                                         {/* Page Content Card */}
-                                        <Card className="border-gray-200 shadow-sm overflow-hidden">
-                                            <CardHeader className="bg-gray-50/50 border-b border-gray-100 p-6">
+                                        <Card className="border-border shadow-sm overflow-hidden">
+                                            <CardHeader className="bg-muted/50 border-b border-border p-6">
                                                 <CardTitle className="text-lg">{isArabic ? 'محتوى الصفحة' : 'Page Content'}</CardTitle>
                                                 <CardDescription>
                                                     {isArabic ? 'اكتب المحتوى الذي ترغب في ظهوره للعملاء بالتفصيل' : 'Enter the detailed content for your customers'}
@@ -1462,7 +1462,7 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                                                             const newPages = pages.map(p => p.page_key === selectedPageKey ? { ...p, content: e.target.value } : p);
                                                             setPages(newPages);
                                                         }}
-                                                        className="min-h-[300px] leading-relaxed text-right text-base border-gray-200 focus:border-green-300 focus:ring-green-100"
+                                                        className="min-h-[300px] leading-relaxed text-right text-base border-border focus:border-green-300 focus:ring-green-100"
                                                         placeholder={isArabic ? 'اكتب هنا...' : 'Start typing here...'}
                                                         dir="rtl"
                                                     />
@@ -1477,8 +1477,8 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                                         </Card>
 
                                         {/* SEO Card */}
-                                        <Card className="border-gray-200 shadow-sm overflow-hidden">
-                                            <CardHeader className="bg-gray-50/50 border-b border-gray-100 p-6">
+                                        <Card className="border-border shadow-sm overflow-hidden">
+                                            <CardHeader className="bg-muted/50 border-b border-border p-6">
                                                 <CardTitle className="text-lg">{isArabic ? 'تحسين محركات البحث (SEO)' : 'SEO Settings'}</CardTitle>
                                                 <CardDescription>
                                                     {isArabic ? 'تحكم في كيفية ظهور هذه الصفحة في نتائج جوجل' : 'Control how this page appears in Google search results'}
@@ -1495,7 +1495,7 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                                                         }}
                                                         placeholder={currentPage.title}
                                                     />
-                                                    <p className="text-[10px] text-gray-400">{isArabic ? 'يفضل أن يكون بين 50-60 حرفاً' : 'Recommended 50-60 characters'}</p>
+                                                    <p className="text-[10px] text-muted-foreground">{isArabic ? 'يفضل أن يكون بين 50-60 حرفاً' : 'Recommended 50-60 characters'}</p>
                                                 </div>
                                                 <div className="space-y-2">
                                                     <Label>{isArabic ? 'وصف SEO' : 'SEO Description'}</Label>
@@ -1508,18 +1508,18 @@ export function StoreSettingsArabic({ language }: { language: 'ar' | 'en' }) {
                                                         className="min-h-[100px]"
                                                         placeholder={isArabic ? 'وصف مختصر للصفحة لمحركات البحث' : 'Brief description for search engines'}
                                                     />
-                                                    <p className="text-[10px] text-gray-400">{isArabic ? 'يفضل أن يكون بين 120-160 حرفاً' : 'Recommended 120-160 characters'}</p>
+                                                    <p className="text-[10px] text-muted-foreground">{isArabic ? 'يفضل أن يكون بين 120-160 حرفاً' : 'Recommended 120-160 characters'}</p>
                                                 </div>
                                             </CardContent>
                                         </Card>
 
                                         {/* Permalink Preview */}
-                                        <div className="bg-gray-100 border border-gray-200 p-4 rounded-2xl flex flex-col gap-2">
-                                            <div className="flex items-center gap-2 text-gray-500">
+                                        <div className="bg-accent text-accent-foreground border border-border p-4 rounded-2xl flex flex-col gap-2">
+                                            <div className="flex items-center gap-2 text-muted-foreground">
                                                 <ExternalLink className="w-4 h-4" />
                                                 <span className="text-xs font-bold">{isArabic ? 'رابط الصفحة المباشر' : 'Page Permalink'}</span>
                                             </div>
-                                            <div className="bg-white border border-gray-200 px-3 py-2 rounded-lg font-mono text-xs text-blue-600 truncate text-left" dir="ltr">
+                                            <div className="bg-card border border-border px-3 py-2 rounded-lg font-mono text-xs text-blue-600 truncate text-left" dir="ltr">
                                                 {settings.store_slug
                                                     ? `https://zenda.com/store/${settings.store_slug}/pages/${currentPage.page_key}`
                                                     : (isArabic ? 'يجب تحديد رابط المتجر أولاً' : 'Set store slug first')}

@@ -205,3 +205,59 @@ export interface StorePage {
     seo_description?: string;
     updated_at: string;
 }
+
+// ─── Customer Types ─────────────────────────────────────────────────────────
+
+export type CustomerSegment = 'new' | 'returning' | 'loyal' | 'vip' | 'prospect' | 'at_risk';
+export type RiskLevel = 'low' | 'medium' | 'high';
+
+export interface NormalizedCustomer {
+    id: string;
+    store_id: string;
+    name: string;
+    phone: string;
+    city: string | null;
+    address: string | null;
+    notes: string | null;
+    created_at: string;
+    first_order_date: string | null;
+
+    // Core metrics (Source of truth)
+    total_orders_count: number;
+    delivered_orders_count: number;
+    cancelled_orders_count: number;
+    returned_orders_count: number;
+    bad_orders_count: number;
+
+    // Value metrics
+    total_spent: number;
+    avg_order_value: number;
+
+    // Recency
+    last_order_at: string | null;
+    days_since_last_delivered: number | null;
+
+    // Intelligence
+    score: number;
+    segment: CustomerSegment;
+    risk_level: RiskLevel;
+}
+
+export type CustomerListItem = NormalizedCustomer;
+export type CustomerProfile = NormalizedCustomer;
+
+export interface CustomerOrder {
+    id: string;
+    store_id: string;
+    customer_id: string;
+    customer_name: string;
+    customer_phone: string;
+    customer_address: string | null;
+    status: string;
+    subtotal: number;
+    shipping: number;
+    discount: number;
+    total: number;
+    notes: string | null;
+    created_at: string;
+}

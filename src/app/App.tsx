@@ -10,6 +10,8 @@ import { BrandsArabic } from "./pages/BrandsArabic";
 import { ReturnsArabic } from "./pages/ReturnsArabic";
 import { TeamArabic } from "./pages/TeamArabic";
 import { StoreSettingsArabic } from "./pages/StoreSettingsArabic";
+import { CustomersArabic } from "./pages/CustomersArabic";
+import { CustomerDetailsArabic } from "./pages/CustomerDetailsArabic";
 import { cn } from "./components/ui/utils";
 import { Login } from "./pages/Login";
 import { AuthGuard } from "./components/auth/AuthGuard";
@@ -20,6 +22,7 @@ import ProductDetails from "./storefront/pages/ProductDetails";
 import CheckoutPage from "./storefront/pages/CheckoutPage";
 import AboutUs from "./storefront/pages/AboutUs";
 import InfoPage from "./storefront/pages/InfoPage";
+import { ThemeProvider } from "./contexts/ThemeProvider";
 
 function DashboardLayout() {
   const [language, setLanguage] = useState<"ar" | "en">("ar");
@@ -54,7 +57,7 @@ function DashboardLayout() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-200">
       {/* Mobile Sidebar Overlay */}
       {mobileSidebarOpen && (
         <div
@@ -112,6 +115,8 @@ function DashboardLayout() {
               <Route path="/" element={<DashboardArabic language={language} />} />
               <Route path="/orders" element={<OrdersArabic language={language} />} />
               <Route path="/products" element={<ProductsArabic language={language} />} />
+              <Route path="/customers" element={<CustomersArabic language={language} />} />
+              <Route path="/customers/:id" element={<CustomerDetailsArabic language={language} />} />
               <Route path="/categories" element={<CategoriesArabic language={language} />} />
               <Route path="/brands" element={<BrandsArabic language={language} />} />
               <Route path="/returns" element={<ReturnsArabic language={language} />} />
@@ -127,26 +132,28 @@ function DashboardLayout() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/store/:slug" element={<StorefrontHome />} />
-          <Route path="/store/:slug/products" element={<StorefrontProducts />} />
-          <Route path="/store/:slug/product/:productSlug" element={<ProductDetails />} />
-          <Route path="/store/:slug/checkout" element={<CheckoutPage />} />
-          <Route path="/store/:slug/about" element={<AboutUs />} />
-          <Route path="/store/:slug/page/:pageKey" element={<InfoPage />} />
-          <Route
-            path="/*"
-            element={
-              <AuthGuard>
-                <DashboardLayout />
-              </AuthGuard>
-            }
-          />
-        </Routes>
-      </AuthProvider>
-    </BrowserRouter>
+    <ThemeProvider defaultTheme="light" storageKey="zenda-theme">
+      <BrowserRouter>
+        <AuthProvider>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/store/:slug" element={<StorefrontHome />} />
+            <Route path="/store/:slug/products" element={<StorefrontProducts />} />
+            <Route path="/store/:slug/product/:productSlug" element={<ProductDetails />} />
+            <Route path="/store/:slug/checkout" element={<CheckoutPage />} />
+            <Route path="/store/:slug/about" element={<AboutUs />} />
+            <Route path="/store/:slug/page/:pageKey" element={<InfoPage />} />
+            <Route
+              path="/*"
+              element={
+                <AuthGuard>
+                  <DashboardLayout />
+                </AuthGuard>
+              }
+            />
+          </Routes>
+        </AuthProvider>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }

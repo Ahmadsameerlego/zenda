@@ -48,9 +48,9 @@ export function FilterSystem({
         <div className="space-y-12">
             {/* 1. Category Filter */}
             <div className="space-y-6">
-                <h4 className="text-[10px] font-black text-gray-900 uppercase tracking-[0.2em] flex items-center justify-between border-b border-gray-50 pb-4">
+                <h4 className="text-[10px] font-black text-foreground uppercase tracking-[0.2em] flex items-center justify-between border-b border-gray-50 pb-4">
                     {isArabic ? 'التصنيفات' : 'CATEGORIES'}
-                    <ChevronDown className="size-3 text-gray-300" />
+                    <ChevronDown className="size-3 text-muted-foreground" />
                 </h4>
                 <div className="space-y-2">
                     {categories.map((cat) => (
@@ -59,7 +59,7 @@ export function FilterSystem({
                             className={cn(
                                 "w-full text-right py-2 px-1 text-sm font-medium transition-all flex items-center justify-between group",
                                 isArabic ? "text-right" : "text-left",
-                                selectedCategory === cat ? "text-gray-900" : "text-gray-400 hover:text-gray-600"
+                                selectedCategory === cat ? "text-foreground" : "text-muted-foreground hover:text-muted-foreground"
                             )}
                             onClick={() => onCategoryChange(cat)}
                         >
@@ -72,36 +72,36 @@ export function FilterSystem({
 
             {/* 2. Price Range Filter */}
             <div className="space-y-6">
-                <h4 className="text-[10px] font-black text-gray-900 uppercase tracking-[0.2em] border-b border-gray-50 pb-4">
+                <h4 className="text-[10px] font-black text-foreground uppercase tracking-[0.2em] border-b border-gray-50 pb-4">
                     {isArabic ? 'نطاق السعر' : 'PRICE RANGE'}
                 </h4>
                 <div className="space-y-4">
                     <div className="grid grid-cols-2 gap-3">
                         <div className="space-y-2">
-                            <Label className="text-[10px] font-black text-gray-300 uppercase tracking-widest">{isArabic ? 'من' : 'MIN'}</Label>
+                            <Label className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">{isArabic ? 'من' : 'MIN'}</Label>
                             <Input
                                 type="number"
                                 placeholder="0"
                                 value={localMin}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLocalMin(e.target.value)}
-                                className="h-10 rounded-xl border-gray-50 font-bold focus:border-gray-900 focus:ring-0 bg-gray-50/30 text-xs"
+                                className="h-10 rounded-xl border-gray-50 font-bold focus:border-gray-900 focus:ring-0 bg-muted/30 text-xs"
                             />
                         </div>
                         <div className="space-y-2">
-                            <Label className="text-[10px] font-black text-gray-300 uppercase tracking-widest">{isArabic ? 'إلى' : 'MAX'}</Label>
+                            <Label className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">{isArabic ? 'إلى' : 'MAX'}</Label>
                             <Input
                                 type="number"
                                 placeholder="10000"
                                 value={localMax}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLocalMax(e.target.value)}
-                                className="h-10 rounded-xl border-gray-50 font-bold focus:border-gray-900 focus:ring-0 bg-gray-50/30 text-xs"
+                                className="h-10 rounded-xl border-gray-50 font-bold focus:border-gray-900 focus:ring-0 bg-muted/30 text-xs"
                             />
                         </div>
                     </div>
                     <Button
                         onClick={handleApplyPrice}
                         variant="outline"
-                        className="w-full h-10 rounded-xl font-black border border-gray-100 hover:bg-gray-900 hover:text-white hover:border-gray-900 text-[10px] uppercase tracking-widest transition-all"
+                        className="w-full h-10 rounded-xl font-black border border-border hover:bg-gray-900 hover:text-white hover:border-gray-900 text-[10px] uppercase tracking-widest transition-all"
                     >
                         {isArabic ? 'تطبيق' : 'APPLY'}
                     </Button>
@@ -112,7 +112,7 @@ export function FilterSystem({
             <Button
                 onClick={handleReset}
                 variant="ghost"
-                className="w-full h-10 gap-2 text-gray-300 hover:text-gray-900 hover:bg-gray-50 font-black rounded-xl text-[10px] uppercase tracking-widest transition-all"
+                className="w-full h-10 gap-2 text-muted-foreground hover:text-foreground hover:bg-muted font-black rounded-xl text-[10px] uppercase tracking-widest transition-all"
             >
                 <RotateCcw className="size-3" />
                 {isArabic ? 'إعادة ضبط' : 'RESET'}
@@ -138,23 +138,23 @@ export function FilterSystem({
                     />
                     <div
                         className={cn(
-                            "fixed inset-y-0 w-full max-w-[300px] bg-white shadow-2xl z-[151] lg:hidden flex flex-col",
+                            "fixed inset-y-0 w-full max-w-[300px] bg-card shadow-2xl z-[151] lg:hidden flex flex-col",
                             isArabic ? "right-0" : "left-0"
                         )}
                         dir={isArabic ? 'rtl' : 'ltr'}
                     >
                         <div className="p-6 border-b border-gray-50 flex items-center justify-between">
-                            <h3 className="text-xl font-black text-gray-900 tracking-tight">
+                            <h3 className="text-xl font-black text-foreground tracking-tight">
                                 {isArabic ? 'الفلاتر' : 'Filters'}
                             </h3>
-                            <button onClick={onToggle} className="size-10 rounded-full hover:bg-gray-50 flex items-center justify-center transition-colors">
-                                <X className="size-5 text-gray-400" />
+                            <button onClick={onToggle} className="size-10 rounded-full hover:bg-muted flex items-center justify-center transition-colors">
+                                <X className="size-5 text-muted-foreground" />
                             </button>
                         </div>
                         <div className="flex-1 overflow-y-auto p-6">
                             {filterContent}
                         </div>
-                        <div className="p-6 border-t border-gray-50 bg-white">
+                        <div className="p-6 border-t border-gray-50 bg-card">
                             <Button
                                 onClick={onToggle}
                                 className="w-full h-14 text-xs font-black rounded-xl shadow-lg transition-all active:scale-95"
