@@ -1,4 +1,6 @@
-import { Menu, Bell, ChevronDown, Languages } from 'lucide-react';
+import { Menu, ChevronDown, Languages } from 'lucide-react';
+import { cn } from './ui/utils';
+import { NotificationDropdown } from './NotificationDropdown';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -84,10 +86,7 @@ export function TopbarArabic({ onMenuClick, language, onLanguageToggle, storeNam
           </Button>
 
           {/* Notifications */}
-          <button className="p-2 hover:bg-accent rounded-lg transition-colors relative">
-            <Bell className="w-5 h-5 text-foreground" />
-            <span className="absolute top-1 right-1 w-2 h-2 bg-green-500 rounded-full"></span>
-          </button>
+          <NotificationDropdown language={language} />
 
           {/* Profile dropdown */}
           <DropdownMenu>
@@ -124,6 +123,4 @@ export function TopbarArabic({ onMenuClick, language, onLanguageToggle, storeNam
   );
 }
 
-function cn(...inputs: any[]) {
-  return inputs.filter(Boolean).join(' ');
-}
+

@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router';
-import { LayoutDashboard, ShoppingCart, Package, RefreshCw, Users, ChevronLeft, ChevronRight, Tag, Award, UserCheck } from 'lucide-react';
+import { LayoutDashboard, ShoppingCart, Package, RefreshCw, Users, ChevronLeft, ChevronRight, Tag, Award, UserCheck, Bell } from 'lucide-react';
 import { cn } from './ui/utils';
 
 interface SidebarArabicProps {
@@ -14,6 +14,7 @@ const navItems = {
     { icon: LayoutDashboard, label: 'لوحة التحكم', path: '/' },
     { icon: ShoppingCart, label: 'الطلبات', path: '/orders' },
     { icon: Package, label: 'المنتجات', path: '/products' },
+    { icon: Bell, label: 'التنبيهات', path: '/alerts' },
     { icon: UserCheck, label: 'العملاء', path: '/customers' },
     { icon: Tag, label: 'التصنيفات', path: '/categories' },
     { icon: Award, label: 'البراندات', path: '/brands' },
@@ -25,6 +26,7 @@ const navItems = {
     { icon: LayoutDashboard, label: 'Dashboard', path: '/' },
     { icon: ShoppingCart, label: 'Orders', path: '/orders' },
     { icon: Package, label: 'Products', path: '/products' },
+    { icon: Bell, label: 'Alerts', path: '/alerts' },
     { icon: UserCheck, label: 'Customers', path: '/customers' },
     { icon: Tag, label: 'Categories', path: '/categories' },
     { icon: Award, label: 'Brands', path: '/brands' },

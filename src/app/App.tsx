@@ -13,6 +13,7 @@ import { TeamArabic } from "./pages/TeamArabic";
 import { StoreSettingsArabic } from "./pages/StoreSettingsArabic";
 import { CustomersArabic } from "./pages/CustomersArabic";
 import { CustomerDetailsArabic } from "./pages/CustomerDetailsArabic";
+import AlertsArabic from "./pages/AlertsArabic";
 import { cn } from "./components/ui/utils";
 import { Login } from "./pages/Login";
 import { AuthGuard } from "./components/auth/AuthGuard";
@@ -24,6 +25,7 @@ import CheckoutPage from "./storefront/pages/CheckoutPage";
 import AboutUs from "./storefront/pages/AboutUs";
 import InfoPage from "./storefront/pages/InfoPage";
 import { ThemeProvider } from "./contexts/ThemeProvider";
+import { AlertProvider } from "./context/AlertContext";
 
 function DashboardLayout() {
   const [language, setLanguage] = useState<"ar" | "en">("ar");
@@ -117,6 +119,7 @@ function DashboardLayout() {
               <Route path="/orders" element={<OrdersArabic language={language} />} />
               <Route path="/orders/:id" element={<OrderDetailsArabic language={language} />} />
               <Route path="/products" element={<ProductsArabic language={language} />} />
+              <Route path="/alerts" element={<AlertsArabic language={language} />} />
               <Route path="/customers" element={<CustomersArabic language={language} />} />
               <Route path="/customers/:id" element={<CustomerDetailsArabic language={language} />} />
               <Route path="/categories" element={<CategoriesArabic language={language} />} />
@@ -149,7 +152,9 @@ export default function App() {
               path="/*"
               element={
                 <AuthGuard>
-                  <DashboardLayout />
+                  <AlertProvider>
+                    <DashboardLayout />
+                  </AlertProvider>
                 </AuthGuard>
               }
             />
